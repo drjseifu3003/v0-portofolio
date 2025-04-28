@@ -1,11 +1,15 @@
 import type React from "react"
-import "@/app/globals.css"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 
-export const metadata = {
+const inter = Inter({ subsets: ["latin"] })
+
+export const metadata: Metadata = {
   title: "Dereje Seifu - Senior Full-Stack Engineer",
   description:
-    "Portfolio of Dereje Seifu, a Senior Full-Stack Engineer specializing in Next.js, Node.js, and DevOps with 4+ years of experience.",
+    "Portfolio and blog of Dereje Seifu, a Senior Full-Stack Engineer specializing in Next.js, Node.js, and DevOps.",
     generator: 'v0.dev'
 }
 
@@ -16,8 +20,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
         </ThemeProvider>
       </body>

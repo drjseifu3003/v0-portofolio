@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 142.1 76.2% 36.3%;
-    --primary-foreground: 355.7 100% 97.3%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 196 100% 50%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47% 11%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 142.1 76.2% 36.3%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 196 100% 50%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 0 0% 95%;
-    --card: 24 9.8% 10%;
-    --card-foreground: 0 0% 95%;
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 142.1 70.6% 45.3%;
-    --primary-foreground: 144.9 80.4% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 12 6.5% 15.1%;
-    --accent-foreground: 0 0% 98%;
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 196 100% 50%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217.2 32.6% 12%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 12%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 142.4 71.8% 29.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 196 100% 50%;
   }
 }
 
@@ -58,5 +58,172 @@
   }
   html {
     scroll-behavior: smooth;
+  }
+}
+
+/* Gaming-inspired custom styles */
+.cyber-border {
+  @apply relative;
+}
+
+.cyber-border::before {
+  content: "";
+  @apply absolute inset-0 rounded-md bg-gradient-flow bg-gradient-flow animate-border-flow;
+  background-size: 300% 100%;
+  z-index: -1;
+  margin: -2px;
+}
+
+.cyber-box {
+  @apply relative overflow-hidden border border-neon-blue/30 bg-black/20 backdrop-blur-sm;
+}
+
+.cyber-box::before {
+  content: "";
+  @apply absolute inset-0 bg-cyber-grid bg-cyber-grid opacity-20;
+  z-index: -1;
+}
+
+.cyber-glow {
+  @apply animate-pulse-glow;
+}
+
+.text-glow {
+  @apply animate-text-glow;
+}
+
+.notion-card {
+  @apply bg-white dark:bg-cyber-dark border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden transition-all duration-200 hover:shadow-md;
+}
+
+.notion-card:hover {
+  @apply border-neon-blue/50 dark:border-neon-blue/50;
+}
+
+.notion-title {
+  @apply font-medium text-lg mb-2;
+}
+
+.notion-content {
+  @apply text-zinc-600 dark:text-zinc-400 text-sm;
+}
+
+.notion-meta {
+  @apply text-xs text-zinc-500 dark:text-zinc-500 mt-4 flex items-center gap-2;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-300 dark:bg-zinc-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-zinc-400 dark:bg-zinc-600;
+}
+
+/* Notion-like editor styles */
+.notion-editor {
+  @apply max-w-4xl mx-auto p-8 bg-white dark:bg-cyber-dark rounded-lg shadow-sm;
+}
+
+.notion-editor h1 {
+  @apply text-3xl font-bold mb-4;
+}
+
+.notion-editor h2 {
+  @apply text-2xl font-bold mb-3 mt-6;
+}
+
+.notion-editor h3 {
+  @apply text-xl font-bold mb-2 mt-5;
+}
+
+.notion-editor p {
+  @apply mb-4 leading-relaxed;
+}
+
+.notion-editor ul,
+.notion-editor ol {
+  @apply mb-4 pl-6;
+}
+
+.notion-editor li {
+  @apply mb-2;
+}
+
+.notion-editor blockquote {
+  @apply border-l-4 border-zinc-300 dark:border-zinc-700 pl-4 italic my-4;
+}
+
+.notion-editor pre {
+  @apply bg-zinc-100 dark:bg-zinc-800 p-4 rounded-md my-4 overflow-x-auto;
+}
+
+.notion-editor code {
+  @apply bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-sm;
+}
+
+/* Gaming button styles */
+.gaming-button {
+  @apply relative overflow-hidden bg-cyber-dark border border-neon-blue/50 text-white px-6 py-3 rounded-md transition-all duration-300;
+}
+
+.gaming-button::before {
+  content: "";
+  @apply absolute inset-0 bg-gradient-flow bg-gradient-flow opacity-0 transition-opacity duration-300;
+  background-size: 300% 100%;
+}
+
+.gaming-button:hover::before {
+  @apply opacity-20 animate-border-flow;
+}
+
+.gaming-button:hover {
+  @apply border-neon-blue shadow-[0_0_10px_rgba(0,243,255,0.5)];
+}
+
+.gaming-button:active {
+  transform: translateY(1px);
+}
+
+/* Floating animation */
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Typewriter cursor animation */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Notion-like blog grid */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
   }
 }
