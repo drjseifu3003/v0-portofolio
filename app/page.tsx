@@ -54,7 +54,7 @@ export default function Home() {
             </a>
           </nav>
           <div className="flex items-center gap-4">
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
             <Button variant="outline" size="sm" className="hidden md:flex">
               <Download className="mr-2 h-4 w-4" />
               Download CV
