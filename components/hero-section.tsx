@@ -241,43 +241,7 @@ export function HeroSection() {
                 </div>
               </motion.div>
 
-              <motion.div
-                className="absolute -top-6 -right-6 bg-white dark:bg-zinc-800 rounded-lg shadow-xl p-4 border border-zinc-200 dark:border-zinc-700"
-                animate={{ y: [0, 5, 0] }}
-                transition={{ repeat: Number.POSITIVE_INFINITY, duration: 6, ease: "easeInOut", delay: 0.5 }}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-full">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-5 w-5 text-blue-600 dark:text-blue-400"
-                    >
-                      <rect width="18" height="18" x="3" y="3" rx="2" />
-                      <path d="M7 7h.01" />
-                      <path d="M12 7h.01" />
-                      <path d="M17 7h.01" />
-                      <path d="M7 12h.01" />
-                      <path d="M12 12h.01" />
-                      <path d="M17 12h.01" />
-                      <path d="M7 17h.01" />
-                      <path d="M12 17h.01" />
-                      <path d="M17 17h.01" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400">DevOps Expertise</p>
-                    <p className="font-semibold text-xl">4+ Years</p>
-                  </div>
-                </div>
-              </motion.div>
+             
 
               {/* Chat bubble */}
               <motion.div
