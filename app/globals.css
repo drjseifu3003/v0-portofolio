@@ -227,3 +227,38 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Why Choose Me section styles */
+.why-choose-section {
+  perspective: 1500px;
+}
+
+/* Enhanced card hover effects */
+.comparison-card {
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.comparison-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Subtle card glow effects */
+.positive-card {
+  box-shadow: 0 0 0 rgba(16, 185, 129, 0);
+  transition: box-shadow 0.5s ease;
+}
+
+.positive-card:hover {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.negative-card {
+  box-shadow: 0 0 0 rgba(239, 68, 68, 0);
+  transition: box-shadow 0.5s ease;
+}
+
+.negative-card:hover {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+}
