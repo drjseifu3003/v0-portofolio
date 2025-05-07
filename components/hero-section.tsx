@@ -11,18 +11,21 @@ import { Badge } from "@/components/ui/badge"
 
 export function HeroSection() {
   const words = [
-    { text: "Full-Stack" },
     { text: "Next.js" },
     { text: "Node.js" },
     { text: "DevOps" },
-    { text: "End-to-End" },
+    { text: "Cloud" },
+    { text: "SaaS" },
+    { text: "Full-Stack" },
   ]
 
   const controls = useAnimation()
   const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -74,6 +77,14 @@ export function HeroSection() {
         }}
         className="absolute top-1/4 right-1/4 w-64 h-64 bg-blue-500/20 dark:bg-blue-500/10 rounded-full filter blur-3xl opacity-70"
       ></motion.div>
+      <motion.div
+        animate={{
+          x: [0, -10, 0],
+          y: [0, 10, 0],
+          transition: { repeat: Number.POSITIVE_INFINITY, duration: 7, delay: 1 },
+        }}
+        className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-purple-500/20 dark:bg-purple-500/10 rounded-full filter blur-3xl opacity-70"
+      ></motion.div>
 
       <div className="container relative z-10 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -83,7 +94,7 @@ export function HeroSection() {
                 variant="outline"
                 className="px-3 py-1 text-sm font-medium bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300"
               >
-                Available for Projects
+                Available for Premium Projects
               </Badge>
             </motion.div>
 
@@ -94,13 +105,12 @@ export function HeroSection() {
               className="space-y-4"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-                End-to-End <span className="text-emerald-600 dark:text-emerald-400">Solutions</span>
-                <br />
-                Concept to <span className="text-emerald-600 dark:text-emerald-400">Deployment</span>
+                I don't just build <span className="text-emerald-600 dark:text-emerald-400">software</span>,
+                <br />I create <span className="text-emerald-600 dark:text-emerald-400">scalable systems</span>
               </h1>
               <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-[600px]">
-                Full-Stack Engineer & DevOps Specialist delivering complete solutions from stunning frontends to
-                scalable infrastructure.
+                Senior Full-Stack Engineer & DevOps Specialist who transforms complex business challenges into elegant,
+                scalable solutions that drive growth.
               </p>
             </motion.div>
 
@@ -124,12 +134,12 @@ export function HeroSection() {
             >
               <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white group">
                 <Link href="#contact" className="flex items-center">
-                  Discuss Your Project
+                  Let's Discuss Your Project
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="group">
-                <Download className="mr-2 h-4 w-4" />
+                <Download className="mr-2 h-4 w-4 transition-transform group-hover:translate-y-0.5" />
                 Download Resume
               </Button>
             </motion.div>
@@ -138,7 +148,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="pt-6"
+              className="pt-8 space-y-4"
             >
               <div className="flex items-center gap-3">
                 <div className="flex -space-x-2">
@@ -152,7 +162,30 @@ export function HeroSection() {
                   ))}
                 </div>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                  <span className="font-semibold">20+ clients</span> trusted my expertise in the last year
+                  <span className="font-semibold">20+ clients</span> trusted my expertise in the last 12 months
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-6">
+                <div className="flex items-center gap-1.5">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <svg
+                      key={star}
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-5 h-5 text-yellow-500"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                  <span className="font-semibold">5.0/5 average rating</span> across all client projects
                 </p>
               </div>
             </motion.div>
@@ -202,7 +235,7 @@ export function HeroSection() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400">Projects</p>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400">Projects Delivered</p>
                     <p className="font-semibold text-xl">20+</p>
                   </div>
                 </div>
@@ -240,14 +273,50 @@ export function HeroSection() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400">Experience</p>
-                    <p className="font-semibold text-xl">6+ Years</p>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400">DevOps Expertise</p>
+                    <p className="font-semibold text-xl">4+ Years</p>
                   </div>
+                </div>
+              </motion.div>
+
+              {/* Chat bubble */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.5, duration: 0.5 }}
+                className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2"
+              >
+                <div className="bg-white dark:bg-zinc-800 p-3 rounded-xl shadow-lg border border-zinc-200 dark:border-zinc-700 max-w-[200px]">
+                  <p className="text-sm font-medium">Need a developer who can build AND deploy?</p>
+                  <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white dark:bg-zinc-800 border-r border-b border-zinc-200 dark:border-zinc-700 transform rotate-45"></div>
                 </div>
               </motion.div>
             </div>
           </motion.div>
         </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+        >
+          <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-2">Scroll to explore</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-zinc-400"
+          >
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+        </motion.div>
       </div>
     </div>
   )

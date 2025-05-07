@@ -2,33 +2,33 @@
 
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
-import { Zap, BarChart3, Code, Server } from "lucide-react"
+import { CheckCircle2, Zap, BarChart3, Users } from "lucide-react"
 
 export function ValueProposition() {
   const benefits = [
     {
-      icon: <Code className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
-      title: "End-to-End Development",
-      description:
-        "From concept to deployment, I handle every aspect of your project—frontend, backend, infrastructure, and DevOps—creating seamless solutions.",
-    },
-    {
       icon: <Zap className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
       title: "Technical Excellence",
       description:
-        "Leverage cutting-edge technologies and best practices across the entire stack to build high-performance, scalable solutions.",
-    },
-    {
-      icon: <Server className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
-      title: "Full-Stack + DevOps",
-      description:
-        "Beautiful, responsive interfaces backed by robust architecture and automated deployment pipelines that accelerate delivery.",
+        "Leverage cutting-edge technologies and best practices to build high-performance, scalable solutions that stand the test of time.",
     },
     {
       icon: <BarChart3 className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
       title: "Business Impact",
       description:
-        "I create complete solutions that drive measurable business results, from increased efficiency to new revenue streams.",
+        "I don't just write code—I create solutions that drive measurable business results, from increased efficiency to new revenue streams.",
+    },
+    {
+      icon: <Users className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
+      title: "Collaborative Approach",
+      description:
+        "Work with a developer who communicates clearly, understands your business goals, and becomes a true partner in your success.",
+    },
+    {
+      icon: <CheckCircle2 className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
+      title: "Reliable Delivery",
+      description:
+        "Count on consistent, on-time delivery with a proven track record of successful projects and satisfied clients.",
     },
   ]
 
@@ -43,17 +43,17 @@ export function ValueProposition() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Why Choose My <span className="text-emerald-600 dark:text-emerald-400">Approach</span>
+            Why Work With <span className="text-emerald-600 dark:text-emerald-400">Me</span>?
           </motion.h2>
           <motion.p
-            className="text-zinc-600 dark:text-zinc-400"
+            className="text-lg text-zinc-600 dark:text-zinc-400"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            I bring full-stack development and DevOps expertise to every project, ensuring you get a complete solution
-            that drives real value.
+            I bring a unique combination of technical expertise and business acumen to every project, ensuring you get
+            more than just code—you get solutions that drive real value.
           </motion.p>
         </div>
 
@@ -79,6 +79,22 @@ export function ValueProposition() {
               </Card>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <motion.div
+            className="inline-block px-6 py-3 bg-white dark:bg-zinc-800 rounded-lg shadow-md border border-zinc-200 dark:border-zinc-700"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <p className="text-lg font-medium">
+              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">93%</span> of clients report{" "}
+              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">increased ROI</span> within 6
+              months of project completion
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>
