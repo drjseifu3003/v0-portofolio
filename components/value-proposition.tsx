@@ -80,22 +80,6 @@ export function ValueProposition() {
             </motion.div>
           ))}
         </div>
-
-        <div className="mt-16 text-center">
-          <motion.div
-            className="inline-block px-6 py-3 bg-white dark:bg-zinc-800 rounded-lg shadow-md border border-zinc-200 dark:border-zinc-700"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <p className="text-lg font-medium">
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">93%</span> of clients report{" "}
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">increased ROI</span> within 6
-              months of project completion
-            </p>
-          </motion.div>
-        </div>
       </div>
     </section>
   )

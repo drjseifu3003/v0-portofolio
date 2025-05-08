@@ -231,17 +231,55 @@ export function HeroSection() {
                       strokeLinejoin="round"
                       className="h-5 w-5 text-emerald-600 dark:text-emerald-400"
                     >
-                      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+                      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                      <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                      <path d="m9 14 2 2 4-4"></path>
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400">Projects Delivered</p>
-                    <p className="font-semibold text-xl">20+</p>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400">Full-Stack</p>
+                    <p className="font-semibold text-xl">Expertise</p>
                   </div>
                 </div>
               </motion.div>
 
-             
+              <motion.div
+                className="absolute -top-6 -right-6 bg-white dark:bg-zinc-800 rounded-lg shadow-xl p-4 border border-zinc-200 dark:border-zinc-700"
+                animate={{ y: [0, 5, 0] }}
+                transition={{ repeat: Number.POSITIVE_INFINITY, duration: 6, ease: "easeInOut", delay: 0.5 }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-full">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-5 w-5 text-blue-600 dark:text-blue-400"
+                    >
+                      <rect width="18" height="18" x="3" y="3" rx="2" />
+                      <path d="M7 7h.01" />
+                      <path d="M12 7h.01" />
+                      <path d="M17 7h.01" />
+                      <path d="M7 12h.01" />
+                      <path d="M12 12h.01" />
+                      <path d="M17 12h.01" />
+                      <path d="M7 17h.01" />
+                      <path d="M12 17h.01" />
+                      <path d="M17 17h.01" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400">DevOps</p>
+                    <p className="font-semibold text-xl">Specialist</p>
+                  </div>
+                </div>
+              </motion.div>
 
               {/* Chat bubble */}
               <motion.div
@@ -251,7 +289,7 @@ export function HeroSection() {
                 className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2"
               >
                 <div className="bg-white dark:bg-zinc-800 p-3 rounded-xl shadow-lg border border-zinc-200 dark:border-zinc-700 max-w-[200px]">
-                  <p className="text-sm font-medium">Need a developer who can build AND deploy?</p>
+                  <p className="text-sm font-medium">Full-stack development with DevOps expertise</p>
                   <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white dark:bg-zinc-800 border-r border-b border-zinc-200 dark:border-zinc-700 transform rotate-45"></div>
                 </div>
               </motion.div>

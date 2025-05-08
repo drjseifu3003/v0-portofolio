@@ -28,15 +28,15 @@ export function SkillsSection() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <SkillProgress name="Next.js" level={95} color="emerald" />
                 <SkillProgress name="React.js" level={95} color="blue" />
+                <SkillProgress name="Vue.js" level={90} color="green" />
+                <SkillProgress name="Nuxt.js" level={85} color="teal" />
                 <SkillProgress name="TypeScript" level={90} color="purple" />
                 <SkillProgress name="JavaScript" level={95} color="amber" />
                 <SkillProgress name="Redux" level={85} color="rose" />
                 <SkillProgress name="React Query" level={85} color="emerald" />
-                <SkillProgress name="Redux Toolkit" level={85} color="blue" />
-                <SkillProgress />
-                <SkillProgress name="Redux Toolkit" level={85} color="blue" />
                 <SkillProgress name="Framer Motion" level={80} color="purple" />
                 <SkillProgress name="Performance Optimization" level={90} color="emerald" />
+                <SkillProgress name="Responsive Design" level={95} color="blue" />
                 <SkillProgress name="SEO" level={85} color="amber" />
               </div>
             </FadeIn>
@@ -46,6 +46,8 @@ export function SkillsSection() {
             <FadeIn>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <SkillProgress name="Node.js" level={95} color="emerald" />
+                <SkillProgress name="Express.js" level={90} color="blue" />
+                <SkillProgress name="Python" level={85} color="yellow" />
                 <SkillProgress name="RESTful API" level={95} color="blue" />
                 <SkillProgress name="GraphQL" level={85} color="purple" />
                 <SkillProgress name="Microservices" level={90} color="amber" />

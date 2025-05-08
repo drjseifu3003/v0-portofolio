@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { CheckCircle2, Clock, Mail, MapPin, MessageSquare, Phone, Send } from "lucide-react"
+import { CheckCircle2, Clock, Mail, MessageSquare, Phone, Send } from "lucide-react"
 
 export function ContactSection() {
   const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error">("idle")
@@ -98,7 +98,12 @@ export function ContactSection() {
                     </div>
                     <div>
                       <p className="text-sm text-zinc-500 dark:text-zinc-400">Email</p>
-                      <p className="font-medium">Derejeseifu3030@gmail.com</p>
+                      <a
+                        href="mailto:Derejeseifu3030@gmail.com"
+                        className="font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                      >
+                        Derejeseifu3030@gmail.com
+                      </a>
                     </div>
                   </div>
 
@@ -108,17 +113,12 @@ export function ContactSection() {
                     </div>
                     <div>
                       <p className="text-sm text-zinc-500 dark:text-zinc-400">Phone</p>
-                      <p className="font-medium">(+251) 0966016473</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="bg-emerald-100 dark:bg-emerald-900/30 p-3 rounded-full">
-                      <MapPin className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-zinc-500 dark:text-zinc-400">Location</p>
-                      <p className="font-medium">Ethiopia</p>
+                      <a
+                        href="tel:+2510966016473"
+                        className="font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                      >
+                        (+251) 0966016473
+                      </a>
                     </div>
                   </div>
 

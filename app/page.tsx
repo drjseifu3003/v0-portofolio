@@ -8,12 +8,11 @@ import { TestimonialsSection } from "@/components/testimonials-section"
 import { CTASection } from "@/components/cta-section"
 import { ContactSection } from "@/components/contact-section"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { DevOpsServices } from "@/components/devops-services"
 import { DevOpsWorkflow } from "@/components/devops-workflow"
 import { DevOpsMetrics } from "@/components/devops-metrics"
 import { DevOpsTools } from "@/components/devops-tools"
 import { WhyChooseMe } from "@/components/why-choose-me"
-import { Menu, X } from "lucide-react"
+import { Mail, Menu, X } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -44,12 +43,6 @@ export default function Home() {
               Services
             </Link>
             <Link
-              href="#devops"
-              className="text-sm font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
-            >
-              DevOps
-            </Link>
-            <Link
               href="#projects"
               className="text-sm font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
             >
@@ -70,9 +63,12 @@ export default function Home() {
           </nav>
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            <Link href="#contact" className="hidden md:block">
-              <Button className="bg-emerald-600 hover:bg-emerald-700 text-white">Let's Talk</Button>
-            </Link>
+            <a href="mailto:Derejeseifu3030@gmail.com" className="hidden md:block">
+              <Button className="bg-emerald-600 hover:bg-emerald-700 text-white">
+                <Mail className="mr-2 h-4 w-4" />
+                Let's Talk
+              </Button>
+            </a>
             <Button
               variant="outline"
               size="icon"
@@ -103,13 +99,6 @@ export default function Home() {
                 Services
               </Link>
               <Link
-                href="#devops"
-                className="block py-2 text-sm font-medium hover:text-emerald-600 dark:hover:text-emerald-400"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                DevOps
-              </Link>
-              <Link
                 href="#projects"
                 className="block py-2 text-sm font-medium hover:text-emerald-600 dark:hover:text-emerald-400"
                 onClick={() => setMobileMenuOpen(false)}
@@ -131,11 +120,12 @@ export default function Home() {
                 Contact
               </Link>
               <div className="pt-2">
-                <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
-                  <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>
+                <a href="mailto:Derejeseifu3030@gmail.com" className="block w-full">
+                  <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
+                    <Mail className="mr-2 h-4 w-4" />
                     Let's Talk
-                  </Link>
-                </Button>
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
@@ -148,11 +138,6 @@ export default function Home() {
 
         {/* Value Proposition */}
         <ValueProposition />
-
-        {/* DevOps Services */}
-        <div id="devops">
-          <DevOpsServices />
-        </div>
 
         {/* Why Choose Me */}
         <WhyChooseMe />
@@ -204,7 +189,7 @@ export default function Home() {
                   </li>
                   <li>
                     <Link
-                      href="#devops"
+                      href="#services"
                       className="text-sm text-zinc-600 hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-400"
                     >
                       DevOps & Cloud
