@@ -7,10 +7,15 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Dereje Seifu - Senior Full-Stack Engineer",
+  title: "Dereje Seifu - Senior Full-Stack Engineer & DevOps Specialist",
   description:
-    "Portfolio and blog of Dereje Seifu, a Senior Full-Stack Engineer specializing in Next.js, Node.js, and DevOps.",
-    generator: 'v0.dev'
+    "Senior Full-Stack Engineer & DevOps Specialist who transforms complex business challenges into elegant,scalable solutions that drive growth",
+  openGraph: {
+    title: "Dereje Seifu - Senior Full-Stack Engineer & DevOps Specialist",
+    images: [{url: "/og_image.png", width: 1200, height: 630}],
+    description:
+    "Senior Full-Stack Engineer & DevOps Specialist who transforms complex business challenges into elegant,scalable solutions that drive growth",
+  }
 }
 
 export default function RootLayout({
