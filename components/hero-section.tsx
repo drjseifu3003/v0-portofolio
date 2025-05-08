@@ -89,14 +89,14 @@ export function HeroSection() {
       <div className="container relative z-10 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="space-y-8">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            {/* <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <Badge
                 variant="outline"
                 className="px-3 py-1 text-sm font-medium bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300"
               >
                 Available for Premium Projects
               </Badge>
-            </motion.div>
+            </motion.div> */}
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -138,10 +138,12 @@ export function HeroSection() {
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="group">
-                <Download className="mr-2 h-4 w-4 transition-transform group-hover:translate-y-0.5" />
-                Download Resume
-              </Button>
+              <Link href="/Dereje_Seifu_Resume.pdf" target="_blank" download>
+                <Button size="lg" variant="outline" className="group">
+                  <Download className="mr-2 h-4 w-4 transition-transform group-hover:translate-y-0.5" />
+                  Download Resume
+                </Button>
+              </Link>
             </motion.div>
 
             <motion.div
@@ -150,7 +152,7 @@ export function HeroSection() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="pt-8 space-y-4"
             >
-              <div className="flex items-center gap-3">
+              {/* <div className="flex items-center gap-3">
                 <div className="flex -space-x-2">
                   {[1, 2, 3].map((i) => (
                     <div
@@ -164,7 +166,7 @@ export function HeroSection() {
                 <p className="text-sm text-zinc-600 dark:text-zinc-400">
                   <span className="font-semibold">20+ clients</span> trusted my expertise in the last 12 months
                 </p>
-              </div>
+              </div> */}
 
               <div className="flex flex-wrap items-center gap-6">
                 <div className="flex items-center gap-1.5">
@@ -243,44 +245,6 @@ export function HeroSection() {
                 </div>
               </motion.div>
 
-              <motion.div
-                className="absolute -top-6 -right-6 bg-white dark:bg-zinc-800 rounded-lg shadow-xl p-4 border border-zinc-200 dark:border-zinc-700"
-                animate={{ y: [0, 5, 0] }}
-                transition={{ repeat: Number.POSITIVE_INFINITY, duration: 6, ease: "easeInOut", delay: 0.5 }}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-full">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-5 w-5 text-blue-600 dark:text-blue-400"
-                    >
-                      <rect width="18" height="18" x="3" y="3" rx="2" />
-                      <path d="M7 7h.01" />
-                      <path d="M12 7h.01" />
-                      <path d="M17 7h.01" />
-                      <path d="M7 12h.01" />
-                      <path d="M12 12h.01" />
-                      <path d="M17 12h.01" />
-                      <path d="M7 17h.01" />
-                      <path d="M12 17h.01" />
-                      <path d="M17 17h.01" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400">DevOps</p>
-                    <p className="font-semibold text-xl">Specialist</p>
-                  </div>
-                </div>
-              </motion.div>
-
               {/* Chat bubble */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -289,7 +253,7 @@ export function HeroSection() {
                 className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2"
               >
                 <div className="bg-white dark:bg-zinc-800 p-3 rounded-xl shadow-lg border border-zinc-200 dark:border-zinc-700 max-w-[200px]">
-                  <p className="text-sm font-medium">Full-stack development with DevOps expertise</p>
+                  <p className="text-sm font-medium">need developer who can code and deploy?</p>
                   <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white dark:bg-zinc-800 border-r border-b border-zinc-200 dark:border-zinc-700 transform rotate-45"></div>
                 </div>
               </motion.div>

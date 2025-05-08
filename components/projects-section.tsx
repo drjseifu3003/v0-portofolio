@@ -25,9 +25,9 @@ const projects = [
     title: "WUMIS - Water Utility Management System",
     description:
       "A comprehensive SaaS platform that streamlines operations for water utility companies, serving over 20 organizations and 100K+ end users.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/wumis.png",
     link: "https://wumis.et",
-    technologies: ["Next.js", "Node.js", "PostgreSQL", "AWS", "SaaS"],
+    technologies: ["React.js", "Digital Ocean", "SaaS", "Docker", "Nginx"],
     results: [
       "Reduced operational costs by 30%",
       "Improved billing accuracy by 25%",
@@ -39,8 +39,8 @@ const projects = [
     title: "Yaybe ERP Mobile App",
     description:
       "A mobile extension of the Yaybe ERP system, enabling field workers to access critical business data and perform operations on the go.",
-    image: "/placeholder.svg?height=400&width=600",
-    technologies: ["React Native", "GraphQL", "Node.js", "MongoDB"],
+    image: "/images/yaybe.png",
+    technologies: ["Java", "Kotlin", "Android", "SQL Server"],
     results: [
       "Increased field worker productivity by 35%",
       "Reduced data entry errors by 45%",
@@ -52,9 +52,9 @@ const projects = [
     title: "Hulu Plus - Ride-Sharing Platform",
     description:
       "An all-in-one transportation and delivery platform featuring ride-sharing and delivery services with real-time tracking and automated dispatching.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/huluplus.png",
     link: "https://huluplus.et",
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB", "AWS"],
+    technologies: ["React", "Node.js", "TypeScript", "Socket.io", "MySQL", "AWS", "Docker"],
     results: ["Processed 10,000+ daily rides", "Achieved 99.9% uptime", "Reduced driver wait time by 25%"],
     businessImpact: "Grew platform revenue by 150% within first 6 months of launch.",
   },
@@ -62,8 +62,8 @@ const projects = [
     title: "Universal Client Management System",
     description:
       "A SaaS-based workflow management system that adapts to various business needs, from sales to customer service, with customizable workflows and reporting.",
-    image: "/placeholder.svg?height=400&width=600",
-    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Docker", "Kubernetes"],
+    image: "/images/ucm.png",
+    technologies: ["Next.js", "TypeScript", "PostgreSQL", "AWS", "Docker", "Kubernetes"],
     results: [
       "Streamlined client onboarding by 50%",
       "Increased team collaboration efficiency by 40%",

@@ -34,7 +34,7 @@ const testimonials: TestimonialProps[] = [
     content:
       "Dereje is one of the most skilled Full Stack Engineers I've worked with. His command of JavaScript, TypeScript, and React is top-notch. He's also highly capable in AWS and DevOps, showing deep understanding of CI/CD pipelines and cloud infrastructure.",
     author: {
-      name: "Kanehiwot Mengistu",
+      name: "Mekanehiwot Mengistu",
       role: "General Manager",
       company: "Technical Team Manager",
       image: "/placeholder.svg?height=48&width=48",

@@ -75,8 +75,7 @@ export function CTASection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              Let's collaborate to build something exceptional that drives real business results. I'm currently
-              accepting new projects for Q2 2024.
+              Let's collaborate to build something exceptional that drives real business results.
             </motion.p>
 
             <motion.div
@@ -88,18 +87,19 @@ export function CTASection() {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <Link href="#contact">
+              <Link href="mailto:Derejeseifu3030@gmail.com">
                 <Button size="lg" className="bg-white text-emerald-600 hover:bg-white/90 hover:text-emerald-700 group">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Start a Conversation
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                <Calendar className="mr-2 h-4 w-4" />
-                Schedule a Consultation
-              </Button>
+              <Link href={'https://calendly.com/derejeseifu3030/30min'} >
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                  <Calendar className="mr-2 h-4 w-4" />
+                  Schedule a Meeting
+                </Button>
+              </Link>
             </motion.div>
 
             <motion.div

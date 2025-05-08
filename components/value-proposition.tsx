@@ -69,7 +69,7 @@ export function ValueProposition() {
               <Card className="h-full border border-zinc-200 dark:border-zinc-800 hover:border-emerald-200 dark:hover:border-emerald-800 transition-colors">
                 <CardContent className="p-6">
                   <div className="flex gap-4">
-                    <div className="mt-1 bg-emerald-100 dark:bg-emerald-900/30 p-3 rounded-full">{benefit.icon}</div>
+                    <div className="">{benefit.icon}</div>
                     <div>
                       <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
                       <p className="text-zinc-600 dark:text-zinc-400">{benefit.description}</p>

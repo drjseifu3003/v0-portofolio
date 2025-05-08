@@ -27,6 +27,7 @@ export default function Home() {
           <div className="font-bold text-xl">
             <Link href="/" className="text-emerald-600 dark:text-emerald-400">
               Dereje Seifu
+              {/* <img src={"/images/logo.avif"} alt="Logo" /> */}
             </Link>
           </div>
           <nav className="hidden md:flex gap-6">
@@ -136,11 +137,12 @@ export default function Home() {
         {/* Hero Section */}
         <HeroSection />
 
+        {/* Why Choose Me */}
+        <WhyChooseMe />
+
         {/* Value Proposition */}
         <ValueProposition />
 
-        {/* Why Choose Me */}
-        <WhyChooseMe />
 
         {/* DevOps Workflow */}
         <DevOpsWorkflow />
@@ -218,7 +220,7 @@ export default function Home() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="https://www.linkedin.com/in/drjseifu1991/"
                       className="text-sm text-zinc-600 hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-400"
                     >
                       LinkedIn
@@ -226,7 +228,7 @@ export default function Home() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="https://github.com/drjseifu1991"
                       className="text-sm text-zinc-600 hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-400"
                     >
                       GitHub
