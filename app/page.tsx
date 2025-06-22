@@ -140,19 +140,6 @@ export default function Home() {
         {/* Why Choose Me */}
         <WhyChooseMe />
 
-        {/* Value Proposition */}
-        <ValueProposition />
-
-
-        {/* DevOps Workflow */}
-        <DevOpsWorkflow />
-
-        {/* DevOps Metrics */}
-        <DevOpsMetrics />
-
-        {/* DevOps Tools */}
-        <DevOpsTools />
-
         {/* Projects Section */}
         <ProjectsSection />
 

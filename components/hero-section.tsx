@@ -86,17 +86,9 @@ export function HeroSection() {
         className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-purple-500/20 dark:bg-purple-500/10 rounded-full filter blur-3xl opacity-70"
       ></motion.div>
 
-      <div className="container relative z-10 py-20">
+      <div className="container relative z-10 py-4 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="space-y-8">
-            {/* <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <Badge
-                variant="outline"
-                className="px-3 py-1 text-sm font-medium bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300"
-              >
-                Available for Premium Projects
-              </Badge>
-            </motion.div> */}
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -104,14 +96,15 @@ export function HeroSection() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="space-y-4"
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-                I don't just build <span className="text-emerald-600 dark:text-emerald-400">software</span>,
-                <br />I create <span className="text-emerald-600 dark:text-emerald-400">scalable systems</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+                I build <span className="text-emerald-600 dark:text-emerald-400">MVPs</span> and
+                <span className="text-emerald-600 dark:text-emerald-400"> SaaS platforms</span> that scale.
               </h1>
-              <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-[600px]">
-                Senior Full-Stack Engineer & DevOps Specialist who transforms complex business challenges into elegant,
-                scalable solutions that drive growth.
+
+              <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-[560px] mt-4">
+                Senior Fullstack Engineer & DevOps Specialist. Fast. Clean. Scalable.
               </p>
+
             </motion.div>
 
             <motion.div
@@ -130,16 +123,16 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-wrap gap-4 pt-4"
+              className="flex flex-wrap gap-4"
             >
-              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white group">
+              <Button size="lg" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white group md:w-64">
                 <Link href="#contact" className="flex items-center">
                   Let's Discuss Your Project
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Link href="/Dereje_Seifu_Resume.pdf" target="_blank" download>
-                <Button size="lg" variant="outline" className="group">
+              <Link href="/Dereje_Seifu_Resume.pdf" target="_blank" download className="w-full md:w-64">
+                <Button size="lg" variant="outline" className="group w-full">
                   <Download className="mr-2 h-4 w-4 transition-transform group-hover:translate-y-0.5" />
                   Download Resume
                 </Button>
@@ -150,24 +143,8 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="pt-8 space-y-4"
+              className="pt-4 space-y-4"
             >
-              {/* <div className="flex items-center gap-3">
-                <div className="flex -space-x-2">
-                  {[1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className="w-8 h-8 rounded-full border-2 border-white dark:border-zinc-900 bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center text-xs font-medium"
-                    >
-                      {i}
-                    </div>
-                  ))}
-                </div>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                  <span className="font-semibold">20+ clients</span> trusted my expertise in the last 12 months
-                </p>
-              </div> */}
-
               <div className="flex flex-wrap items-center gap-6">
                 <div className="flex items-center gap-1.5">
                   {[1, 2, 3, 4, 5].map((star) => (
@@ -261,7 +238,6 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
         <motion.div
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
           animate={{ y: [0, 10, 0] }}

@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Quote } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import Link from "next/link"
 
 interface TestimonialProps {
   content: string
@@ -35,8 +36,7 @@ const testimonials: TestimonialProps[] = [
       "Dereje is one of the most skilled Full Stack Engineers I've worked with. His command of JavaScript, TypeScript, and React is top-notch. He's also highly capable in AWS and DevOps, showing deep understanding of CI/CD pipelines and cloud infrastructure.",
     author: {
       name: "Mekanehiwot Mengistu",
-      role: "General Manager",
-      company: "Technical Team Manager",
+      role: "Technical Team Leader",
       image: "/placeholder.svg?height=48&width=48",
     },
     rating: 5,
@@ -75,14 +75,19 @@ const testimonials: TestimonialProps[] = [
 
 function TestimonialCard({ content, author, rating }: TestimonialProps) {
   return (
-    <Card className="h-full border border-zinc-200 dark:border-zinc-800 hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 hover:shadow-lg">
+    <Card className="h-full border-0">
       <CardContent className="p-6 flex flex-col h-full">
-        <div className="mb-4">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <span key={i} className={i < rating ? "text-yellow-500" : "text-zinc-300 dark:text-zinc-700"}>
-              ★
-            </span>
-          ))}
+        <div className="flex justify-between items-center mb-4">
+          <div className="">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <span key={i} className={i < rating ? "text-yellow-500" : "text-zinc-300 dark:text-zinc-700"}>
+                ★
+              </span>
+            ))}
+          </div>
+          <Link href="https://www.linkedin.com/in/drjseifu1991/details/recommendations/?detailScreenTabIndex=0" target="_blank" rel="noopener noreferrer">
+            <p className="text-emerald-600 dark:text-emerald-400">View On LinkedIn</p>
+          </Link>
         </div>
         <div className="relative mb-6 flex-grow">
           <Quote className="absolute text-zinc-200 dark:text-zinc-800 h-8 w-8 -left-1 -top-1 opacity-50" />
@@ -112,7 +117,7 @@ export function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
-    <section id="testimonials" className="py-20 bg-zinc-50 dark:bg-zinc-900/50">
+    <section id="testimonials" className="py-8 bg-zinc-50 dark:bg-zinc-900/50">
       <div className="container" ref={containerRef}>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
@@ -177,23 +182,6 @@ export function TestimonialsSection() {
             </div>
           </Carousel>
         </div>
-
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <div className="inline-block px-6 py-4 bg-white dark:bg-zinc-800 rounded-lg shadow-md border border-zinc-200 dark:border-zinc-700">
-            <p className="text-xl font-medium">
-              Ready to work together?{" "}
-              <a href="#contact" className="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">
-                Let's talk
-              </a>
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   )

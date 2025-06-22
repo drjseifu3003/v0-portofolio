@@ -31,13 +31,7 @@ export function TestimonialCard({ content, author, connectionDegree = 1 }: Testi
               <p className="text-sm text-zinc-600 dark:text-zinc-400">{author.role}</p>
               <p className="text-sm text-zinc-500 dark:text-zinc-500">{author.company}</p>
             </div>
-            {connectionDegree && (
-              <div className="ml-auto text-xs text-zinc-500 dark:text-zinc-500 flex items-center">
-                <span className="bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded-full">
-                  {connectionDegree === 1 ? "1st" : connectionDegree === 2 ? "2nd" : "3rd"} degree
-                </span>
-              </div>
-            )}
+            
           </div>
           <div className="relative flex-1">
             <Quote className="absolute text-zinc-200 dark:text-zinc-800 h-8 w-8 -left-1 -top-1 opacity-50" />

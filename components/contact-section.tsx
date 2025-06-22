@@ -45,7 +45,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-zinc-50 dark:bg-zinc-900/50">
+    <section id="contact" className="py-8 bg-zinc-50 dark:bg-zinc-900/50">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div

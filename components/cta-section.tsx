@@ -10,7 +10,7 @@ export function CTASection() {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <section className="py-20">
+    <section className="py-8">
       <div className="container">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-600 to-blue-600 p-10 md:p-16">
           {/* Animated background elements */}
@@ -95,23 +95,14 @@ export function CTASection() {
                 </Button>
               </Link>
               <Link href={'https://calendly.com/derejeseifu3030/30min'} >
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                <Button size="lg" variant="default" className="bg-emerald-400 border-white text-white dark:bg-emerald-500">
                   <Calendar className="mr-2 h-4 w-4" />
                   Schedule a Meeting
                 </Button>
               </Link>
             </motion.div>
 
-            <motion.div
-              className="mt-10 text-white/80 text-sm"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <p>No commitment required. Let's discuss your project and see if we're a good fit.</p>
-            </motion.div>
-          </div>
+            </div>
         </div>
       </div>
     </section>

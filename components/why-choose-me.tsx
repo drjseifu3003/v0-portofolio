@@ -12,23 +12,24 @@ export function WhyChooseMe() {
     },
     {
       title: "Robust Backend Solutions",
-      description: "Node.js, Express.js, and Python for scalable and reliable systems.",
+      description: "Scalable APIs and services built with Node.js, Express.js, NestJS, and Python, using PostgreSQL, MongoDB, Redis, Kafka, and microservice architecture.",
       icon: "⚙️",
     },
     {
       title: "CI/CD Pipeline Integration",
-      description: "Automated workflows connecting development to production.",
+      description: "Automated build, test, and deploy workflows with Docker, GitHub Actions, AWS, and Kubernetes, ensuring fast and reliable releases.",
       icon: "🔄",
     },
     {
-      title: "Infrastructure as Code",
-      description: "Reproducible, version-controlled infrastructure that scales.",
-      icon: "🏗️",
-    },
+      title: "AI & Workflow Automation",
+      description: "Integrate GPT-powered assistants, OpenAI tools, and no-code workflows (n8n, Supabase, APIs) to automate customer support, operations, and product intelligence.",
+      icon: "🤖",
+    }
+
   ]
 
   return (
-    <section className="py-16 bg-zinc-950 text-white">
+    <section id='services' className="py-8 bg-zinc-950 text-white">
       <div className="container">
         <div className="flex justify-center mb-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/50">
