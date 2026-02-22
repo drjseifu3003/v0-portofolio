@@ -1,187 +1,353 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useRef, useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Quote } from "lucide-react"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { useState, useRef } from "react"
 import Link from "next/link"
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react"
 
-interface TestimonialProps {
+interface T {
   content: string
-  author: {
-    name: string
-    role: string
-    company?: string
-    image?: string
-  }
+  author: { name: string; role: string; company?: string }
   rating: number
 }
 
-const testimonials: TestimonialProps[] = [
+const DATA: T[] = [
   {
-    content:
-      "Dereje is a dedicated and skilled developer who designed and developed both mobile and web applications from the ground up. His work always stood out for being efficient, well-structured, and user-friendly.",
-    author: {
-      name: "Tibebu",
-      role: "ICT Director",
-      company: "AAAE",
-      image: "/placeholder.svg?height=48&width=48",
-    },
+    content: "Dereje is a dedicated and skilled developer who designed and developed both mobile and web applications from the ground up. His work always stood out for being efficient, well-structured, and user-friendly.",
+    author: { name: "Tibebu", role: "ICT Director", company: "AAAE" },
     rating: 5,
   },
   {
-    content:
-      "Dereje is one of the most skilled Full Stack Engineers I've worked with. His command of JavaScript, TypeScript, and React is top-notch. He's also highly capable in AWS and DevOps, showing deep understanding of CI/CD pipelines and cloud infrastructure.",
-    author: {
-      name: "Mekanehiwot Mengistu",
-      role: "Technical Team Leader",
-      image: "/placeholder.svg?height=48&width=48",
-    },
+    content: "Dereje is one of the most skilled Full Stack Engineers I've worked with. His command of JavaScript, TypeScript, and React is top-notch. He's also highly capable in AWS and DevOps, showing deep understanding of CI/CD pipelines and cloud infrastructure.",
+    author: { name: "Mekanehiwot Mengistu", role: "Technical Team Leader" },
     rating: 5,
   },
   {
-    content:
-      "Dereje is exactly the sort of developer any company would love. He simplified a complex ERP system concept I'd struggled with for days in just minutes. He has a great way of breaking down problems and always writes clean, well-organized code.",
-    author: {
-      name: "Bushra Mustofa",
-      role: "Senior DevOps Engineer",
-      image: "/placeholder.svg?height=48&width=48",
-    },
+    content: "Dereje is exactly the sort of developer any company would love. He simplified a complex ERP system concept I'd struggled with for days in just minutes. He has a great way of breaking down problems and always writes clean, well-organized code.",
+    author: { name: "Bushra Mustofa", role: "Senior DevOps Engineer" },
     rating: 5,
   },
   {
-    content:
-      "Dereje goes above and beyond to ensure projects are completed to the highest standards. He's hardworking, dedicated, and always willing to learn new skills and technologies. His ability to work independently and deliver high-quality work is a testament to his excellence.",
-    author: {
-      name: "Dawit Michael",
-      role: "Senior Software Engineer",
-      image: "/placeholder.svg?height=48&width=48",
-    },
+    content: "Dereje goes above and beyond to ensure projects are completed to the highest standards. He's hardworking, dedicated, and always willing to learn new skills and technologies. His ability to work independently and deliver high-quality work is a testament to his excellence.",
+    author: { name: "Dawit Michael", role: "Senior Software Engineer" },
     rating: 5,
   },
   {
-    content:
-      "Dereje consistently stood out as a highly talented frontend developer with exceptional attention to detail and clean coding style. He also brought valuable DevOps experience, contributing meaningfully to our deployment workflows and showing solid CI/CD understanding.",
-    author: {
-      name: "Abel Teha",
-      role: "Senior Software Engineer",
-      image: "/placeholder.svg?height=48&width=48",
-    },
+    content: "Dereje consistently stood out as a highly talented frontend developer with exceptional attention to detail and clean coding style. He also brought valuable DevOps experience, contributing meaningfully to our deployment workflows and showing solid CI/CD understanding.",
+    author: { name: "Abel Teha", role: "Senior Software Engineer" },
     rating: 5,
   },
 ]
 
-function TestimonialCard({ content, author, rating }: TestimonialProps) {
+/* ── Stars ───────────────────────────────────────────────────── */
+function Stars({ count }: { count: number }) {
   return (
-    <Card className="h-full border-0">
-      <CardContent className="p-6 flex flex-col h-full">
-        <div className="flex justify-between items-center mb-4">
-          <div className="">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <span key={i} className={i < rating ? "text-yellow-500" : "text-zinc-300 dark:text-zinc-700"}>
-                ★
-              </span>
-            ))}
-          </div>
-          <Link href="https://www.linkedin.com/in/drjseifu1991/details/recommendations/?detailScreenTabIndex=0" target="_blank" rel="noopener noreferrer">
-            <p className="text-emerald-600 dark:text-emerald-400">View On LinkedIn</p>
-          </Link>
-        </div>
-        <div className="relative mb-6 flex-grow">
-          <Quote className="absolute text-zinc-200 dark:text-zinc-800 h-8 w-8 -left-1 -top-1 opacity-50" />
-          <p className="pl-6 pt-2 text-zinc-700 dark:text-zinc-300 italic">{content}</p>
-        </div>
-
-        <div className="flex items-center gap-4 mt-auto pt-4 border-t border-zinc-100 dark:border-zinc-800">
-          <Avatar className="h-12 w-12 border-2 border-zinc-100 dark:border-zinc-800">
-            <AvatarImage src={author.image || "/placeholder.svg?height=48&width=48"} alt={author.name} />
-            <AvatarFallback>{author.name.charAt(0)}</AvatarFallback>
-          </Avatar>
-          <div>
-            <h4 className="font-semibold">{author.name}</h4>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              {author.role}
-              {author.company ? `, ${author.company}` : ""}
-            </p>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+    <div style={{ display: "flex", gap: "3px" }}>
+      {[0,1,2,3,4].map(i => (
+        <svg key={i} width="13" height="13" viewBox="0 0 14 14" fill={i < count ? "#b8862a" : "#2a2826"}>
+          <path d="M7 1l1.6 3.3L12.5 4.85l-2.75 2.68.65 3.78L7 9.6l-3.4 1.71.65-3.78L1.5 4.85l3.9-.55z"/>
+        </svg>
+      ))}
+    </div>
   )
 }
 
-export function TestimonialsSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [activeIndex, setActiveIndex] = useState(0)
+/* ── Single card ─────────────────────────────────────────────── */
+function TestimonialCard({ content, author, rating }: T) {
+  const initials = author.name.split(" ").map(n => n[0]).join("").slice(0, 2).toUpperCase()
 
   return (
-    <section id="testimonials" className="py-8 bg-zinc-50 dark:bg-zinc-900/50">
-      <div className="container" ref={containerRef}>
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.div
-            className="inline-block px-3 py-1 mb-4 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 text-sm font-medium"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            Testimonials
-          </motion.div>
+    <div style={{
+      background: "#0f0f0d",
+      border: "1px solid #1e1e1c",
+      padding: "32px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "20px",
+      height: "100%",
+    }}>
+      {/* top row: stars + LinkedIn */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Stars count={rating} />
+        <Link
+          href="https://www.linkedin.com/in/drjseifu1991/details/recommendations/?detailScreenTabIndex=0"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-flex", alignItems: "center", gap: "3px",
+            fontSize: "11px", color: "#72706b",
+            letterSpacing: "0.08em", textTransform: "uppercase",
+            textDecoration: "none", transition: "color 0.2s",
+          }}
+          onMouseEnter={e => (e.currentTarget.style.color = "#dedad2")}
+          onMouseLeave={e => (e.currentTarget.style.color = "#72706b")}
+        >
+          LinkedIn <ArrowUpRight size={11} strokeWidth={1.8} />
+        </Link>
+      </div>
 
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            What <span className="text-emerald-600 dark:text-emerald-400">Colleagues</span> Say
-          </motion.h2>
+      {/* quote */}
+      <p style={{
+        fontSize: "15px",
+        lineHeight: "1.85",
+        color: "#a8a49c",
+        fontWeight: 300,
+        margin: 0,
+        flex: 1,
+      }}>
+        "{content}"
+      </p>
 
-          <motion.p
-            className="text-lg text-zinc-600 dark:text-zinc-400"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            Feedback from professionals who have worked with me on real-world projects.
-          </motion.p>
+      {/* author */}
+      <div style={{
+        display: "flex", alignItems: "center", gap: "14px",
+        paddingTop: "20px",
+        borderTop: "1px solid #1e1e1c",
+      }}>
+        {/* initials circle */}
+        <div style={{
+          width: "40px", height: "40px",
+          borderRadius: "50%",
+          background: "#161614",
+          border: "1px solid #2a2826",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          fontSize: "12px", fontWeight: 500,
+          color: "#a8a49c",
+          flexShrink: 0,
+          letterSpacing: "0.04em",
+        }}>
+          {initials}
+        </div>
+        <div>
+          <p style={{ fontSize: "14px", fontWeight: 500, color: "#dedad2", margin: 0, lineHeight: 1.3 }}>
+            {author.name}
+          </p>
+          <p style={{ fontSize: "12px", color: "#72706b", margin: "3px 0 0", letterSpacing: "0.02em" }}>
+            {author.role}{author.company ? ` · ${author.company}` : ""}
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* ── Section ─────────────────────────────────────────────────── */
+export function TestimonialsSection() {
+  const [current, setCurrent] = useState(0)
+  const trackRef = useRef<HTMLDivElement>(null)
+
+  const prev = () => setCurrent(c => Math.max(0, c - 1))
+  const next = () => setCurrent(c => Math.min(DATA.length - 1, c + 1))
+
+  return (
+    <section id="testimonials" style={{
+      background: "#0c0c0c",
+      borderBottom: "1px solid #1e1e1c",
+      padding: "96px 36px 104px",
+    }}>
+      <style jsx>{`
+        /* desktop grid */
+        .t-grid {
+          display: none;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1px;
+          background: #1e1e1c;
+          border: 1px solid #1e1e1c;
+          margin-top: 64px;
+        }
+        /* mobile carousel */
+        .t-carousel { display: block; margin-top: 48px; }
+        .t-track {
+          display: flex;
+          gap: 16px;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          padding-bottom: 4px;
+        }
+        .t-track::-webkit-scrollbar { display: none; }
+        .t-slide {
+          flex: 0 0 calc(100% - 0px);
+          scroll-snap-align: start;
+          min-width: 0;
+        }
+        /* nav buttons */
+        .t-nav-btn {
+          width: 40px; height: 40px;
+          border: 1px solid #2a2826;
+          background: #0f0f0d;
+          display: flex; align-items: center; justify-content: center;
+          cursor: pointer;
+          color: #a8a49c;
+          transition: border-color 0.2s, color 0.2s, background 0.2s;
+        }
+        .t-nav-btn:hover { border-color: #4a4844; color: #dedad2; background: #161614; }
+        .t-nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
+
+        @media (min-width: 640px) {
+          .t-slide { flex: 0 0 calc(50% - 8px); }
+        }
+        @media (min-width: 1024px) {
+          .t-grid    { display: grid; }
+          .t-carousel { display: none; }
+        }
+      `}</style>
+
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+
+        {/* ── section header ──────────────────────────────── */}
+        <div style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-end",
+          flexWrap: "wrap",
+          gap: "28px",
+          paddingBottom: "52px",
+          borderBottom: "1px solid #2a2826",
+        }}>
+          <div>
+            {/* eyebrow */}
+            <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "20px" }}>
+              <div style={{ width: "28px", height: "1px", background: "#4a4844" }} />
+              <span style={{
+                fontSize: "12px", fontWeight: 500,
+                color: "#b8b4ac",
+                letterSpacing: "0.1em", textTransform: "uppercase",
+              }}>
+                What colleagues say
+              </span>
+            </div>
+            {/* heading */}
+            <h2 style={{
+              fontSize: "clamp(28px, 3.5vw, 48px)",
+              fontWeight: 300,
+              lineHeight: 1.13,
+              letterSpacing: "-0.02em",
+              color: "#dedad2",
+              margin: 0,
+            }}>
+              Client &{" "}
+              <em style={{
+                fontFamily: "'Instrument Serif', serif",
+                fontStyle: "italic",
+                fontWeight: 400,
+                color: "#c8c4bc",
+              }}>
+                team feedback
+              </em>
+            </h2>
+          </div>
+
+          {/* subtitle */}
+          <p style={{
+            fontSize: "16px",
+            color: "#a8a49c",
+            maxWidth: "340px",
+            lineHeight: "1.85",
+            margin: 0,
+            fontWeight: 300,
+          }}>
+            Verified recommendations from colleagues and partners across product and delivery teams.
+          </p>
         </div>
 
-        <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <TestimonialCard {...testimonial} />
-            </motion.div>
+        {/* ── DESKTOP: 3-col grid ──────────────────────────── */}
+        <div className="t-grid">
+          {DATA.map((t, i) => (
+            <TestimonialCard key={i} {...t} />
           ))}
         </div>
 
-        <div className="lg:hidden">
-          <Carousel className="w-full">
-            <CarouselContent>
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="md:basis-1/2">
-                  <div className="p-1">
-                    <TestimonialCard {...testimonial} />
-                  </div>
-                </CarouselItem>
+        {/* ── MOBILE: native scroll carousel ──────────────── */}
+        <div className="t-carousel">
+          {/* track */}
+          <div
+            ref={trackRef}
+            className="t-track"
+            onScroll={e => {
+              const el = e.currentTarget
+              const idx = Math.round(el.scrollLeft / (el.scrollWidth / DATA.length))
+              setCurrent(idx)
+            }}
+          >
+            {DATA.map((t, i) => (
+              <div
+                key={i}
+                className="t-slide"
+                style={{ cursor: "default" }}
+              >
+                <TestimonialCard {...t} />
+              </div>
+            ))}
+          </div>
+
+          {/* nav row */}
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginTop: "24px",
+          }}>
+            {/* dot indicators */}
+            <div style={{ display: "flex", gap: "8px" }}>
+              {DATA.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    setCurrent(i)
+                    const el = trackRef.current
+                    if (!el) return
+                    const slideW = el.scrollWidth / DATA.length
+                    el.scrollTo({ left: slideW * i, behavior: "smooth" })
+                  }}
+                  style={{
+                    width: i === current ? "20px" : "6px",
+                    height: "6px",
+                    borderRadius: "3px",
+                    background: i === current ? "#dedad2" : "#2a2826",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: 0,
+                    transition: "width 0.25s, background 0.25s",
+                  }}
+                />
               ))}
-            </CarouselContent>
-            <div className="flex justify-center mt-8">
-              <CarouselPrevious className="static transform-none mx-2" />
-              <CarouselNext className="static transform-none mx-2" />
             </div>
-          </Carousel>
+
+            {/* prev / next */}
+            <div style={{ display: "flex", gap: "8px" }}>
+              <button
+                className="t-nav-btn"
+                onClick={() => {
+                  prev()
+                  const el = trackRef.current
+                  if (!el) return
+                  const slideW = el.scrollWidth / DATA.length
+                  el.scrollTo({ left: slideW * Math.max(0, current - 1), behavior: "smooth" })
+                }}
+                disabled={current === 0}
+                aria-label="Previous"
+              >
+                <ChevronLeft size={16} strokeWidth={1.8} />
+              </button>
+              <button
+                className="t-nav-btn"
+                onClick={() => {
+                  next()
+                  const el = trackRef.current
+                  if (!el) return
+                  const slideW = el.scrollWidth / DATA.length
+                  el.scrollTo({ left: slideW * Math.min(DATA.length - 1, current + 1), behavior: "smooth" })
+                }}
+                disabled={current === DATA.length - 1}
+                aria-label="Next"
+              >
+                <ChevronRight size={16} strokeWidth={1.8} />
+              </button>
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
   )

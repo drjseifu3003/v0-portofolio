@@ -76,9 +76,9 @@ export function BlogSection() {
       <div className="container">
         <FadeIn>
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Tech Blog</h2>
+            <h2 className="text-3xl font-bold mb-4">Architecture & Growth Briefings</h2>
             <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-              Sharing my thoughts, experiences, and technical insights on software development, DevOps, and technology.
+              Field notes on scaling products, reducing risk, and shipping faster without sacrificing quality.
             </p>
           </div>
         </FadeIn>
@@ -94,7 +94,7 @@ export function BlogSection() {
         <div className="mt-12 text-center">
           <Link href="/blog">
             <Button className="gaming-button group">
-              View All Posts
+              Read Strategic Insights
               <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
