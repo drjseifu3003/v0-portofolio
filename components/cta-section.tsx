@@ -1,6 +1,6 @@
 "use client"
 
-import { Calendar, MessageCircle } from "lucide-react"
+import { Calendar, MessageCircle, Phone } from "lucide-react"
 
 export function CTASection() {
   return (
@@ -73,54 +73,76 @@ export function CTASection() {
           {/* buttons */}
           <div style={{
             display: "flex",
-            gap: "16px",
+            gap: "12px",
             flexWrap: "wrap",
             justifyContent: "center",
             marginTop: "8px",
           }}>
-            {/* secondary — white border */}
+            {/* email */}
             <a
               href="mailto:Derejeseifu3030@gmail.com"
               style={{
-                display: "inline-flex", alignItems: "center", gap: "8px",
-                padding: "14px 28px",
+                display: "inline-flex", alignItems: "center", gap: "7px",
+                padding: "10px 20px",
                 background: "transparent",
                 color: "#dedad2",
                 fontSize: "13px", fontWeight: 600,
                 letterSpacing: "0.05em", textTransform: "uppercase",
                 textDecoration: "none",
                 border: "2px solid #dedad2",
-                whiteSpace: "nowrap",
+                whiteSpace: "nowrap", lineHeight: 1,
                 transition: "background 0.18s, color 0.18s",
               }}
               onMouseEnter={e => { e.currentTarget.style.background = "#dedad2"; e.currentTarget.style.color = "#0c0c0c" }}
               onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#dedad2" }}
             >
-              <MessageCircle size={14} strokeWidth={2} />
+              <MessageCircle size={13} strokeWidth={2} />
               Send an email
             </a>
 
-            {/* primary — solid white bg */}
+            {/* phone */}
+            <a
+              href="tel:+251966016473"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "7px",
+                padding: "10px 20px",
+                background: "transparent",
+                color: "#dedad2",
+                fontSize: "13px", fontWeight: 600,
+                letterSpacing: "0.05em", textTransform: "uppercase",
+                textDecoration: "none",
+                border: "2px solid #dedad2",
+                whiteSpace: "nowrap", lineHeight: 1,
+                transition: "background 0.18s, color 0.18s",
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = "#dedad2"; e.currentTarget.style.color = "#0c0c0c" }}
+              onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#dedad2" }}
+            >
+              <Phone size={13} strokeWidth={2} />
+              (+251) 0966016473
+            </a>
+
+            {/* schedule — primary solid */}
             <a
               href="https://calendly.com/derejeseifu3030/30min"
               target="_blank"
               rel="noreferrer"
               style={{
-                display: "inline-flex", alignItems: "center", gap: "8px",
-                padding: "14px 28px",
+                display: "inline-flex", alignItems: "center", gap: "7px",
+                padding: "10px 20px",
                 background: "#dedad2",
                 color: "#0c0c0c",
                 fontSize: "13px", fontWeight: 600,
                 letterSpacing: "0.05em", textTransform: "uppercase",
                 textDecoration: "none",
                 border: "2px solid #dedad2",
-                whiteSpace: "nowrap",
+                whiteSpace: "nowrap", lineHeight: 1,
                 transition: "background 0.18s, border-color 0.18s",
               }}
               onMouseEnter={e => { e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.borderColor = "#ffffff" }}
               onMouseLeave={e => { e.currentTarget.style.background = "#dedad2"; e.currentTarget.style.borderColor = "#dedad2" }}
             >
-              <Calendar size={14} strokeWidth={2} />
+              <Calendar size={13} strokeWidth={2} />
               Schedule a 15-minute call
             </a>
           </div>

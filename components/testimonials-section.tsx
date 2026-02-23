@@ -7,35 +7,54 @@ import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react"
 interface T {
   content: string
   author: { name: string; role: string; company?: string }
-  rating: number
+  rating: number,
+  link: string,
+  platform: "linkedin" | "upwork"
 }
 
 const DATA: T[] = [
   {
+    content: "Dereje is an exceptional developer! I hired a total of 6 developers, and he was the last one standing at the end of the project because he was the best! He's great, very reliable, can fix things quickly, is prompt, and overall has been an incredible first hire. Ending the contract because the job was completed successfully.",
+    author: { name: "Jovan Stojanovic", role: "Ex-CEO of PhoneSales & Founder", company: "Roasform" },
+    rating: 5,
+    platform: "upwork",
+    link: "https://www.upwork.com/ab/g/pub/wom/prx/eyJwZXJzb25VaWQiOiIxNzYyODM2NzI2MTI3OTQzNjgwIiwiY29udHJhY3RSaWQiOiI0MTY3NzYxMCIsImJhbm5lclR5cGUiOiJjb250cmFjdCIsImJhbm5lclZhcmlhbnQiOiJkZWZhdWx0Iiwid29tIjoiZmx2MiIsInJlZGlyZWN0IjoiZmxfcHJvZmlsZV9wcm9tbyJ9?network=linkedin"
+  },
+  {
+    content: "Dereje delivered good work on this React development project and I enjoyed working with him. His communication was top-notch, he met all deadlines, and his skills were reasonably strong. At one point I asked for an additional milestone and he was very forthcoming that the additional work was outside his area of expertise. I enjoyed working with Dereje and will likely have additional jobs for him in the future.",
+    author: { name: "Neeraj Kumar", role: "Co-Founder & CTO", company: "Healium Intelliscan" },
+    rating: 5,
+    platform: "upwork",
+    link: "https://www.upwork.com/ab/g/pub/wom/prx/eyJwZXJzb25VaWQiOiIxNzYyODM2NzI2MTI3OTQzNjgwIiwiY29udHJhY3RSaWQiOiI0MTAzNTU3OSIsImJhbm5lclR5cGUiOiJjb250cmFjdCIsImJhbm5lclZhcmlhbnQiOiJkZWZhdWx0Iiwid29tIjoiZmx2MiIsInJlZGlyZWN0IjoiZmxfcHJvZmlsZV9wcm9tbyJ9?network=linkedin"
+  },
+  {
     content: "Dereje is a dedicated and skilled developer who designed and developed both mobile and web applications from the ground up. His work always stood out for being efficient, well-structured, and user-friendly.",
     author: { name: "Tibebu", role: "ICT Director", company: "AAAE" },
     rating: 5,
+    platform: "linkedin",
+    link: "https://www.linkedin.com/in/drjseifu1991/details/recommendations/?detailScreenTabIndex=0"
   },
   {
     content: "Dereje is one of the most skilled Full Stack Engineers I've worked with. His command of JavaScript, TypeScript, and React is top-notch. He's also highly capable in AWS and DevOps, showing deep understanding of CI/CD pipelines and cloud infrastructure.",
     author: { name: "Mekanehiwot Mengistu", role: "Technical Team Leader" },
     rating: 5,
+    platform: "linkedin",
+    link: "https://www.linkedin.com/in/drjseifu1991/details/recommendations/?detailScreenTabIndex=0"
   },
   {
     content: "Dereje is exactly the sort of developer any company would love. He simplified a complex ERP system concept I'd struggled with for days in just minutes. He has a great way of breaking down problems and always writes clean, well-organized code.",
     author: { name: "Bushra Mustofa", role: "Senior DevOps Engineer" },
     rating: 5,
+    platform: "linkedin",
+    link: "https://www.linkedin.com/in/drjseifu1991/details/recommendations/?detailScreenTabIndex=0"
   },
   {
     content: "Dereje goes above and beyond to ensure projects are completed to the highest standards. He's hardworking, dedicated, and always willing to learn new skills and technologies. His ability to work independently and deliver high-quality work is a testament to his excellence.",
     author: { name: "Dawit Michael", role: "Senior Software Engineer" },
     rating: 5,
-  },
-  {
-    content: "Dereje consistently stood out as a highly talented frontend developer with exceptional attention to detail and clean coding style. He also brought valuable DevOps experience, contributing meaningfully to our deployment workflows and showing solid CI/CD understanding.",
-    author: { name: "Abel Teha", role: "Senior Software Engineer" },
-    rating: 5,
-  },
+    platform: "linkedin",
+    link: "https://www.linkedin.com/in/drjseifu1991/details/recommendations/?detailScreenTabIndex=0"
+  }
 ]
 
 /* ── Stars ───────────────────────────────────────────────────── */
@@ -52,7 +71,7 @@ function Stars({ count }: { count: number }) {
 }
 
 /* ── Single card ─────────────────────────────────────────────── */
-function TestimonialCard({ content, author, rating }: T) {
+function TestimonialCard({ content, author, rating, link, platform }: T) {
   const initials = author.name.split(" ").map(n => n[0]).join("").slice(0, 2).toUpperCase()
 
   return (
@@ -69,7 +88,7 @@ function TestimonialCard({ content, author, rating }: T) {
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <Stars count={rating} />
         <Link
-          href="https://www.linkedin.com/in/drjseifu1991/details/recommendations/?detailScreenTabIndex=0"
+          href={link}
           target="_blank"
           rel="noopener noreferrer"
           style={{
@@ -81,7 +100,7 @@ function TestimonialCard({ content, author, rating }: T) {
           onMouseEnter={e => (e.currentTarget.style.color = "#dedad2")}
           onMouseLeave={e => (e.currentTarget.style.color = "#72706b")}
         >
-          LinkedIn <ArrowUpRight size={11} strokeWidth={1.8} />
+          {platform === "linkedin" ? "LinkedIn" : "Upwork"} <ArrowUpRight size={11} strokeWidth={1.8} />
         </Link>
       </div>
 

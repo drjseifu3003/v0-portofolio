@@ -10,7 +10,7 @@ const STATS = [
   { value: "99.9%+", label: "Release uptime"    },
 ]
 
-const STACK = ["Next.js", "TypeScript", "React", "Node.js", "AWS", "PostgreSQL"]
+const STACK = ["Next.js", "TypeScript", "React", "Node.js", "AWS", "FastAPI", "Supabase", "PostgreSQL", "Claude", "Cursor"]
 
 export function HeroSection() {
   return (

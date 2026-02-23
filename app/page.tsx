@@ -9,6 +9,7 @@ import { WhyChooseMe }         from "@/components/why-choose-me"
 import { Mail, ArrowUpRight }  from "lucide-react"
 import Link                    from "next/link"
 import { useState, useEffect } from "react"
+import { ClientInsights } from "@/components/client-insight"
 
 const HEADER_H = 72
 
@@ -133,26 +134,6 @@ export default function Home() {
           border-radius: 1px;
           transition: transform 0.25s, opacity 0.2s;
         }
-
-        /* ── footer ───────────────────────────────────────────── */
-        .ftr-head {
-          font-size: 11px;
-          color: #72706b;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          margin-bottom: 14px;
-          display: block;
-        }
-        .ftr-link {
-          font-size: 14px;
-          color: #a8a49c;
-          text-decoration: none;
-          line-height: 2.3;
-          display: block;
-          transition: color 0.2s;
-        }
-        .ftr-link:hover { color: #dedad2; }
-        .ftr-copy { font-size: 12px; color: #72706b; }
 
         /* ── responsive ───────────────────────────────────────── */
         @media (min-width: 768px) {
@@ -301,68 +282,12 @@ export default function Home() {
       <main style={{ paddingTop: `${HEADER_H}px` }}>
         <HeroSection />
         <WhyChooseMe />
+        <ClientInsights />
         <ProjectsSection />
         <TestimonialsSection />
         <CTASection />
         <ContactSection />
       </main>
-
-      {/* ════════════════════════════════════════════════════
-          FOOTER
-      ════════════════════════════════════════════════════ */}
-      <footer style={{ borderTop: "1px solid #1e1e1c", background: "#0c0c0c" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "64px 36px 36px" }}>
-          <div style={{
-            display: "flex", justifyContent: "space-between",
-            flexWrap: "wrap", gap: "48px",
-            paddingBottom: "52px", borderBottom: "1px solid #1e1e1c",
-          }}>
-            <div style={{ maxWidth: "300px" }}>
-              <p style={{ fontSize: "16px", fontWeight: 600, color: "#dedad2", marginBottom: "14px" }}>Dereje Seifu</p>
-              <p style={{ fontSize: "14px", color: "#a8a49c", lineHeight: "1.9", fontWeight: 300 }}>
-                Product-focused full-stack engineer helping teams ship reliable software with clear
-                communication and predictable delivery.
-              </p>
-            </div>
-            <div style={{ display: "flex", gap: "56px", flexWrap: "wrap" }}>
-              {[
-                { title: "Services", links: [
-                    { label: "Product Architecture",   href: "#services" },
-                    { label: "Performance & Stability", href: "#services" },
-                    { label: "Delivery Support",        href: "#services" },
-                ]},
-                { title: "Navigate", links: [
-                    { label: "Work",         href: "#projects"     },
-                    { label: "Blog",         href: "/blog"         },
-                    { label: "Testimonials", href: "#testimonials" },
-                    { label: "Contact",      href: "#contact"      },
-                ]},
-                { title: "Connect", links: [
-                    { label: "LinkedIn", href: "https://www.linkedin.com/in/drjseifu1991/", ext: true },
-                    { label: "GitHub",   href: "https://github.com/drjseifu1991",            ext: true },
-                    { label: "Email",    href: "mailto:Derejeseifu3030@gmail.com" },
-                ]},
-              ].map(col => (
-                <div key={col.title}>
-                  <span className="ftr-head">{col.title}</span>
-                  {col.links.map((l: any) => (
-                    <a key={l.label} href={l.href}
-                       target={l.ext ? "_blank" : undefined}
-                       rel={l.ext ? "noreferrer" : undefined}
-                       className="ftr-link">
-                      {l.label}
-                    </a>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div style={{ paddingTop: "22px", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "8px" }}>
-            <span className="ftr-copy">© {new Date().getFullYear()} Dereje Seifu. All rights reserved.</span>
-            <span className="ftr-copy" style={{ fontStyle: "italic" }}>Available for new projects</span>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
