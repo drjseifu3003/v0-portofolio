@@ -17,7 +17,7 @@ export function HeroSection() {
     <section style={{
       background: "#0c0c0c",
       borderBottom: "1px solid #1e1e1c",
-      padding: "64px 36px 88px",
+      padding: "clamp(40px, 6vw, 64px) clamp(20px, 4vw, 36px) clamp(52px, 8vw, 88px)",
     }}>
       <style jsx>{`
         /* ── grid ─────────────────────────────────── */
@@ -63,9 +63,10 @@ export function HeroSection() {
           .hr { display: flex !important; }
         }
 
-        /* ── very narrow screens: only stat grid adjusts ── */
-        @media (max-width: 480px) {
+        /* ── mobile ───────────────────────────────────────── */
+        @media (max-width: 767px) {
           .sg { max-width: 100%; }
+          .hc { gap: 28px; }
         }
       `}</style>
 
@@ -113,7 +114,7 @@ export function HeroSection() {
 
             <p style={{
               marginTop: "24px",
-              fontSize: "17px",
+              fontSize: "clamp(15px, 2vw, 17px)",
               lineHeight: "1.85",
               color: "#a8a49c",
               maxWidth: "520px",
@@ -140,7 +141,7 @@ export function HeroSection() {
           </div>
 
           {/* CTA buttons */}
-          <div style={{ display: "flex", flexDirection: "row", flexWrap: "nowrap", gap: "12px", alignItems: "center" }}>
+          <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "12px", alignItems: "center" }}>
             {/* PRIMARY — pixel-perfect match to header .hdr-cta */}
             <Link
               href="#contact"

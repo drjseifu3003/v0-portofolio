@@ -88,8 +88,7 @@ function TestimonialCard({ content, author, rating, link, platform }: T) {
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <Stars count={rating} />
         <Link
-          href={link}
-          target="_blank"
+          href={link}target="_blank"
           rel="noopener noreferrer"
           style={{
             display: "inline-flex", alignItems: "center", gap: "3px",
@@ -161,7 +160,7 @@ export function TestimonialsSection() {
     <section id="testimonials" style={{
       background: "#0c0c0c",
       borderBottom: "1px solid #1e1e1c",
-      padding: "96px 36px 104px",
+      padding: "clamp(52px, 8vw, 96px) clamp(20px, 4vw, 36px) clamp(60px, 9vw, 104px)",
     }}>
       <style jsx>{`
         /* desktop grid */
@@ -221,7 +220,7 @@ export function TestimonialsSection() {
           alignItems: "flex-end",
           flexWrap: "wrap",
           gap: "28px",
-          paddingBottom: "52px",
+          paddingBottom: "clamp(32px, 5vw, 52px)",
           borderBottom: "1px solid #2a2826",
         }}>
           <div>

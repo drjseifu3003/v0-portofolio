@@ -40,7 +40,7 @@ export function WhyChooseMe() {
       style={{
         background: "#0f0f0d",
         borderBottom: "1px solid #1e1e1c",
-        padding: "96px 36px 104px",
+      padding: "clamp(52px, 8vw, 96px) clamp(20px, 4vw, 36px) clamp(60px, 9vw, 104px)",
       }}
     >
       <style jsx>{`
@@ -55,17 +55,18 @@ export function WhyChooseMe() {
           display: grid;
           grid-template-columns: 1fr;
           gap: 1px;
-          background: #1e1e1c;     /* gap color = border between cells */
+          background: #1e1e1c;
           border: 1px solid #1e1e1c;
-          margin-top: 64px;
+          margin-top: clamp(36px, 5vw, 64px);
         }
         @media (min-width: 640px)  { .card-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 1024px) { .card-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (max-width: 639px)  { .wc-subtitle { display: none; } }
 
         /* ── individual card ──────────────────────────────── */
         .card {
           background: #0f0f0d;
-          padding: 36px 32px 40px;
+          padding: clamp(24px, 3vw, 36px) clamp(20px, 2.5vw, 32px) clamp(28px, 3.5vw, 40px);
           display: flex;
           flex-direction: column;
           gap: 20px;
@@ -137,12 +138,15 @@ export function WhyChooseMe() {
           {/* subtitle */}
           <p style={{
             fontSize: "16px",
-            color: "#a8a49c",           /* 6:1 ✔ */
+            color: "#a8a49c",
             lineHeight: "1.85",
             fontWeight: 300,
             maxWidth: "380px",
             margin: 0,
-          }}>
+            display: "var(--subtitle-display, block)",
+          }}
+            className="wc-subtitle"
+          >
             Structured implementation support for teams dealing with technical debt,
             unstable releases, or unclear priorities — with transparent communication.
           </p>

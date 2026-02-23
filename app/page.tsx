@@ -16,7 +16,7 @@ const HEADER_H = 72
 const NAV = [
   { label: "Services",     href: "#services"     },
   { label: "Work",         href: "#projects"     },
-  // { label: "Blog",         href: "/blog"         },
+  { label: "Blog",         href: "/blog"         },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact",      href: "#contact"      },
 ]
@@ -162,7 +162,7 @@ export default function Home() {
         <div style={{
           maxWidth: "1200px",
           margin: "0 auto",
-          padding: "0 36px",
+          padding: "0 clamp(16px, 4vw, 36px)",
           height: "100%",
           display: "flex",
           alignItems: "center",
@@ -252,7 +252,7 @@ export default function Home() {
         top: `${HEADER_H}px`, left: 0, right: 0, bottom: 0,
         background: "#0c0c0c",
         zIndex: 290,
-        padding: "8px 36px 48px",
+        padding: "8px clamp(16px, 4vw, 36px) 48px",
         overflowY: "auto",
         flexDirection: "column",
         transform: mob ? "translateX(0)" : "translateX(100%)",

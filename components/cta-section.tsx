@@ -7,7 +7,7 @@ export function CTASection() {
     <section style={{
       background: "#0c0c0c",
       borderBottom: "1px solid #1e1e1c",
-      padding: "96px 36px 104px",
+      padding: "clamp(52px, 8vw, 96px) clamp(20px, 4vw, 36px) clamp(60px, 9vw, 104px)",
     }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
@@ -15,7 +15,7 @@ export function CTASection() {
         <div style={{
           border: "1px solid #2a2826",
           background: "#0f0f0d",
-          padding: "72px 48px",
+          padding: "clamp(40px, 6vw, 72px) clamp(24px, 4vw, 48px)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",

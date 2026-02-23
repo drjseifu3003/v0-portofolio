@@ -87,10 +87,10 @@ export function ClientInsights() {
         .ci-body {
           max-width: 1200px;
           margin: 0 auto;
-          padding: 80px 36px 96px;
+          padding: clamp(48px, 7vw, 80px) clamp(20px, 4vw, 36px) clamp(56px, 8vw, 96px);
           display: grid;
           grid-template-columns: 1fr;
-          gap: 64px;
+          gap: 48px;
         }
         @media (min-width: 1024px) {
           .ci-body { grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
@@ -139,7 +139,7 @@ export function ClientInsights() {
 
           {/* large statement */}
           <p style={{
-            fontSize: "clamp(28px, 3.6vw, 44px)",
+            fontSize: "clamp(22px, 3.2vw, 44px)",
             fontWeight: 300,
             lineHeight: 1.25,
             letterSpacing: "-0.02em",
@@ -171,15 +171,15 @@ export function ClientInsights() {
             I wrote about myself, but a summary of how people describe working with me.
           </p>
 
-          {/* Upwork link */}
+          {/* LinkedIn link */}
           <a
-            href="https://www.upwork.com/ab/g/pub/wom/prx/eyJwZXJzb25VaWQiOiIxNzYyODM2NzI2MTI3OTQzNjgwIiwiY29udHJhY3RSaWQiOiI0MTY3NzYxMCIsImJhbm5lclR5cGUiOiJjb250cmFjdCIsImJhbm5lclZhcmlhbnQiOiJkZWZhdWx0Iiwid29tIjoiZmx2MiIsInJlZGlyZWN0IjoiZmxfcHJvZmlsZV9wcm9tbyJ9?network=linkedin"
+            href="https://www.linkedin.com/in/drjseifu1991/details/recommendations/"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-[7px] py-[10px] px-5 bg-transparent text-[#dedad2] text-[13px] font-semibold tracking-[0.05em] uppercase border-2 border-[#dedad2] whitespace-nowrap leading-none transition-colors duration-[180ms] hover:bg-[#dedad2] hover:text-[#0c0c0c]"
             style={{ alignSelf: "flex-start" }}
           >
-            Read client reviews
+            Read recommendations
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M2.5 10.5l8-8M5 2.5h5.5v5.5"/>
             </svg>

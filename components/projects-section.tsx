@@ -88,8 +88,8 @@ function Modal({ project, onClose }: { project: Project; onClose: () => void }) 
         top: "50%", left: "50%",
         transform: "translate(-50%, -50%)",
         zIndex: 510,
-        width: "min(680px, calc(100vw - 48px))",
-        maxHeight: "calc(100vh - 80px)",
+        width: "min(680px, calc(100vw - 32px))",
+        maxHeight: "calc(100vh - 48px)",
         overflowY: "auto",
         background: "#161614",
         border: "1px solid #2a2826",
@@ -129,7 +129,7 @@ function Modal({ project, onClose }: { project: Project; onClose: () => void }) 
         </div>
 
         {/* body */}
-        <div style={{ padding: "36px 40px 44px" }}>
+        <div style={{ padding: "clamp(20px, 4vw, 36px) clamp(20px, 4vw, 40px) clamp(28px, 5vw, 44px)" }}>
           {/* title + link */}
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "16px", marginBottom: "14px" }}>
             <h3 style={{ fontSize: "22px", fontWeight: 500, color: "#dedad2", lineHeight: 1.25, margin: 0 }}>
@@ -317,7 +317,7 @@ export function ProjectsSection() {
     <section id="projects" style={{
       background: "#0c0c0c",
       borderBottom: "1px solid #1e1e1c",
-      padding: "96px 36px 104px",
+      padding: "clamp(52px, 8vw, 96px) clamp(20px, 4vw, 36px) clamp(60px, 9vw, 104px)",
     }}>
       <style jsx>{`
         .proj-grid {
@@ -326,7 +326,7 @@ export function ProjectsSection() {
           gap: 1px;
           background: #1e1e1c;
           border: 1px solid #1e1e1c;
-          margin-top: 64px;
+          margin-top: clamp(36px, 5vw, 64px);
         }
         @media (min-width: 640px)  { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 1024px) { .proj-grid { grid-template-columns: repeat(3, 1fr); } }

@@ -57,8 +57,8 @@ const CHANNELS = [
   },
   {
     label: "Telegram",
-    value: "@drjseifu",
-    href:  "https://t.me/drjseifu",
+    value: "@derejeseifu",
+    href:  "https://t.me/derejeseifu",
     IconCustom: TelegramIcon,
     external: true,
   },
@@ -77,7 +77,7 @@ export function ContactSection() {
       <section id="contact" style={{
         background: "#0c0c0c",
         borderBottom: "1px solid #1e1e1c",
-        padding: "96px 36px 104px",
+        padding: "clamp(52px, 8vw, 96px) clamp(20px, 4vw, 36px) clamp(60px, 9vw, 104px)",
       }}>
         <style jsx>{`
           /* ── channel grid: 3 cols desktop, 2 tablet, 1 mobile ── */
@@ -95,7 +95,7 @@ export function ContactSection() {
           /* ── each card ──────────────────────────────────────── */
           .ch-card {
             background: #0c0c0c;
-            padding: 32px 28px 36px;
+            padding: clamp(20px, 3vw, 32px) clamp(16px, 2.5vw, 28px) clamp(24px, 3.5vw, 36px);
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -197,7 +197,7 @@ export function ContactSection() {
       </section>
 
       {/* copyright bar */}
-      <div style={{ background: "#0c0c0c", borderTop: "1px solid #1e1e1c", padding: "22px 36px" }}>
+      <div style={{ background: "#0c0c0c", borderTop: "1px solid #1e1e1c", padding: "22px clamp(20px, 4vw, 36px)" }}>
         <div style={{
           maxWidth: "1200px", margin: "0 auto",
           display: "flex", justifyContent: "space-between",
