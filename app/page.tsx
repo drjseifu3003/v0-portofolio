@@ -16,7 +16,7 @@ const HEADER_H = 72
 const NAV = [
   { label: "Services",     href: "#services"     },
   { label: "Work",         href: "#projects"     },
-  { label: "Blog",         href: "/blog"         },
+  // { label: "Blog",         href: "/blog"         },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact",      href: "#contact"      },
 ]
