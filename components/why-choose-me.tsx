@@ -148,7 +148,7 @@ export function WhyChooseMe() {
             className="wc-subtitle"
           >
             Structured implementation support for teams dealing with technical debt,
-            unstable releases, or unclear priorities — with transparent communication.
+            unstable releases, or unclear priorities with transparent communication.
           </p>
         </div>
 

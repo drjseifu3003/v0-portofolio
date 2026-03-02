@@ -121,7 +121,7 @@ export function HeroSection() {
               fontWeight: 300,
             }}>
               I work with startups and product teams to improve architecture,
-              release confidence, and delivery speed — without adding unnecessary
+              release confidence, and delivery speed without adding unnecessary
               complexity.
             </p>
           </div>
