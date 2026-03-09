@@ -251,7 +251,7 @@ function AssistantModal({ onClose }: { onClose: () => void }) {
 
           <div className="mo-foot">
             <span style={{ fontSize:10, color:"#3a3830", letterSpacing:"0.08em", textTransform:"uppercase" }}>AI Assistant · Liya</span>
-            <span style={{ fontSize:10, color:"#4a4844", letterSpacing:"0.06em" }}>Powered by Vapi</span>
+            <span style={{ fontSize:10, color:"#4a4844", letterSpacing:"0.06em" }}>Powered by Dereje</span>
           </div>
 
         </div>
