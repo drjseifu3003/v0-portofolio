@@ -1,30 +1,31 @@
 "use client"
 
-import { HeroSection }        from "@/components/hero-section"
-import { ProjectsSection }    from "@/components/projects-section"
-import { TestimonialsSection } from "@/components/testimonials-section"
-import { CTASection }          from "@/components/cta-section"
-import { ContactSection }      from "@/components/contact-section"
-import { WhyChooseMe }         from "@/components/why-choose-me"
-import { Mail, ArrowUpRight }  from "lucide-react"
-import Link                    from "next/link"
-import { useState, useEffect } from "react"
-import { ClientInsights } from "@/components/client-insight"
+import { HeroSection }         from "@/components/hero-section"
+import { ProjectsSection }     from "@/components/projects-section"
+import { TestimonialsSection }  from "@/components/testimonials-section"
+import { CTASection }           from "@/components/cta-section"
+import { ContactSection }       from "@/components/contact-section"
+import { WhyChooseMe }          from "@/components/why-choose-me"
+import { ClientInsights }       from "@/components/client-insight"
+import { AIAssistantWidget }    from "@/components/ai-assistant-widget"
+import { Mail, ArrowUpRight }   from "lucide-react"
+import Link                     from "next/link"
+import { useState, useEffect }  from "react"
 
 const HEADER_H = 72
 
 const NAV = [
   { label: "Services",     href: "#services"     },
   { label: "Work",         href: "#projects"     },
-  // { label: "Blog",         href: "/blog"         },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact",      href: "#contact"      },
 ]
 
 export default function Home() {
-  const [mob,      setMob]      = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [active,   setActive]   = useState("")
+  const [mob,          setMob]      = useState(false)
+  const [scrolled,     setScrolled] = useState(false)
+  const [active,       setActive]   = useState("")
+  const [liyaOpen,    setLiyaOpen] = useState(false)
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 4)
@@ -52,22 +53,10 @@ export default function Home() {
         ::-webkit-scrollbar-track      { background: #0c0c0c; }
         ::-webkit-scrollbar-thumb      { background: #2e2e2e; border-radius: 2px; }
 
-        /*
-          Header contrast palette (bg: #0c0c0c, border-area bg same):
-            #dedad2  logo name + CTA text bg    13:1  ✔ AAA
-            #c8c4bc  nav links (rest state)      8:1  ✔ AA
-            #ffffff  nav hover / active          21:1  ✔ AAA
-        */
-
-        /* ── nav links ────────────────────────────────────────── */
         .nav-link {
           position: relative;
           font-size: 14px;
           font-weight: 400;
-          /*
-            #c8c4bc = warm light gray, contrast 8:1 on #0c0c0c ✔ AA
-            Much brighter than the previous #a8a49c (6:1) for header use
-          */
           color: #c8c4bc;
           letter-spacing: 0.02em;
           text-decoration: none;
@@ -88,7 +77,6 @@ export default function Home() {
         .nav-link.active       { color: #dedad2; }
         .nav-link.active::after { width: 100%; }
 
-        /* ── mobile drawer links ──────────────────────────────── */
         .mob-link {
           display: flex;
           align-items: center;
@@ -103,7 +91,6 @@ export default function Home() {
         }
         .mob-link:hover { color: #dedad2; }
 
-        /* ── header CTA ───────────────────────────────────────── */
         .hdr-cta {
           display: inline-flex;
           align-items: center;
@@ -114,7 +101,6 @@ export default function Home() {
           letter-spacing: 0.05em;
           text-transform: uppercase;
           text-decoration: none;
-          /* solid white/cream fill — maximum visibility */
           color: #0c0c0c;
           background: #dedad2;
           border: 2px solid #dedad2;
@@ -126,7 +112,6 @@ export default function Home() {
         }
         .hdr-cta:hover { background: #ffffff; border-color: #ffffff; }
 
-        /* ── hamburger ────────────────────────────────────────── */
         .ham {
           display: block;
           width: 22px; height: 1.5px;
@@ -135,7 +120,6 @@ export default function Home() {
           transition: transform 0.25s, opacity 0.2s;
         }
 
-        /* ── responsive ───────────────────────────────────────── */
         @media (min-width: 768px) {
           .d-flex { display: flex !important; }
           .m-only  { display: none  !important; }
@@ -146,9 +130,7 @@ export default function Home() {
         }
       `}</style>
 
-      {/* ════════════════════════════════════════════════════
-          HEADER
-      ════════════════════════════════════════════════════ */}
+      {/* ════ HEADER ════ */}
       <header style={{
         position: "fixed",
         inset: "0 0 auto 0",
@@ -168,85 +150,72 @@ export default function Home() {
           alignItems: "center",
         }}>
 
-          {/* LOGO ─────────────────────────────────── */}
           <Link href="/" style={{ textDecoration: "none", flexShrink: 0, marginRight: "40px" }}>
-            {/*
-              Name: #dedad2  13:1 ✔
-              Role: #9a9690  5.5:1 ✔ — readable small label
-            */}
-            <span style={{
-              fontSize: "16px",
-              fontWeight: 600,
-              color: "#dedad2",
-              display: "block",
-              lineHeight: 1.2,
-              letterSpacing: "0.01em",
-            }}>
+            <span style={{ fontSize: "16px", fontWeight: 600, color: "#dedad2", display: "block", lineHeight: 1.2, letterSpacing: "0.01em" }}>
               Dereje Seifu
             </span>
-            <span style={{
-              fontSize: "11px",
-              fontWeight: 400,
-              color: "#9a9690",
-              display: "block",
-              letterSpacing: "0.09em",
-              textTransform: "uppercase",
-              marginTop: "3px",
-            }}>
+            <span style={{ fontSize: "11px", fontWeight: 400, color: "#9a9690", display: "block", letterSpacing: "0.09em", textTransform: "uppercase", marginTop: "3px" }}>
               Full-Stack Engineer
             </span>
           </Link>
 
-          {/* hairline divider */}
-          <div className="d-flex" style={{
-            width: "1px", height: "24px",
-            background: "#2a2826",
-            flexShrink: 0,
-            marginRight: "40px",
-          }} />
+          <div className="d-flex" style={{ width: "1px", height: "24px", background: "#2a2826", flexShrink: 0, marginRight: "40px" }} />
 
-          {/* DESKTOP NAV ──────────────────────────── */}
           <nav className="d-flex" style={{ alignItems: "center", gap: "36px", flex: 1 }}>
             {NAV.map(({ label, href }) => (
-              <Link
-                key={label}
-                href={href}
-                className={`nav-link${active === href ? " active" : ""}`}
-                onClick={() => setActive(href)}
-              >
+              <Link key={label} href={href} className={`nav-link${active === href ? " active" : ""}`} onClick={() => setActive(href)}>
                 {label}
               </Link>
             ))}
           </nav>
 
-          {/* CTA ──────────────────────────────────── */}
+          {/* Ask Liya — header CTA variant */}
+          <button
+            onClick={() => setLiyaOpen(true)}
+            className="d-flex"
+            style={{
+              alignItems: "center",
+              gap: "7px",
+              padding: "8px 16px",
+              fontSize: "12px",
+              fontWeight: 500,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "#a8a49c",
+              background: "transparent",
+              border: "1px solid #2a2826",
+              cursor: "pointer",
+              whiteSpace: "nowrap",
+              fontFamily: "inherit",
+              marginRight: "12px",
+              transition: "border-color 0.18s, color 0.18s",
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = "#4a4844"; e.currentTarget.style.color = "#dedad2" }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = "#2a2826"; e.currentTarget.style.color = "#a8a49c" }}
+          >
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#4caf7d", boxShadow: "0 0 5px rgba(76,175,125,0.5)", animation: "none", flexShrink: 0, display: "inline-block" }} />
+            Ask Liya
+          </button>
+
           <a href="mailto:Derejeseifu3030@gmail.com" className="hdr-cta d-flex">
             <Mail size={13} strokeWidth={2} />
             Get in touch
           </a>
 
-          {/* HAMBURGER ────────────────────────────── */}
           <button
             className="m-only"
             onClick={() => setMob(v => !v)}
             aria-label="Toggle menu"
-            style={{
-              background: "none", border: "none", cursor: "pointer",
-              padding: "8px", flexDirection: "column",
-              gap: "6px", alignItems: "center", marginLeft: "auto",
-            }}
+            style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", flexDirection: "column", gap: "6px", alignItems: "center", marginLeft: "auto" }}
           >
             <span className="ham" style={{ transform: mob ? "translateY(7.5px) rotate(45deg)"  : "none" }} />
             <span className="ham" style={{ opacity: mob ? 0 : 1 }} />
             <span className="ham" style={{ transform: mob ? "translateY(-7.5px) rotate(-45deg)" : "none" }} />
           </button>
-
         </div>
       </header>
 
-      {/* ════════════════════════════════════════════════════
-          MOBILE DRAWER
-      ════════════════════════════════════════════════════ */}
+      {/* ════ MOBILE DRAWER ════ */}
       <div className="m-only" style={{
         position: "fixed",
         top: `${HEADER_H}px`, left: 0, right: 0, bottom: 0,
@@ -266,28 +235,40 @@ export default function Home() {
               <ArrowUpRight size={16} color="#3a3830" />
             </Link>
           ))}
+          {/* Liya in mobile menu */}
+          <button
+            onClick={() => { setMob(false); setLiyaOpen(true) }}
+            className="mob-link"
+            style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", color: "#4caf7d", borderBottom: "1px solid #1e1e1c" }}
+          >
+            <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 16 }}>
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4caf7d", boxShadow: "0 0 5px rgba(76,175,125,0.5)", flexShrink: 0, display: "inline-block" }} />
+              Talk to Liya
+            </span>
+            <ArrowUpRight size={16} color="#4caf7d" />
+          </button>
         </nav>
         <div style={{ marginTop: "32px" }}>
-          <a href="mailto:Derejeseifu3030@gmail.com" className="hdr-cta"
-             style={{ width: "100%", justifyContent: "center", fontSize: "14px" }}>
+          <a href="mailto:Derejeseifu3030@gmail.com" className="hdr-cta" style={{ width: "100%", justifyContent: "center", fontSize: "14px" }}>
             <Mail size={14} strokeWidth={2} />
             Get in touch
           </a>
         </div>
       </div>
 
-      {/* ════════════════════════════════════════════════════
-          MAIN
-      ════════════════════════════════════════════════════ */}
+      {/* ════ MAIN ════ */}
       <main style={{ paddingTop: `${HEADER_H}px` }}>
-        <HeroSection />
+        <HeroSection    onTalkToLiya={() => setLiyaOpen(true)} />
         <WhyChooseMe />
         <ClientInsights />
         <ProjectsSection />
         <TestimonialsSection />
         <CTASection />
-        <ContactSection />
+        <ContactSection onTalkToLiya={() => setLiyaOpen(true)} />
       </main>
+
+      {/* ════ AI ASSISTANT ════ */}
+      <AIAssistantWidget open={liyaOpen} onOpenChange={setLiyaOpen} />
     </div>
   )
 }

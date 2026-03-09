@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowUpRight, Mail, Phone, Linkedin } from "lucide-react"
+import { ArrowUpRight, Mail, Phone, Linkedin, Mic } from "lucide-react"
 
 function WhatsAppIcon() {
   return (
@@ -71,7 +71,11 @@ const CHANNELS = [
   },
 ]
 
-export function ContactSection() {
+interface ContactSectionProps {
+  onTalkToLiya?: () => void
+}
+
+export function ContactSection({ onTalkToLiya }: ContactSectionProps) {
   return (
     <>
       <section id="contact" style={{
@@ -80,19 +84,17 @@ export function ContactSection() {
         padding: "clamp(52px, 8vw, 96px) clamp(20px, 4vw, 36px) clamp(60px, 9vw, 104px)",
       }}>
         <style jsx>{`
-          /* ── channel grid: 3 cols desktop, 2 tablet, 1 mobile ── */
           .ch-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1px;
             background: #1e1e1c;
             border: 1px solid #1e1e1c;
-            margin-top: 64px;
+            margin-top: 48px;
           }
           @media (min-width: 560px)  { .ch-grid { grid-template-columns: repeat(2, 1fr); } }
           @media (min-width: 1024px) { .ch-grid { grid-template-columns: repeat(3, 1fr); } }
 
-          /* ── each card ──────────────────────────────────────── */
           .ch-card {
             background: #0c0c0c;
             padding: clamp(20px, 3vw, 32px) clamp(16px, 2.5vw, 28px) clamp(24px, 3.5vw, 36px);
@@ -105,7 +107,6 @@ export function ContactSection() {
           }
           .ch-card:hover { background: #111110; }
 
-          /* icon box */
           .ch-icon {
             width: 44px; height: 44px;
             border: 1px solid #2a2826;
@@ -114,12 +115,8 @@ export function ContactSection() {
             flex-shrink: 0;
             transition: border-color 0.2s, color 0.2s;
           }
-          .ch-card:hover .ch-icon {
-            border-color: #4a4844;
-            color: #dedad2;
-          }
+          .ch-card:hover .ch-icon { border-color: #4a4844; color: #dedad2; }
 
-          /* value text */
           .ch-val {
             font-size: 14px;
             font-weight: 400;
@@ -129,22 +126,89 @@ export function ContactSection() {
           }
           .ch-card:hover .ch-val { color: #dedad2; }
 
-          /* arrow */
           .ch-arrow {
             position: absolute;
             top: 20px; right: 20px;
             color: #2a2826;
             transition: color 0.2s, transform 0.2s;
           }
-          .ch-card:hover .ch-arrow {
-            color: #72706b;
-            transform: translate(2px, -2px);
+          .ch-card:hover .ch-arrow { color: #72706b; transform: translate(2px, -2px); }
+
+          /* ── Liya featured card ── */
+          .liya-card {
+            background: #0c0c0c;
+            padding: clamp(20px, 3vw, 32px) clamp(16px, 2.5vw, 28px) clamp(24px, 3.5vw, 36px);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            cursor: pointer;
+            border: none;
+            text-align: left;
+            font-family: inherit;
+            width: 100%;
+            transition: background 0.18s;
+            /* left accent */
+            border-left: 2px solid #4caf7d;
+          }
+
+          .liya-card:hover { background: #0f120f; }
+
+          .liya-card .ch-icon {
+            border-color: rgba(76,175,125,0.3);
+            color: #4caf7d;
+          }
+          .liya-card:hover .ch-icon {
+            border-color: #4caf7d;
+            color: #4caf7d;
+          }
+
+          .liya-live {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+          }
+
+          .liya-live-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #4caf7d;
+            box-shadow: 0 0 5px rgba(76,175,125,0.5);
+            animation: sDot 2s ease-in-out infinite;
+            flex-shrink: 0;
+          }
+
+          @keyframes sDot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+          .liya-live-text {
+            font-size: 10px;
+            color: #4caf7d;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+          }
+
+          /* response note */
+          .response-note {
+            margin-top: 32px;
+            padding: 16px 20px;
+            border: 1px solid #1e1e1c;
+            background: #0e0e0c;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+          }
+
+          @media (max-width: 767px) {
+            .response-note { flex-direction: column; align-items: flex-start; }
           }
         `}</style>
 
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
-          {/* header */}
+          {/* section header */}
           <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "20px" }}>
             <div style={{ width: "28px", height: "1px", background: "#4a4844" }} />
             <span style={{ fontSize: "12px", fontWeight: 500, color: "#b8b4ac", letterSpacing: "0.1em", textTransform: "uppercase" }}>
@@ -165,6 +229,37 @@ export function ContactSection() {
 
           {/* channel grid */}
           <div className="ch-grid">
+
+            {/* Liya — featured first slot */}
+            {onTalkToLiya && (
+              <button className="liya-card" onClick={onTalkToLiya}>
+                <ArrowUpRight size={15} strokeWidth={1.6} className="ch-arrow" />
+
+                <div className="ch-icon" style={{
+                  width: 44, height: 44,
+                  border: "1px solid rgba(76,175,125,0.3)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  color: "#4caf7d", flexShrink: 0,
+                }}>
+                  <Mic size={16} strokeWidth={1.6} />
+                </div>
+
+                <div>
+                  <div className="liya-live">
+                    <div className="liya-live-dot" />
+                    <span className="liya-live-text">Live · Available now</span>
+                  </div>
+                  <p style={{ fontSize: "11px", color: "#72706b", letterSpacing: "0.1em", textTransform: "uppercase", margin: "8px 0 6px" }}>
+                    AI Assistant
+                  </p>
+                  <p style={{ fontSize: "14px", color: "#a8a49c", margin: 0, fontWeight: 400 }}>
+                    Talk to Liya — ask about services, availability, or book a call instantly.
+                  </p>
+                </div>
+              </button>
+            )}
+
+            {/* regular channels */}
             {CHANNELS.map(({ label, value, href, Icon, IconCustom, external }: any) => (
               <a
                 key={label}
@@ -173,16 +268,13 @@ export function ContactSection() {
                 rel={external ? "noreferrer" : undefined}
                 className="ch-card"
               >
-                {/* top-right arrow */}
                 <ArrowUpRight size={15} strokeWidth={1.6} className="ch-arrow" />
 
-                {/* icon */}
                 <div className="ch-icon">
                   {Icon       ? <Icon size={16} strokeWidth={1.6} /> : null}
                   {IconCustom ? <IconCustom /> : null}
                 </div>
 
-                {/* label */}
                 <div>
                   <p style={{ fontSize: "11px", color: "#72706b", letterSpacing: "0.1em", textTransform: "uppercase", margin: "0 0 6px" }}>
                     {label}
@@ -191,6 +283,16 @@ export function ContactSection() {
                 </div>
               </a>
             ))}
+          </div>
+
+          {/* response note */}
+          <div className="response-note">
+            <span style={{ fontSize: "13px", color: "#72706b" }}>
+              Typical response within <span style={{ color: "#a8a49c" }}>1 hour</span> · No commitment required
+            </span>
+            <span style={{ fontSize: "12px", color: "#4a4844", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+              Based in Ethiopia · Available globally
+            </span>
           </div>
 
         </div>
