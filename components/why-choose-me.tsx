@@ -1,35 +1,49 @@
 "use client"
 
-import { Bot, Database, Layers3, ShieldCheck } from "lucide-react"
+import { BrainCircuit, Building2, Layers3, PhoneCall, Rocket, Workflow } from "lucide-react"
 
 const BENEFITS = [
   {
-    title: "Architecture with clear tradeoffs",
+    title: "AI Agents and RAG Systems",
     description:
-      "Design decisions are documented early so teams understand scope, cost, and long-term maintenance impact.",
-    icon: Layers3,
+      "Agents that reason over your real business data and complete workflows autonomously. Built to run in production, not just in a demo environment.",
+    icon: BrainCircuit,
     number: "01",
   },
   {
-    title: "Reliable application stack",
+    title: "Voice AI Systems",
     description:
-      "Next.js 14, Supabase, and Azure SQL are used to deliver fast interfaces, stable data layers, and secure access patterns.",
-    icon: Database,
+      "Inbound calls handled, leads qualified, meetings booked, and everything logged to your CRM. Built with Vapi. Runs 24 hours a day without supervision.",
+    icon: PhoneCall,
     number: "02",
   },
   {
-    title: "Security and operations discipline",
+    title: "Full-Stack SaaS Platforms",
     description:
-      "Release processes, observability, and infrastructure standards are built in from the start to reduce production risk.",
-    icon: ShieldCheck,
+      "Next.js, Node.js, NestJS, Supabase, and AWS. Architected from day one so you are not rebuilding everything when growth hits.",
+    icon: Layers3,
     number: "03",
   },
   {
-    title: "Practical AI-assisted delivery",
+    title: "MVP Development",
     description:
-      "Claude Code and Cursor are used for faster implementation and review cycles, while final decisions stay engineering-led.",
-    icon: Bot,
+      "I help founders scope what actually needs to exist, build it fast, and get it in front of real users. Weeks, not months.",
+    icon: Rocket,
     number: "04",
+  },
+  {
+    title: "N8N Automation",
+    description:
+      "Manual processes eliminated. Existing tools connected. Systems that run without anyone touching them.",
+    icon: Workflow,
+    number: "05",
+  },
+  {
+    title: "Enterprise Systems",
+    description:
+      "Built secure, scalable, and compliance-ready from the start. Not patched together after problems appear.",
+    icon: Building2,
+    number: "06",
   },
 ]
 
@@ -60,7 +74,7 @@ export function WhyChooseMe() {
           margin-top: clamp(36px, 5vw, 64px);
         }
         @media (min-width: 640px)  { .card-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1024px) { .card-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (min-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 639px)  { .wc-subtitle { display: none; } }
 
         /* ── individual card ──────────────────────────────── */
@@ -102,7 +116,7 @@ export function WhyChooseMe() {
           <div style={{ maxWidth: "600px" }}>
             {/* eyebrow */}
             <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "20px" }}>
-              <div style={{ width: "28px", height: "1px", background: "#4a4844" }} />
+              {/* <div style={{ width: "28px", height: "1px", background: "#4a4844" }} /> */}
               <span style={{
                 fontSize: "12px",
                 fontWeight: 500,
@@ -123,15 +137,7 @@ export function WhyChooseMe() {
               color: "#dedad2",         /* 13:1 ✔ */
               margin: 0,
             }}>
-              Engineering support for{" "}
-              <em style={{
-                fontFamily: "'Instrument Serif', serif",
-                fontStyle: "italic",
-                fontWeight: 400,
-                color: "#c8c4bc",
-              }}>
-                scaling teams
-              </em>
+              What I build and architect
             </h2>
           </div>
 
@@ -147,8 +153,7 @@ export function WhyChooseMe() {
           }}
             className="wc-subtitle"
           >
-            Structured implementation support for teams dealing with technical debt,
-            unstable releases, or unclear priorities with transparent communication.
+            I work across the full stack and own the outcome end to end.
           </p>
         </div>
 

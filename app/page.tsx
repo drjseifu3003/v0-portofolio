@@ -154,9 +154,9 @@ export default function Home() {
             <span style={{ fontSize: "16px", fontWeight: 600, color: "#dedad2", display: "block", lineHeight: 1.2, letterSpacing: "0.01em" }}>
               Dereje Seifu
             </span>
-            <span style={{ fontSize: "11px", fontWeight: 400, color: "#9a9690", display: "block", letterSpacing: "0.09em", textTransform: "uppercase", marginTop: "3px" }}>
-              Full-Stack Engineer
-            </span>
+            {/* <span style={{ fontSize: "11px", fontWeight: 400, color: "#9a9690", display: "block", letterSpacing: "0.09em", textTransform: "uppercase", marginTop: "3px" }}>
+              Software Architect & AI Engineer
+            </span> */}
           </Link>
 
           <div className="d-flex" style={{ width: "1px", height: "24px", background: "#2a2826", flexShrink: 0, marginRight: "40px" }} />

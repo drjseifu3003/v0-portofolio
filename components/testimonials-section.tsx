@@ -226,7 +226,7 @@ export function TestimonialsSection() {
           <div>
             {/* eyebrow */}
             <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "20px" }}>
-              <div style={{ width: "28px", height: "1px", background: "#4a4844" }} />
+              {/* <div style={{ width: "28px", height: "1px", background: "#4a4844" }} /> */}
               <span style={{
                 fontSize: "12px", fontWeight: 500,
                 color: "#b8b4ac",

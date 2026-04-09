@@ -9,11 +9,11 @@ import { JsonLd } from "@/components/json-Id"
 const inter = Inter({ subsets: ["latin"] })
 
 /* ─── Site constants ──────────────────────────────────────────── */
-const SITE_URL  = "https://www.derejeseifu.vercel.app"   // ← change to your domain
+const SITE_URL  = "https://www.derejeseifu.vercel.app"
 const FULL_NAME = "Dereje Seifu"
-const TITLE     = "Dereje Seifu — Senior Full-Stack Engineer"
-const DESC      = "Senior Full-Stack Engineer specialising in Next.js, React, TypeScript, Node.js, and AWS. I help startups and product teams ship reliable software with clear scope, fast delivery, and strong engineering discipline."
-const OG_IMAGE  = `${SITE_URL}/og_image.png`      // 1200×630 — create this
+const TITLE     = "Dereje Seifu — Software Architect & AI Engineer"
+const DESC      = "Software Architect and Full-Stack Engineer specializing in AI Agents, RAG Systems, Voice AI, and SaaS platforms. I architect and build production-ready AI products for founders and organizations."
+const OG_IMAGE  = `${SITE_URL}/og_image.png`
 
 /* ─── Viewport ────────────────────────────────────────────────── */
 export const viewport: Viewport = {
@@ -37,25 +37,33 @@ export const metadata: Metadata = {
   },
   description: DESC,
   keywords: [
+    "Software Architect",
+    "AI Engineer",
     "Full-Stack Engineer",
-    "Senior Software Engineer",
+    "AI Agents",
+    "RAG Systems",
+    "Voice AI",
+    "N8N Automation",
+    "Vapi developer",
+    "LangChain developer",
     "Next.js developer",
     "React developer",
     "TypeScript developer",
     "Node.js developer",
+    "NestJS developer",
+    "FastAPI developer",
     "AWS developer",
-    "PostgreSQL",
-    "Supabase",
-    "CI/CD",
-    "DevOps engineer",
-    "freelance developer",
-    "Upwork developer",
-    "remote software engineer",
-    "Dereje Seifu",
-    "Ethiopian developer",
-    "web application development",
+    "Supabase developer",
     "SaaS development",
-    "startup engineer",
+    "MVP development",
+    "Founding Engineer",
+    "freelance AI developer",
+    "Upwork AI developer",
+    "remote software architect",
+    "Dereje Seifu",
+    "AI product development",
+    "enterprise systems",
+    "healthcare platform development",
   ],
   authors:  [{ name: FULL_NAME, url: SITE_URL }],
   creator:  FULL_NAME,
@@ -79,7 +87,7 @@ export const metadata: Metadata = {
         url:    OG_IMAGE,
         width:  1200,
         height: 630,
-        alt:    `${FULL_NAME} — Senior Full-Stack Engineer portfolio`,
+        alt:    `${FULL_NAME} — Software Architect & AI Engineer portfolio`,
       },
     ],
   },

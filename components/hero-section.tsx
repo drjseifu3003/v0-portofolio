@@ -5,12 +5,29 @@ import Link from "next/link"
 import Image from "next/image"
 
 const STATS = [
-  { value: "300K+",  label: "Users supported"  },
-  { value: "~2s",    label: "Target page loads" },
-  { value: "99.9%+", label: "Release uptime"    },
+  { value: "100,000+",  label: "Users on systems I have architected"  },
+  { value: "FDA-level",    label: "Healthcare platform compliance" },
+  { value: "24/7", label: "Voice AI running without staff"    },
 ]
 
-const STACK = ["Next.js", "TypeScript", "React", "Node.js", "AWS", "FastAPI", "Supabase", "PostgreSQL", "Claude", "Cursor"]
+const STACK = [
+  "Next.js",
+  "TypeScript", 
+  "React",
+  "Node.js",
+  "NestJS",
+  "FastAPI",
+  "PostgreSQL",
+  "Supabase",
+  "AWS",
+  "Docker",
+  "Vapi",
+  "N8N",
+  "LangChain",
+  "RAG",
+  "AI Agents",
+  "Stripe",
+]
 
 interface HeroSectionProps {
   onTalkToLiya?: () => void
@@ -39,7 +56,7 @@ export function HeroSection({ onTalkToLiya }: HeroSectionProps) {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           border: 1px solid #2a2826;
-          max-width: 460px;
+          max-width: 550px;
         }
         .sc {
           padding: 20px 18px;
@@ -162,12 +179,12 @@ export function HeroSection({ onTalkToLiya }: HeroSectionProps) {
 
           {/* eyebrow */}
           <div style={{ display: "flex", alignItems: "center", gap: "14px", marginTop: "-20px" }}>
-            <div style={{ width: "28px", height: "1px", background: "#4a4844", flexShrink: 0 }} />
+            {/* <div style={{ width: "28px", height: "1px", background: "#4a4844", flexShrink: 0 }} /> */}
             <span style={{
               fontSize: "13px", fontWeight: 500, color: "#b8b4ac",
               letterSpacing: "0.08em", textTransform: "uppercase",
             }}>
-              Senior Full-Stack Engineer
+              Software Architect & Full-Stack Engineer
             </span>
           </div>
 
@@ -182,16 +199,16 @@ export function HeroSection({ onTalkToLiya }: HeroSectionProps) {
               maxWidth: "700px",
               margin: 0,
             }}>
-              Building reliable{" "}
+              I architect and build {" "}
               <em style={{
                 fontFamily: "'Instrument Serif', serif",
                 fontStyle: "italic",
                 fontWeight: 400,
                 color: "#c8c4bc",
               }}>
-                web products
+                full-stack
               </em>{" "}
-              with clear scope and consistent delivery.
+              AI products from the first decision to production.
             </h1>
 
             <p style={{
@@ -202,9 +219,7 @@ export function HeroSection({ onTalkToLiya }: HeroSectionProps) {
               maxWidth: "520px",
               fontWeight: 300,
             }}>
-              I work with startups and product teams to improve architecture,
-              release confidence, and delivery speed — without adding unnecessary
-              complexity.
+              I work with founders and organizations who need systems built right - AI Agents, RAG Systems, Voice AI, and SaaS platforms that hold up under real usage.
             </p>
           </div>
 

@@ -336,7 +336,7 @@ export function ProjectsSection() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "24px" }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "20px" }}>
-              <div style={{ width: "28px", height: "1px", background: "#4a4844" }} />
+              {/* <div style={{ width: "28px", height: "1px", background: "#4a4844" }} /> */}
               <span style={{ fontSize: "12px", fontWeight: 500, color: "#b8b4ac", letterSpacing: "0.1em", textTransform: "uppercase" }}>Selected work</span>
             </div>
             <h2 style={{ fontSize: "clamp(28px, 3.8vw, 48px)", fontWeight: 300, lineHeight: 1.13, letterSpacing: "-0.02em", color: "#dedad2", margin: 0 }}>

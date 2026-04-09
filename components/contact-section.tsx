@@ -210,7 +210,7 @@ export function ContactSection({ onTalkToLiya }: ContactSectionProps) {
 
           {/* section header */}
           <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "20px" }}>
-            <div style={{ width: "28px", height: "1px", background: "#4a4844" }} />
+            {/* <div style={{ width: "28px", height: "1px", background: "#4a4844" }} /> */}
             <span style={{ fontSize: "12px", fontWeight: 500, color: "#b8b4ac", letterSpacing: "0.1em", textTransform: "uppercase" }}>
               Contact
             </span>
@@ -290,9 +290,9 @@ export function ContactSection({ onTalkToLiya }: ContactSectionProps) {
             <span style={{ fontSize: "13px", color: "#72706b" }}>
               Typical response within <span style={{ color: "#a8a49c" }}>1 hour</span> · No commitment required
             </span>
-            <span style={{ fontSize: "12px", color: "#4a4844", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+            {/* <span style={{ fontSize: "12px", color: "#4a4844", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               Based in Ethiopia · Available globally
-            </span>
+            </span> */}
           </div>
 
         </div>
