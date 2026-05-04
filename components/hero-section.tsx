@@ -240,7 +240,7 @@ export function HeroSection({ onTalkToLiya }: HeroSectionProps) {
           {/* CTA buttons */}
           <div className="cta-row">
             <Link
-              href="#contact"
+              href="https://calendly.com/derejeseifu3030/30min"
               className="inline-flex items-center gap-[7px] py-[13px] px-5 bg-[#dedad2] text-[#0c0c0c] text-[13px] font-semibold tracking-[0.05em] uppercase border border-[#dedad2] whitespace-nowrap leading-none transition-colors duration-[180ms] hover:bg-white hover:border-white"
             >
               Schedule a 15-min call
