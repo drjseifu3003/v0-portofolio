@@ -23,7 +23,7 @@ export function MobileMenu() {
       <SheetContent side="right" className="w-[300px] sm:w-[400px]">
         <nav className="flex flex-col gap-4 mt-8">
           <a
-            href="#about"
+            href="/about"
             className="px-4 py-2 text-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-md"
             onClick={handleLinkClick}
           >

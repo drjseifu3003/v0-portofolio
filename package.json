@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "clean": "node ./scripts/rm-next.js",
+    "dev": "next dev --turbo",
+    "dev:fresh": "npm run clean && next dev --turbo",
+    "dev:webpack": "npm run clean && next dev",
+    "dev:clean": "npm run clean && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

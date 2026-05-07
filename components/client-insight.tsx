@@ -1,6 +1,7 @@
 "use client"
 
-const TRAITS = [
+/** Recurring themes from LinkedIn / Upwork recommendations, shared with logo marquee */
+export const CLIENT_FEEDBACK_TRAITS: string[] = [
   "Committed to Quality",
   "Reliable",
   "Accountable for Outcomes",
@@ -10,6 +11,8 @@ const TRAITS = [
   "Professional",
   "Solution Oriented",
 ]
+
+const TRAITS = CLIENT_FEEDBACK_TRAITS
 
 // doubled for seamless loop
 const TICKER = [...TRAITS, ...TRAITS]
@@ -23,7 +26,7 @@ const VALUES = [
   {
     number: "02",
     title: "What teams get",
-    body: "A collaborator who owns the outcome — not just the task. I stay engaged from architecture to deployment, and I stay accountable when things need fixing.",
+    body: "A collaborator who owns the outcome, not just the task. I stay engaged from architecture to deployment, and I stay accountable when things need fixing.",
   },
   {
     number: "03",
@@ -124,7 +127,7 @@ export function ClientInsights() {
       {/* ── BODY ────────────────────────────────────── */}
       <div className="ci-body">
 
-        {/* LEFT — big statement */}
+        {/* LEFT, big statement */}
         <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
           {/* eyebrow */}
           <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
@@ -146,7 +149,7 @@ export function ClientInsights() {
             color: "#dedad2",
             margin: 0,
           }}>
-            The traits above aren't self-described —{" "}
+            The traits above aren't self-described  - {" "}
             <em style={{
               fontFamily: "'Instrument Serif', serif",
               fontStyle: "italic",
@@ -167,7 +170,7 @@ export function ClientInsights() {
             maxWidth: "480px",
             margin: 0,
           }}>
-            Recurring patterns across multiple projects and teams — not a list
+            Recurring patterns across multiple projects and teams, not a list
             I wrote about myself, but a summary of how people describe working with me.
           </p>
 
@@ -186,7 +189,7 @@ export function ClientInsights() {
           </a>
         </div>
 
-        {/* RIGHT — 3 value rows */}
+        {/* RIGHT, 3 value rows */}
         <div>
           {VALUES.map(({ number, title, body }) => (
             <div key={number} className="val-row">

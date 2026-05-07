@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] })
 /* ─── Site constants ──────────────────────────────────────────── */
 const SITE_URL  = "https://www.derejeseifu.vercel.app"
 const FULL_NAME = "Dereje Seifu"
-const TITLE     = "Dereje Seifu — Software Architect & AI Engineer"
+const TITLE     = "Dereje Seifu, Software Architect & AI Engineer"
 const DESC      = "Software Architect and Full-Stack Engineer specializing in AI Agents, RAG Systems, Voice AI, and SaaS platforms. I architect and build production-ready AI products for founders and organizations."
 const OG_IMAGE  = `${SITE_URL}/og_image.png`
 
@@ -19,7 +19,7 @@ const OG_IMAGE  = `${SITE_URL}/og_image.png`
 export const viewport: Viewport = {
   width:        "device-width",
   initialScale: 1,
-  themeColor:   "#0c0c0c",
+  themeColor:   "#fafaf9",
 }
 
 /* ─── Metadata ────────────────────────────────────────────────── */
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
         url:    OG_IMAGE,
         width:  1200,
         height: 630,
-        alt:    `${FULL_NAME} — Software Architect & AI Engineer portfolio`,
+        alt:    `${FULL_NAME}, Software Architect & AI Engineer portfolio`,
       },
     ],
   },
@@ -150,7 +150,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={inter.className} style={{ margin: 0, padding: 0, background: "#0c0c0c" }}>
+      <body className={inter.className} style={{ margin: 0, padding: 0, background: "#fafaf9", color: "#111827" }}>
         <JsonLd />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}

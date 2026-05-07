@@ -1,5 +1,5 @@
 /**
- * JsonLd — injects structured data (JSON-LD) into <head>
+ * JsonLd, injects structured data (JSON-LD) into <head>
  *
  * Place <JsonLd /> inside your root layout or page (server component).
  * Google uses this to power rich results, knowledge panels, and search features.
@@ -55,7 +55,7 @@ const websiteSchema = {
   "@id":             `${SITE_URL}/#website`,
   url:               SITE_URL,
   name:              FULL_NAME,
-  description:       "Portfolio of Dereje Seifu — Senior Full-Stack Engineer",
+  description:       "Portfolio of Dereje Seifu, Senior Full-Stack Engineer",
   publisher: {
     "@id": `${SITE_URL}/#person`,
   },
@@ -68,7 +68,7 @@ const webPageSchema = {
   "@type":        "ProfilePage",
   "@id":          `${SITE_URL}/#webpage`,
   url:            SITE_URL,
-  name:           `${FULL_NAME} — Senior Full-Stack Engineer`,
+  name:           `${FULL_NAME}, Senior Full-Stack Engineer`,
   description:    "Portfolio showcasing projects, testimonials, and engineering services by Dereje Seifu.",
   isPartOf: {
     "@id": `${SITE_URL}/#website`,
@@ -95,7 +95,7 @@ const professionalServiceSchema = {
   "@context":    "https://schema.org",
   "@type":        "ProfessionalService",
   "@id":          `${SITE_URL}/#service`,
-  name:           `${FULL_NAME} — Freelance Software Engineering`,
+  name:           `${FULL_NAME}, Freelance Software Engineering`,
   url:            SITE_URL,
   description:    "Freelance full-stack engineering services including web application development, SaaS products, API design, cloud infrastructure, and CI/CD implementation.",
   provider: {

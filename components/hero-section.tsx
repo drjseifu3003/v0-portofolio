@@ -1,349 +1,327 @@
 "use client"
 
-import { ArrowRight, Download, Mic } from "lucide-react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
+import { ArrowRight, Play } from "lucide-react"
 import Image from "next/image"
+import { isExternalUrl } from "@/lib/site"
+import { SpTrustPill } from "@/components/sp-trust-pill"
 
-const STATS = [
-  { value: "100,000+",  label: "Users on systems I have architected"  },
-  { value: "FDA-level",    label: "Healthcare platform compliance" },
-  { value: "24/7", label: "Voice AI running without staff"    },
-]
+const FULL_HEADLINE = "Turning ideas into production-ready software"
+const SUBTITLE =
+  "Software architect & AI engineer, I design and ship AI agents, RAG systems, voice products, and SaaS for founders and organizations."
 
-const STACK = [
-  "Next.js",
-  "TypeScript", 
-  "React",
-  "Node.js",
-  "NestJS",
-  "FastAPI",
-  "PostgreSQL",
-  "Supabase",
-  "AWS",
-  "Docker",
-  "Vapi",
-  "N8N",
-  "LangChain",
-  "RAG",
-  "AI Agents",
-  "Stripe",
-]
+/** Same collage PNGs as case study cards (`public/images/case-study/`) */
+const HERO_CENTER_POSTER = "/images/case-study/thumb-intuitysync.png"
+const HERO_SIDE_L_TOP = "/images/case-study/thumb-roasform.png"
+const HERO_SIDE_L_BOTTOM = "/images/case-study/thumb-healium-sono.png"
+const HERO_SIDE_R_TOP = "/images/case-study/thumb-healium-ckd.png"
+const HERO_SIDE_R_BOTTOM = "/images/case-study/thumb-ai-voice-receptionist.png"
 
-interface HeroSectionProps {
-  onTalkToLiya?: () => void
-}
+/** Optional: set NEXT_PUBLIC_HERO_VIDEO_URL */
+const HERO_VIDEO_SRC =
+  typeof process.env.NEXT_PUBLIC_HERO_VIDEO_URL === "string" && process.env.NEXT_PUBLIC_HERO_VIDEO_URL.trim().length > 0
+    ? process.env.NEXT_PUBLIC_HERO_VIDEO_URL.trim()
+    : ""
 
-export function HeroSection({ onTalkToLiya }: HeroSectionProps) {
+export function HeroSection() {
+  const [typed, setTyped] = useState("")
+  const [showCursor, setShowCursor] = useState(true)
+
+  useEffect(() => {
+    let i = 0
+    const id = window.setInterval(() => {
+      i++
+      setTyped(FULL_HEADLINE.slice(0, i))
+      if (i >= FULL_HEADLINE.length) {
+        window.clearInterval(id)
+        setShowCursor(false)
+      }
+    }, 38)
+    return () => window.clearInterval(id)
+  }, [])
+
+  const vslHref = process.env.NEXT_PUBLIC_VSL_PRIMARY_HREF ?? "/#contact"
+  const vslExternal = isExternalUrl(vslHref)
+
+  const mobileCtaStyle = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    padding: "11px 24px",
+    borderRadius: 999,
+    fontSize: 15,
+    fontWeight: 700,
+    letterSpacing: "-0.02em",
+    color: "#5b21b6",
+    textDecoration: "none",
+    background: "linear-gradient(180deg, #ede9fe 0%, #ddd6fe 100%)",
+    border: "1px solid rgba(124,58,237,0.35)",
+    boxShadow: "0 8px 24px rgba(124,58,237,0.22)",
+    maxWidth: 320,
+    justifyContent: "center",
+    boxSizing: "border-box" as const,
+  }
+
   return (
-    <section style={{
-      background: "#0c0c0c",
-      borderBottom: "1px solid #1e1e1c",
-      padding: "clamp(40px, 6vw, 64px) clamp(20px, 4vw, 36px) clamp(52px, 8vw, 88px)",
-    }}>
+    <section
+      id="about"
+      style={{
+        boxSizing: "border-box",
+        background: "linear-gradient(180deg, #fafaf9 0%, #ffffff 55%)",
+        borderBottom: "1px solid #e5e7eb",
+        padding: "clamp(24px, 4vw, 40px) 0 clamp(28px, 5vw, 52px)",
+      }}
+    >
       <style jsx>{`
-        .hi {
-          max-width: 1200px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 56px;
-          align-items: start;
+        @keyframes spBlink {
+          0%,
+          100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0;
+          }
         }
-        .hc { display: flex; flex-direction: column; gap: 40px; }
-        .hr { display: none; flex-direction: column; gap: 0; }
-
-        .sg {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          border: 1px solid #2a2826;
-          max-width: 550px;
+        .sp-cursor {
+          display: inline-block;
+          width: 3px;
+          height: 0.92em;
+          background: #1a1c1f;
+          margin-right: 5px;
+          vertical-align: text-bottom;
+          animation: spBlink 1s step-end infinite;
         }
-        .sc {
-          padding: 20px 18px;
-          border-right: 1px solid #2a2826;
-        }
-        .sc:last-child { border-right: none; }
-
-        .chip {
-          font-size: 12px;
-          color: #a8a49c;
-          letter-spacing: 0.04em;
-          padding: 6px 14px;
-          border: 1px solid #2a2826;
-          white-space: nowrap;
-          transition: color 0.2s, border-color 0.2s;
-        }
-        .chip:hover { color: #dedad2; border-color: #4a4844; }
-
-        /* Liya availability pill */
-        .avail-pill {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 6px 14px 6px 8px;
-          border: 1px solid #2a2826;
-          background: #111110;
-          width: fit-content;
-        }
-
-        .avail-dot {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background: #4caf7d;
-          box-shadow: 0 0 6px rgba(76,175,125,0.5);
-          animation: avPulse 2s ease-in-out infinite;
-          flex-shrink: 0;
-        }
-
-        @keyframes avPulse {
-          0%,100% { opacity: 1; }
-          50%      { opacity: 0.4; }
-        }
-
-        /* CTA row */
-        .cta-row {
+        /* Same width + horizontal padding as SiteHeader inner row (max 1200, clamp gutters) */
+        .hero-shell {
           display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          gap: 12px;
-          align-items: center;
+          flex-direction: column;
+          max-width: 1200px;
+          width: 100%;
+          margin: 0 auto;
+          padding: 0 clamp(16px, 4vw, 36px);
+          box-sizing: border-box;
+          text-align: center;
         }
-
-        /* Liya button */
-        .liya-btn {
+        /* Full nav content width, gallery uses full hero-shell inner width */
+        .hero-gallery {
+          display: grid;
+          grid-template-columns: minmax(88px, 1.2fr) minmax(0, 2.8fr) minmax(88px, 1.2fr);
+          gap: clamp(10px, 2vw, 18px);
+          width: 100%;
+          margin-top: clamp(12px, 2.5vw, 22px);
+          align-items: stretch;
+        }
+        .hero-side-col {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          min-height: 0;
+          height: 100%;
+          opacity: 0.92;
+        }
+        .hero-side-img {
+          position: relative;
+          flex: 1;
+          min-height: 0;
+          border-radius: 12px;
+          overflow: hidden;
+          border: 1px solid #e5e7eb;
+          box-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
+          background: #f3f4f6;
+          transform-origin: center;
+        }
+        .hero-center-slot {
+          position: relative;
+          width: 100%;
+          min-height: 200px;
+          aspect-ratio: 16 / 10;
+          border-radius: 16px;
+          overflow: hidden;
+          border: 3px solid #a78bfa;
+          box-shadow: 0 16px 44px rgba(124, 58, 237, 0.16);
+          background: #0f0a1a;
+        }
+        .hero-play {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          pointer-events: none;
+          z-index: 3;
+        }
+        .hero-play-btn {
+          width: clamp(52px, 8vw, 72px);
+          height: clamp(52px, 8vw, 72px);
+          border-radius: 999px;
+          background: rgba(124, 58, 237, 0.88);
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 14px 36px rgba(124, 58, 237, 0.4);
+        }
+        .hero-sound-pill {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          z-index: 4;
+          padding: 6px 10px;
+          border-radius: 999px;
+          background: rgba(17, 24, 39, 0.92);
+          color: #fff;
+          font-size: 10px;
+          font-weight: 600;
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          padding: 13px 20px;
-          font-size: 13px;
-          font-weight: 600;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-          color: #dedad2;
-          background: transparent;
-          border: 1px solid #2a2826;
-          cursor: pointer;
-          white-space: nowrap;
-          line-height: 1;
-          font-family: inherit;
-          transition: border-color 0.18s, background 0.18s, color 0.18s;
-          position: relative;
-          overflow: hidden;
+          gap: 4px;
+          pointer-events: none;
+          border: 1px solid rgba(255, 255, 255, 0.12);
         }
-
-        .liya-btn::before {
-          content: '';
-          position: absolute;
-          left: 0; top: 0; bottom: 0;
-          width: 2px;
-          background: #4caf7d;
+        @media (max-width: 1023px) {
+          .hero-side-col {
+            display: none !important;
+          }
+          .hero-gallery {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 12px;
+          }
+          .hero-center-slot {
+            width: 100%;
+            height: auto;
+            min-height: 180px;
+            aspect-ratio: 16 / 10;
+          }
         }
-
-        .liya-btn:hover {
-          border-color: #4a4844;
-          background: #111110;
-          color: #fff;
-        }
-
-        .liya-mic {
-          color: #4caf7d;
-          flex-shrink: 0;
-        }
-
         @media (min-width: 1024px) {
-          .hi { grid-template-columns: 1fr 340px; gap: 80px; }
-          .hr { display: flex !important; }
-        }
-
-        @media (max-width: 767px) {
-          .sg { max-width: 100%; }
-          .hc { gap: 28px; }
-          .cta-row { flex-direction: column; align-items: flex-start; }
-          .cta-row a, .cta-row button { width: 100%; justify-content: center; }
+          .hero-mob-only-cta {
+            display: none !important;
+          }
+          .hero-side-col-l .hero-side-img:first-child {
+            transform: scale(0.98) rotateY(6deg) translateX(-3px);
+          }
+          .hero-side-col-r .hero-side-img:first-child {
+            transform: scale(0.98) rotateY(-6deg) translateX(3px);
+          }
         }
       `}</style>
 
-      <div className="hi">
+      <div className="hero-shell">
+        <div className="hero-text">
+          <h1
+            style={{
+              fontSize: "clamp(26px, 3.8vw + 0.8rem, 42px)",
+              fontWeight: 800,
+              lineHeight: 1.05,
+              letterSpacing: "-0.03em",
+              color: "#1a1c1f",
+              margin: "0 auto 8px",
+              maxWidth: 920,
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              alignItems: "baseline",
+              gap: 0,
+            }}
+          >
+            {(showCursor || typed.length < FULL_HEADLINE.length) && <span className="sp-cursor" aria-hidden />}
+            <span>{typed}</span>
+          </h1>
 
-        {/* ══ LEFT ══ */}
-        <div className="hc">
+          <p
+            style={{
+              fontSize: "clamp(14px, 1.2vw + 0.65rem, 17px)",
+              color: "#6b7280",
+              lineHeight: 1.45,
+              maxWidth: 540,
+              margin: "0 auto 6px",
+              fontWeight: 400,
+            }}
+          >
+            {SUBTITLE}
+          </p>
 
-          {/* availability pill */}
-          <div className="avail-pill">
-            <div className="avail-dot" />
-            <span style={{ fontSize: "11px", color: "#72706b", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-              Available for new projects
-            </span>
+          <div style={{ marginTop: 14, display: "flex", justifyContent: "center", width: "100%" }}>
+            <SpTrustPill variant="hero" />
           </div>
 
-          {/* eyebrow */}
-          <div style={{ display: "flex", alignItems: "center", gap: "14px", marginTop: "-20px" }}>
-            {/* <div style={{ width: "28px", height: "1px", background: "#4a4844", flexShrink: 0 }} /> */}
-            <span style={{
-              fontSize: "13px", fontWeight: 500, color: "#b8b4ac",
-              letterSpacing: "0.08em", textTransform: "uppercase",
-            }}>
-              Software Architect & Full-Stack Engineer
-            </span>
-          </div>
+        </div>
 
-          {/* headline */}
-          <div style={{ marginTop: "-12px" }}>
-            <h1 style={{
-              fontSize: "clamp(36px, 5vw, 64px)",
-              fontWeight: 300,
-              lineHeight: 1.12,
-              letterSpacing: "-0.025em",
-              color: "#dedad2",
-              maxWidth: "700px",
-              margin: 0,
-            }}>
-              I architect and build {" "}
-              <em style={{
-                fontFamily: "'Instrument Serif', serif",
-                fontStyle: "italic",
-                fontWeight: 400,
-                color: "#c8c4bc",
-              }}>
-                full-stack
-              </em>{" "}
-              AI products from the first decision to production.
-            </h1>
-
-            <p style={{
-              marginTop: "24px",
-              fontSize: "clamp(15px, 2vw, 17px)",
-              lineHeight: "1.85",
-              color: "#a8a49c",
-              maxWidth: "520px",
-              fontWeight: 300,
-            }}>
-              I work with founders and organizations who need systems built right - AI Agents, RAG Systems, Voice AI, and SaaS platforms that hold up under real usage.
-            </p>
-          </div>
-
-          {/* stats */}
-          <div className="sg">
-            {STATS.map(s => (
-              <div key={s.label} className="sc">
-                <div style={{ fontSize: "24px", fontWeight: 500, color: "#dedad2", letterSpacing: "-0.02em", lineHeight: 1 }}>
-                  {s.value}
-                </div>
-                <div style={{ fontSize: "12px", color: "#72706b", marginTop: "7px", letterSpacing: "0.03em" }}>
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA buttons */}
-          <div className="cta-row">
-            <Link
-              href="https://calendly.com/derejeseifu3030/30min"
-              className="inline-flex items-center gap-[7px] py-[13px] px-5 bg-[#dedad2] text-[#0c0c0c] text-[13px] font-semibold tracking-[0.05em] uppercase border border-[#dedad2] whitespace-nowrap leading-none transition-colors duration-[180ms] hover:bg-white hover:border-white"
-            >
-              Schedule a 15-min call
-              <ArrowRight size={13} strokeWidth={2} />
-            </Link>
-
-            <Link
-              href="/Dereje_Seifu_Resume.pdf"
-              target="_blank"
-              download
-              className="inline-flex items-center gap-[7px] py-[13px] px-5 bg-transparent text-[#dedad2] text-[13px] font-semibold tracking-[0.05em] uppercase border border-[#2a2826] whitespace-nowrap leading-none transition-colors duration-[180ms] hover:border-[#dedad2]"
-            >
-              <Download size={13} strokeWidth={2} />
-              Download résumé
-            </Link>
-
-            {/* Liya button */}
-            {onTalkToLiya && (
-              <button className="liya-btn" onClick={onTalkToLiya}>
-                <Mic size={13} strokeWidth={2} className="liya-mic" />
-                Ask Liya
-              </button>
-            )}
-          </div>
-
-          {/* tech stack */}
-          <div>
-            <p style={{
-              fontSize: "11px", color: "#72706b",
-              letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "12px",
-            }}>
-              Stack
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-              {STACK.map(t => <span key={t} className="chip">{t}</span>)}
+        <div className="hero-gallery">
+          <div className="hero-side-col hero-side-col-l" aria-hidden>
+            <div className="hero-side-img">
+              <Image src={HERO_SIDE_L_TOP} alt="" fill sizes="(max-width: 1023px) 0, 24vw" style={{ objectFit: "cover" }} />
+            </div>
+            <div className="hero-side-img">
+              <Image src={HERO_SIDE_L_BOTTOM} alt="" fill sizes="(max-width: 1023px) 0, 24vw" style={{ objectFit: "cover", opacity: 0.95 }} />
             </div>
           </div>
 
-        </div>
-
-        {/* ══ RIGHT — portrait ══ */}
-        <div className="hr">
-          <div style={{
-            position: "relative",
-            width: "100%",
-            aspectRatio: "3 / 4",
-            overflow: "hidden",
-            background: "#161614",
-          }}>
-            <Image
-              src="/images/profile.jpeg"
-              alt="Dereje Seifu"
-              fill
-              priority
-              sizes="340px"
-              style={{ objectFit: "cover", filter: "grayscale(12%) contrast(1.04)" }}
-            />
-            {/* bottom fade */}
-            <div style={{
-              position: "absolute", inset: "auto 0 0 0",
-              height: "30%",
-              background: "linear-gradient(transparent, #0c0c0c)",
-              pointerEvents: "none",
-            }} />
-            {/* Liya badge overlaid on photo */}
-            {onTalkToLiya && (
-              <button
-                onClick={onTalkToLiya}
+          <div className="hero-center-slot">
+            <span className="hero-sound-pill">🔊 Tap for sound</span>
+            {HERO_VIDEO_SRC ? (
+              <video
+                key={HERO_VIDEO_SRC}
+                poster={HERO_CENTER_POSTER}
+                controls
+                playsInline
+                preload="metadata"
+                controlsList="nodownload"
                 style={{
-                  position: "absolute",
-                  bottom: "20px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  padding: "10px 18px",
-                  background: "rgba(12,12,12,0.92)",
-                  border: "1px solid #2a2826",
-                  cursor: "pointer",
-                  backdropFilter: "blur(8px)",
-                  whiteSpace: "nowrap",
-                  transition: "border-color 0.18s",
-                  fontFamily: "inherit",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                  background: "#0f0a1a",
                 }}
-                onMouseEnter={e => (e.currentTarget.style.borderColor = "#dedad2")}
-                onMouseLeave={e => (e.currentTarget.style.borderColor = "#2a2826")}
               >
-                <div style={{
-                  width: "6px", height: "6px", borderRadius: "50%",
-                  background: "#4caf7d",
-                  boxShadow: "0 0 6px rgba(76,175,125,0.5)",
-                  animation: "avPulse 2s ease-in-out infinite",
-                  flexShrink: 0,
-                }} />
-                <span style={{ fontSize: "11px", color: "#a8a49c", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                  Talk to Liya · My AI Assistant
-                </span>
-              </button>
+                <source src={HERO_VIDEO_SRC} />
+              </video>
+            ) : (
+              <>
+                <Image
+                  src={HERO_CENTER_POSTER}
+                  alt=""
+                  fill
+                  sizes="(max-width: 1023px) 95vw, (max-width: 1200px) 70vw, 800px"
+                  style={{ objectFit: "cover", backgroundColor: "#0f0a1a" }}
+                  priority
+                />
+                <div className="hero-play" aria-hidden>
+                  <div className="hero-play-btn">
+                    <Play size={28} fill="white" color="white" style={{ marginLeft: 4 }} />
+                  </div>
+                </div>
+              </>
             )}
+          </div>
+
+          <div className="hero-side-col hero-side-col-r" aria-hidden>
+            <div className="hero-side-img">
+              <Image src={HERO_SIDE_R_TOP} alt="" fill sizes="(max-width: 1023px) 0, 24vw" style={{ objectFit: "cover" }} />
+            </div>
+            <div className="hero-side-img">
+              <Image src={HERO_SIDE_R_BOTTOM} alt="" fill sizes="(max-width: 1023px) 0, 24vw" style={{ objectFit: "cover", opacity: 0.95 }} />
+            </div>
           </div>
         </div>
 
+        <div className="hero-mob-only-cta" style={{ marginTop: 8, display: "flex", justifyContent: "center", paddingBottom: 2 }}>
+          {vslExternal ? (
+            <a href={vslHref} style={mobileCtaStyle} target="_blank" rel="noopener noreferrer">
+              Get started
+              <ArrowRight size={18} strokeWidth={2} color="#5b21b6" />
+            </a>
+          ) : (
+            <Link href={vslHref} style={mobileCtaStyle}>
+              Get started
+              <ArrowRight size={18} strokeWidth={2} color="#5b21b6" />
+            </Link>
+          )}
+        </div>
       </div>
     </section>
   )

@@ -1,9 +1,15 @@
 "use client"
 
 import { useEffect, useRef, useState, useCallback } from "react"
-import Vapi from "@vapi-ai/web"
 
 type Status = "idle" | "connecting" | "active" | "ending"
+
+/** Minimal Vapi instance shape (loaded via dynamic import to avoid SSR / broken webpack chunks). */
+type VapiInstance = {
+  start: (assistantId: string) => void
+  stop: () => void
+  on: (event: string, handler: (...args: unknown[]) => void) => void
+}
 interface Msg { id: number; role: "assistant" | "user"; text: string; time: string }
 
 interface AIAssistantWidgetProps {
@@ -50,7 +56,8 @@ function FloatingButton({ onClick }: { onClick: () => void }) {
 }
 
 function AssistantModal({ onClose }: { onClose: () => void }) {
-  const vapiRef       = useRef<Vapi | null>(null)
+  const vapiRef       = useRef<VapiInstance | null>(null)
+  const [vapiReady, setVapiReady]   = useState(false)
   const [status, setStatus]         = useState<Status>("idle")
   const [messages, setMessages]     = useState<Msg[]>([])
   const [isSpeaking, setIsSpeaking] = useState(false)
@@ -80,28 +87,50 @@ function AssistantModal({ onClose }: { onClose: () => void }) {
   }, [animateBars])
 
   useEffect(() => {
-    vapiRef.current = new Vapi(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY!)
-    vapiRef.current.on("call-start", () => { setStatus("active"); setDuration(0); timerRef.current = setInterval(() => setDuration(d => d + 1), 1000) })
-    vapiRef.current.on("call-end", () => { setStatus("idle"); volRef.current = 0; setIsSpeaking(false); if (timerRef.current) clearInterval(timerRef.current) })
-    vapiRef.current.on("volume-level", (v: number) => { volRef.current = v })
-    vapiRef.current.on("speech-start", () => setIsSpeaking(true))
-    vapiRef.current.on("speech-end",   () => setIsSpeaking(false))
-    vapiRef.current.on("message", (msg: any) => {
-      if (msg.type === "transcript" && msg.transcriptType === "final") {
-        const time = new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: true })
-        setMessages(prev => [...prev, { id: msgIdRef.current++, role: msg.role, text: msg.transcript, time }])
-        setTimeout(() => transcriptRef.current?.scrollTo({ top: transcriptRef.current.scrollHeight, behavior: "smooth" }), 80)
-      }
-    })
-    return () => { vapiRef.current?.stop(); if (timerRef.current) clearInterval(timerRef.current) }
+    let cancelled = false
+    import("@vapi-ai/web")
+      .then((mod) => {
+        if (cancelled) return
+        const Vapi = mod.default
+        const key = process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY
+        if (!key) return
+        const vapi = new Vapi(key) as VapiInstance
+        vapiRef.current = vapi
+        setVapiReady(true)
+        vapi.on("call-start", () => { setStatus("active"); setDuration(0); timerRef.current = setInterval(() => setDuration(d => d + 1), 1000) })
+        vapi.on("call-end", () => { setStatus("idle"); volRef.current = 0; setIsSpeaking(false); if (timerRef.current) clearInterval(timerRef.current) })
+        vapi.on("volume-level", (v: unknown) => { volRef.current = typeof v === "number" ? v : 0 })
+        vapi.on("speech-start", () => setIsSpeaking(true))
+        vapi.on("speech-end",   () => setIsSpeaking(false))
+        vapi.on("message", (msg: { type?: string; transcriptType?: string; role: Msg["role"]; transcript: string }) => {
+          if (msg.type === "transcript" && msg.transcriptType === "final") {
+            const time = new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: true })
+            setMessages(prev => [...prev, { id: msgIdRef.current++, role: msg.role, text: msg.transcript, time }])
+            setTimeout(() => transcriptRef.current?.scrollTo({ top: transcriptRef.current.scrollHeight, behavior: "smooth" }), 80)
+          }
+        })
+      })
+      .catch(() => { setVapiReady(false) })
+    return () => {
+      cancelled = true
+      vapiRef.current?.stop()
+      vapiRef.current = null
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
   }, [])
 
   const toggle = () => {
-    if (status === "active") { setStatus("ending"); vapiRef.current?.stop() }
-    else if (status === "idle") { setStatus("connecting"); setMessages([]); vapiRef.current?.start(process.env.NEXT_PUBLIC_VAPI_ASSISTANT_ID!) }
+    if (!vapiRef.current || !vapiReady) return
+    if (status === "active") { setStatus("ending"); vapiRef.current.stop() }
+    else if (status === "idle") {
+      const id = process.env.NEXT_PUBLIC_VAPI_ASSISTANT_ID
+      if (!id) return
+      setStatus("connecting"); setMessages([]); vapiRef.current.start(id)
+    }
   }
 
   const handleClose = () => { if (status === "active" || status === "connecting") vapiRef.current?.stop(); onClose() }
+  const callDisabled = !vapiReady || status === "connecting" || status === "ending"
   const fmt = (s: number) => `${Math.floor(s/60).toString().padStart(2,"0")}:${(s%60).toString().padStart(2,"0")}`
 
   return (
@@ -212,7 +241,7 @@ function AssistantModal({ onClose }: { onClose: () => void }) {
             <div className="mo-orb">
               <div className={`mo-orbit mo-o2 ${status === "active" ? "active" : ""}`} />
               <div className={`mo-orbit mo-o1 ${status === "active" ? "active" : ""}`} />
-              <button className={`mo-btn ${status}`} onClick={toggle} disabled={status === "connecting" || status === "ending"}>
+              <button className={`mo-btn ${status}`} onClick={toggle} disabled={callDisabled}>
                 <span className="mo-bi">
                   {status === "idle" && "◎"}
                   {(status === "connecting" || status === "ending") && "◌"}
@@ -225,7 +254,7 @@ function AssistantModal({ onClose }: { onClose: () => void }) {
               </button>
             </div>
             <div className={`mo-cst ${status}`}>
-              {status === "idle"       && "Ask about services, availability, or book a call"}
+              {status === "idle"       && (vapiReady ? "Ask about services, availability, or book a call" : "Loading voice client…")}
               {status === "connecting" && "Connecting to Liya…"}
               {status === "active"     && `Live · ${fmt(duration)}`}
               {status === "ending"     && "Ending session…"}
