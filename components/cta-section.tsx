@@ -1,7 +1,7 @@
 "use client"
 
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
+import { PROFILE_UPWORK } from "@/lib/site"
 
 export function CTASection() {
   return (
@@ -26,8 +26,10 @@ export function CTASection() {
             position: "relative",
           }}
         >
-          <Link
-            href="/#contact"
+          <a
+            href={PROFILE_UPWORK}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               position: "relative",
               display: "inline-flex",
@@ -39,14 +41,14 @@ export function CTASection() {
               fontWeight: 700,
               color: "#fff",
               textDecoration: "none",
-              background: "linear-gradient(180deg, #a78bfa 0%, #7c3aed 100%)",
-              boxShadow: "0 12px 40px rgba(124,58,237,0.45)",
-              border: "1px solid rgba(255,255,255,0.2)",
+              background: "linear-gradient(165deg, #16c713 0%, #14a800 42%, #118f00 100%)",
+              boxShadow: "0 12px 40px rgba(20,168,0,0.45), inset 0 1px 0 rgba(255,255,255,0.2)",
+              border: "1px solid rgba(255,255,255,0.25)",
             }}
           >
-            Get started
-            <ArrowRight size={20} strokeWidth={2} />
-          </Link>
+            Hire me on Upwork
+            <ArrowUpRight size={20} strokeWidth={2.25} aria-hidden />
+          </a>
         </div>
       </div>
     </section>

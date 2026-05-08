@@ -52,11 +52,11 @@ export function SpTrustPill({
   )
 
   const upworkEl = profileLinks ? (
-    <a href={PROFILE_UPWORK} target="_blank" rel="noopener noreferrer" style={{ ...platformLinkBase, color: "#14a800" }}>
+    <a href={PROFILE_UPWORK} target="_blank" rel="noopener noreferrer" style={{ ...platformLinkBase, color: "hsl(var(--primary))" }}>
       Upwork
     </a>
   ) : (
-    <span style={{ fontWeight: 700, color: "#14a800" }}>Upwork</span>
+    <span style={{ fontWeight: 700, color: "hsl(var(--primary))" }}>Upwork</span>
   )
 
   return (
@@ -69,26 +69,26 @@ export function SpTrustPill({
         gap: compact ? "6px 10px" : "8px 14px",
         padding: compact ? "10px 20px" : "12px 24px",
         borderRadius: 999,
-        background: "#111827",
-        color: "#fff",
+        background: "hsl(var(--brand-footer))",
+        color: "hsl(var(--brand-canvas-bright))",
         fontSize: compact ? 12 : 13,
         fontWeight: 500,
-        boxShadow: "0 12px 40px rgba(17,24,39,0.2)",
+        boxShadow: "0 12px 40px hsl(var(--brand-footer) / 0.35)",
       }}
     >
-      <span style={{ color: "#fff", fontWeight: 600 }}>Excellent</span>
+      <span style={{ color: "hsl(var(--brand-canvas-bright))", fontWeight: 600 }}>Excellent</span>
       <Stars size={compact ? 12 : 14} />
       {!mobileSimple ? (
-        <span style={{ color: "#e5e7eb", fontWeight: 400 }}>
+        <span style={{ color: "hsl(var(--brand-footer-fg))", fontWeight: 400 }}>
           {heroRatingCopy ? (
             <>
-              5.0 out of 5 <span style={{ color: "#9ca3af" }}>based on</span>
-              <span style={{ color: "#fff", fontWeight: 600 }}> 10+ reviews</span>
+              5.0 out of 5 <span style={{ color: "hsl(var(--brand-footer-fg) / 0.75)" }}>based on</span>
+              <span style={{ color: "hsl(var(--brand-canvas-bright))", fontWeight: 600 }}> 10+ reviews</span>
             </>
           ) : (
             <>
-              4.9 out of 5 <span style={{ color: "#9ca3af" }}>based on</span>
-              <span style={{ color: "#fff", fontWeight: 600 }}> 50+ reviews</span>
+              4.9 out of 5 <span style={{ color: "hsl(var(--brand-footer-fg) / 0.75)" }}>based on</span>
+              <span style={{ color: "hsl(var(--brand-canvas-bright))", fontWeight: 600 }}> 50+ reviews</span>
             </>
           )}
         </span>

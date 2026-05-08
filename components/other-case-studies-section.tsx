@@ -13,10 +13,10 @@ export function OtherCaseStudiesSection({ excludeSlug }: { excludeSlug: string }
   return (
     <section
       style={{
-        background: "#fafaf9",
+        background: "hsl(var(--background))",
         borderTop: "1px solid #e5e7eb",
-        padding: "clamp(48px, 7vw, 88px) 0 clamp(56px, 8vw, 96px)",
-        marginTop: "clamp(32px, 5vw, 48px)",
+        padding: "clamp(28px, 5vw, 52px) 0 clamp(48px, 7vw, 80px)",
+        marginTop: "clamp(12px, 2.5vw, 24px)",
         marginLeft: "calc(-1 * clamp(20px, 4vw, 36px))",
         marginRight: "calc(-1 * clamp(20px, 4vw, 36px))",
         paddingLeft: "clamp(20px, 4vw, 36px)",
@@ -31,7 +31,7 @@ export function OtherCaseStudiesSection({ excludeSlug }: { excludeSlug: string }
             textAlign: "center",
             fontSize: "clamp(26px, 3.6vw, 40px)",
             fontWeight: 700,
-            color: "#111827",
+            color: "hsl(var(--foreground))",
             letterSpacing: "-0.03em",
             margin: "0 0 clamp(32px, 4.5vw, 44px)",
             lineHeight: 1.15,

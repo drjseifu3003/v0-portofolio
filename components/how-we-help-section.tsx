@@ -1,8 +1,7 @@
 "use client"
 
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { isExternalUrl } from "@/lib/site"
+import { ArrowUpRight } from "lucide-react"
+import { PROFILE_UPWORK } from "@/lib/site"
 
 const STEPS = [
   {
@@ -26,13 +25,10 @@ const STEPS = [
 ] as const
 
 export function HowWeHelpSection() {
-  const ctaHref = process.env.NEXT_PUBLIC_VSL_PRIMARY_HREF ?? "/#contact"
-  const ctaExternal = isExternalUrl(ctaHref)
-
   const ctaInner = (
     <>
-      Get started
-      <ArrowRight size={18} strokeWidth={2} color="#5b21b6" />
+      Hire me on Upwork
+      <ArrowUpRight size={18} strokeWidth={2.25} color="#ffffff" aria-hidden />
     </>
   )
 
@@ -46,11 +42,11 @@ export function HowWeHelpSection() {
     fontSize: 16,
     fontWeight: 700,
     letterSpacing: "-0.02em",
-    color: "#5b21b6",
+    color: "#ffffff",
     textDecoration: "none",
-    background: "linear-gradient(180deg, #ede9fe 0%, #ddd6fe 100%)",
-    border: "1px solid rgba(124, 58, 237, 0.3)",
-    boxShadow: "0 8px 28px rgba(124, 58, 237, 0.2)",
+    background: "linear-gradient(165deg, #16c713 0%, #14a800 42%, #118f00 100%)",
+    border: "1px solid rgba(255, 255, 255, 0.22)",
+    boxShadow: "0 8px 28px rgba(20, 168, 0, 0.32)",
   } as const
 
   return (
@@ -172,15 +168,9 @@ export function HowWeHelpSection() {
         </div>
 
         <div style={{ marginTop: 48 }}>
-          {ctaExternal ? (
-            <a href={ctaHref} style={ctaStyle} target="_blank" rel="noopener noreferrer">
-              {ctaInner}
-            </a>
-          ) : (
-            <Link href={ctaHref} style={ctaStyle}>
-              {ctaInner}
-            </Link>
-          )}
+          <a href={PROFILE_UPWORK} style={ctaStyle} target="_blank" rel="noopener noreferrer">
+            {ctaInner}
+          </a>
         </div>
       </div>
     </section>

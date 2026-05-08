@@ -2,18 +2,15 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, Linkedin } from "lucide-react"
 import { AIAssistantWidget } from "@/components/ai-assistant-widget"
+import { PROFILE_LINKEDIN, PROFILE_UPWORK } from "@/lib/site"
 
 /** Scaling Process aligns mobile drawer to top-[64px] */
 export const SITE_HEADER_H = 64 as const
 
 const HEADER_H = SITE_HEADER_H
 const LG_BREAKPOINT = 1024
-
-function isExternalUrl(href: string) {
-  return /^https?:\/\//i.test(href)
-}
 
 function LogoMark() {
   return (
@@ -23,11 +20,11 @@ function LogoMark() {
           width: 34,
           height: 34,
           borderRadius: 11,
-          background: "linear-gradient(145deg, #a78bfa 0%, #7c3aed 100%)",
+          background: `linear-gradient(145deg, hsl(var(--brand-logo-from)) 0%, hsl(var(--brand-logo-to)) 100%)`,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: "#fff",
+          color: "hsl(var(--primary-foreground))",
           fontSize: 15,
           fontWeight: 800,
           boxShadow: "0 6px 18px rgba(124,58,237,0.35)",
@@ -36,7 +33,7 @@ function LogoMark() {
       >
         DS
       </span>
-      <span style={{ fontSize: 16, fontWeight: 800, color: "#111827", letterSpacing: "-0.03em" }}>
+      <span style={{ fontSize: 16, fontWeight: 800, color: "hsl(var(--foreground))", letterSpacing: "-0.03em" }}>
         Dereje Seifu
       </span>
     </span>
@@ -49,14 +46,6 @@ export function SiteHeader() {
   const [mob, setMob] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [liyaOpen, setLiyaOpen] = useState(false)
-
-  const HIRE_URL =
-    typeof process.env.NEXT_PUBLIC_HIRE_URL === "string" && process.env.NEXT_PUBLIC_HIRE_URL.length > 0
-      ? process.env.NEXT_PUBLIC_HIRE_URL
-      : "/#contact"
-  const hireExternal = isExternalUrl(HIRE_URL)
-  const vslHref = process.env.NEXT_PUBLIC_VSL_PRIMARY_HREF ?? "/#contact"
-  const vslExternal = isExternalUrl(vslHref)
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 4)
@@ -101,8 +90,8 @@ export function SiteHeader() {
           inset: "0 0 auto 0",
           zIndex: 300,
           height: HEADER_H,
-          background: scrolled ? "rgba(255,255,255,0.92)" : "#ffffff",
-          borderBottom: "1px solid #e5e7eb",
+          background: scrolled ? "hsl(var(--card) / 0.92)" : "hsl(var(--card))",
+          borderBottom: "1px solid hsl(var(--border))",
           backdropFilter: scrolled ? "blur(14px)" : "none",
           boxShadow: scrolled ? "0 8px 32px rgba(15,23,42,0.06)" : "none",
           transition: "background 0.25s, box-shadow 0.25s",
@@ -135,13 +124,13 @@ export function SiteHeader() {
               minWidth: 0,
             }}
           >
-            <Link href="/" style={{ fontSize: 15, fontWeight: 600, color: "#4b5563", textDecoration: "none" }}>
+            <Link href="/" style={{ fontSize: 15, fontWeight: 600, color: "hsl(var(--muted-foreground))", textDecoration: "none" }}>
               Home
             </Link>
-            <Link href="/case-study" style={{ fontSize: 15, fontWeight: 600, color: "#4b5563", textDecoration: "none" }}>
+            <Link href="/case-study" style={{ fontSize: 15, fontWeight: 600, color: "hsl(var(--muted-foreground))", textDecoration: "none" }}>
               My work
             </Link>
-            <Link href="/about" style={{ fontSize: 15, fontWeight: 600, color: "#4b5563", textDecoration: "none" }}>
+            <Link href="/about" style={{ fontSize: 15, fontWeight: 600, color: "hsl(var(--muted-foreground))", textDecoration: "none" }}>
               About me
             </Link>
           </nav>
@@ -152,9 +141,10 @@ export function SiteHeader() {
               justifySelf: "end",
               display: "flex",
               alignItems: "center",
-              gap: 0,
-              flexWrap: "nowrap",
+              gap: 10,
+              flexWrap: "wrap",
               minWidth: 0,
+              justifyContent: "flex-end",
             }}
           >
           <button
@@ -167,14 +157,13 @@ export function SiteHeader() {
               padding: "9px 12px",
               fontSize: 13,
               fontWeight: 600,
-              color: "#047857",
-              background: "#ecfdf5",
-              border: "1px solid #a7f3d0",
+              color: "hsl(var(--primary))",
+              background: "hsl(var(--brand-primary-soft))",
+              border: "1px solid hsl(var(--primary) / 0.28)",
               borderRadius: 999,
               cursor: "pointer",
               whiteSpace: "nowrap",
               fontFamily: "inherit",
-              marginRight: 10,
               display: "flex",
             }}
           >
@@ -183,102 +172,70 @@ export function SiteHeader() {
                 width: 6,
                 height: 6,
                 borderRadius: "50%",
-                background: "#10b981",
+                background: "hsl(var(--primary))",
                 boxShadow: "0 0 6px rgba(16,185,129,0.5)",
               }}
             />
             Ask Liya
           </button>
 
-          {vslExternal ? (
-            <a
-              href={vslHref}
-              className="sp-hdr-started"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                alignItems: "center",
-                gap: 8,
-                padding: "10px 18px",
-                borderRadius: 999,
-                background: "#111827",
-                color: "#fff",
-                fontSize: 14,
-                fontWeight: 600,
-                textDecoration: "none",
-                whiteSpace: "nowrap",
-                border: "2px solid #111827",
-                display: "flex",
-              }}
-            >
-              Get started
-              <ArrowRight size={16} strokeWidth={2.2} />
-            </a>
-          ) : (
-            <Link
-              href={vslHref}
-              className="sp-hdr-started"
-              style={{
-                alignItems: "center",
-                gap: 8,
-                padding: "10px 18px",
-                borderRadius: 999,
-                background: "#111827",
-                color: "#fff",
-                fontSize: 14,
-                fontWeight: 600,
-                textDecoration: "none",
-                whiteSpace: "nowrap",
-                border: "2px solid #111827",
-                display: "flex",
-              }}
-            >
-              Get started
-              <ArrowRight size={16} strokeWidth={2.2} />
-            </Link>
-          )}
+          <a
+            href={PROFILE_LINKEDIN}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="sp-hdr-li"
+            style={{
+              alignItems: "center",
+              gap: 7,
+              padding: "8px 14px",
+              borderRadius: 999,
+              fontSize: 13,
+              fontWeight: 600,
+              letterSpacing: "-0.015em",
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+              display: "inline-flex",
+              color: "#0A66C2",
+              background: "#fff",
+              border: "1.5px solid #0A66C2",
+              boxShadow: "0 1px 0 rgba(10,102,194,0.06), 0 2px 12px rgba(10,102,194,0.08)",
+              fontFamily: "inherit",
+              transition: "background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease",
+            }}
+            title="Dereje on LinkedIn"
+          >
+            <Linkedin width={17} height={17} strokeWidth={2} aria-hidden />
+            LinkedIn
+          </a>
 
-          {hireExternal ? (
-            <a
-              href={HIRE_URL}
-              className="sp-hdr-hire"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                alignItems: "center",
-                gap: 4,
-                marginLeft: 8,
-                fontSize: 13,
-                fontWeight: 600,
-                color: "#7c3aed",
-                textDecoration: "none",
-                whiteSpace: "nowrap",
-                display: "flex",
-              }}
-            >
-              Hire
-              <ArrowUpRight size={14} />
-            </a>
-          ) : (
-            <Link
-              href={HIRE_URL}
-              className="sp-hdr-hire"
-              style={{
-                alignItems: "center",
-                gap: 4,
-                marginLeft: 8,
-                fontSize: 13,
-                fontWeight: 600,
-                color: "#7c3aed",
-                textDecoration: "none",
-                whiteSpace: "nowrap",
-                display: "flex",
-              }}
-            >
-              Hire
-              <ArrowUpRight size={14} />
-            </Link>
-          )}
+          <a
+            href={PROFILE_UPWORK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="sp-hdr-uw"
+            style={{
+              alignItems: "center",
+              gap: 6,
+              padding: "8px 15px",
+              borderRadius: 999,
+              fontSize: 13,
+              fontWeight: 600,
+              letterSpacing: "-0.02em",
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+              display: "inline-flex",
+              fontFamily: "inherit",
+              color: "hsl(var(--primary-foreground))",
+              background: "linear-gradient(165deg, hsl(158 58% 40%) 0%, hsl(var(--brand-primary)) 48%, hsl(158 62% 32%) 100%)",
+              border: "1px solid rgba(255,255,255,0.25)",
+              boxShadow: "0 4px 14px rgba(20,168,0,0.35), inset 0 1px 0 rgba(255,255,255,0.2)",
+              transition: "filter 0.15s ease, transform 0.15s ease",
+            }}
+            title="Upwork profile"
+          >
+            Upwork
+            <ArrowUpRight width={15} height={15} strokeWidth={2.25} aria-hidden />
+          </a>
 
           <button
             className="sp-hdr-burger"
@@ -299,19 +256,37 @@ export function SiteHeader() {
               display: "none",
             }}
           >
-            <span style={{ width: 22, height: 2, background: "#1a1c1f", borderRadius: 1 }} />
-            <span style={{ width: 22, height: 2, background: "#1a1c1f", borderRadius: 1 }} />
-            <span style={{ width: 22, height: 2, background: "#1a1c1f", borderRadius: 1 }} />
+            <span style={{ width: 22, height: 2, background: "hsl(var(--foreground))", borderRadius: 1 }} />
+            <span style={{ width: 22, height: 2, background: "hsl(var(--foreground))", borderRadius: 1 }} />
+            <span style={{ width: 22, height: 2, background: "hsl(var(--foreground))", borderRadius: 1 }} />
           </button>
           </div>
         </div>
       </header>
 
       <style jsx global>{`
+        .sp-hdr-li:hover {
+          background: #f0f9ff !important;
+          border-color: #084d8a !important;
+          box-shadow:
+            0 2px 4px rgba(10, 102, 194, 0.1),
+            0 6px 20px rgba(10, 102, 194, 0.12) !important;
+        }
+        .sp-hdr-uw:hover {
+          filter: brightness(1.05);
+          box-shadow:
+            0 6px 18px rgba(20, 168, 0, 0.42),
+            inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+        }
+        .sp-hdr-uw:active {
+          filter: brightness(0.96);
+          transform: scale(0.99);
+        }
+
         @media (min-width: 1024px) {
           .sp-hdr-nav,
-          .sp-hdr-started,
-          .sp-hdr-hire,
+          .sp-hdr-li,
+          .sp-hdr-uw,
           .sp-hdrliya {
             display: flex !important;
           }
@@ -321,8 +296,8 @@ export function SiteHeader() {
         }
         @media (max-width: 1023px) {
           .sp-hdr-nav,
-          .sp-hdr-started,
-          .sp-hdr-hire,
+          .sp-hdr-li,
+          .sp-hdr-uw,
           .sp-hdrliya {
             display: none !important;
           }
@@ -342,8 +317,8 @@ export function SiteHeader() {
           bottom: 0,
           top: HEADER_H,
           zIndex: 200,
-          background: "#fafaf9",
-          borderTop: "1px solid #e5e7eb",
+          background: "hsl(var(--background))",
+          borderTop: "1px solid hsl(var(--border))",
           display: "flex",
           flexDirection: "column",
           overflowY: "auto",
@@ -371,7 +346,7 @@ export function SiteHeader() {
                 lineHeight: "28px",
                 fontWeight: 600,
                 letterSpacing: "-1px",
-                color: "#000",
+                color: "hsl(var(--foreground))",
                 height: 36,
                 display: "flex",
                 alignItems: "center",
@@ -388,7 +363,7 @@ export function SiteHeader() {
                 lineHeight: "28px",
                 fontWeight: 600,
                 letterSpacing: "-1px",
-                color: "#000",
+                color: "hsl(var(--foreground))",
                 height: 36,
                 display: "flex",
                 alignItems: "center",
@@ -405,7 +380,7 @@ export function SiteHeader() {
                 lineHeight: "28px",
                 fontWeight: 600,
                 letterSpacing: "-1px",
-                color: "#000",
+                color: "hsl(var(--foreground))",
                 height: 36,
                 display: "flex",
                 alignItems: "center",
@@ -425,7 +400,7 @@ export function SiteHeader() {
                 lineHeight: "28px",
                 fontWeight: 600,
                 letterSpacing: "-1px",
-                color: "#059669",
+                color: "hsl(var(--primary))",
                 height: 36,
                 display: "flex",
                 alignItems: "center",
@@ -441,73 +416,63 @@ export function SiteHeader() {
             </button>
           </div>
 
-          {vslExternal ? (
+          <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: 12, paddingTop: 8 }}>
             <a
-              href={vslHref}
+              href={PROFILE_LINKEDIN}
               onClick={() => setMob(false)}
-              className="btn-cta-dark"
-              style={{
-                marginTop: "auto",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 8,
-                width: "100%",
-                height: 52,
-                borderRadius: 999,
-                background: "#111827",
-                border: "2px solid #111827",
-                textDecoration: "none",
-              }}
               target="_blank"
               rel="noopener noreferrer"
-            >
-              <span style={{ fontSize: 18, lineHeight: "24px", fontWeight: 600, letterSpacing: "-0.36px", color: "#fff" }}>
-                Get started
-              </span>
-              <svg width={24} height={24} viewBox="0 0 28 28" fill="none" aria-hidden>
-                <path
-                  d="M5.833 14h16.334M14.583 6.417L22.167 14l-7.584 7.583"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-          ) : (
-            <Link
-              href={vslHref}
-              onClick={() => setMob(false)}
-              className="btn-cta-dark"
               style={{
-                marginTop: "auto",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 10,
+                width: "100%",
+                minHeight: 52,
+                borderRadius: 999,
+                textDecoration: "none",
+                fontSize: 16,
+                fontWeight: 700,
+                letterSpacing: "-0.02em",
+                color: "#0A66C2",
+                background: "#fff",
+                border: "2px solid #0A66C2",
+                boxSizing: "border-box",
+                boxShadow: "0 4px 16px rgba(10,102,194,0.12)",
+              }}
+            >
+              <Linkedin width={20} height={20} strokeWidth={2} aria-hidden />
+              LinkedIn
+            </a>
+
+            <a
+              href={PROFILE_UPWORK}
+              onClick={() => setMob(false)}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center",
                 gap: 8,
                 width: "100%",
-                height: 52,
+                minHeight: 52,
                 borderRadius: 999,
-                background: "#111827",
-                border: "2px solid #111827",
                 textDecoration: "none",
+                fontSize: 16,
+                fontWeight: 700,
+                letterSpacing: "-0.025em",
+                color: "hsl(var(--primary-foreground))",
+                border: "1px solid rgba(255,255,255,0.25)",
+                boxSizing: "border-box",
+                background: "linear-gradient(165deg, hsl(158 58% 40%) 0%, hsl(var(--brand-primary)) 48%, hsl(158 62% 32%) 100%)",
+                boxShadow: "0 6px 20px rgba(20,168,0,0.35), inset 0 1px 0 rgba(255,255,255,0.2)",
               }}
             >
-              <span style={{ fontSize: 18, lineHeight: "24px", fontWeight: 600, letterSpacing: "-0.36px", color: "#fff" }}>
-                Get started
-              </span>
-              <svg width={24} height={24} viewBox="0 0 28 28" fill="none" aria-hidden>
-                <path
-                  d="M5.833 14h16.334M14.583 6.417L22.167 14l-7.584 7.583"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
-          )}
+              Upwork
+              <ArrowUpRight width={20} height={20} strokeWidth={2.25} aria-hidden />
+            </a>
+          </div>
         </div>
       </div>
 

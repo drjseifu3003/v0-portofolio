@@ -3,14 +3,11 @@ import type { CSSProperties } from "react"
 import Link from "next/link"
 import { CaseStudyImageViewer } from "@/components/case-study-image-viewer"
 import { notFound } from "next/navigation"
-import { ArrowUpRight } from "lucide-react"
 import type { Metric, Study } from "../data"
 import { getStudyBySlug, studies } from "../data"
-import { CaseStudyToc, type CaseStudyTocEntry } from "@/components/case-study-toc"
 import { SiteFooter } from "@/components/site-footer"
 import { OtherCaseStudiesSection } from "@/components/other-case-studies-section"
 import { SiteHeader, SITE_HEADER_H } from "@/components/site-header"
-import { HIRE_URL, isExternalUrl } from "@/lib/site"
 import styles from "@/app/case-study/case-study-sp.module.css"
 import { TrafficChartSvg } from "@/app/case-study/traffic-chart-svg"
 
@@ -39,7 +36,6 @@ function estimateReadMinutes(study: Study): number {
     ...study.whatIBuilt,
     ...study.resultBullets,
     study.testimonial,
-    study.meaning,
     ...(study.whatsNext ?? []),
   ].join(" ")
   const words = blob.trim().split(/\s+/).filter(Boolean).length
@@ -47,25 +43,6 @@ function estimateReadMinutes(study: Study): number {
 }
 
 
-
-function buildTocEntries(study: Study): CaseStudyTocEntry[] {
-  const items: CaseStudyTocEntry[] = [
-    { id: "intro", label: "Intro" },
-    { id: "numbers", label: "The numbers" },
-    { id: "impact", label: "Impact" },
-    { id: "opportunity", label: "Opportunity" },
-  ]
-  if (study.timeline?.length) items.push({ id: "timeline", label: "Timeline" })
-  items.push({ id: "delivery", label: "What I built" }, { id: "stack", label: "Stack" })
-  if (study.compliance?.length) items.push({ id: "compliance", label: "Compliance" })
-  items.push(
-    { id: "insights", label: "Insights" },
-    { id: "testimonial", label: "Proof" },
-    { id: "takeaway", label: "Advice" },
-  )
-  if (study.whatsNext?.length) items.push({ id: "next", label: "What's next" })
-  return items
-}
 
 function StatGridRows({ metricRows }: { metricRows: Metric[][] }) {
   return (
@@ -123,18 +100,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-function meaningParagraphs(study: Study): string[] {
-  const chunks = study.meaning
-    .split(/\n\s*\n+/)
-    .map(s => s.trim())
-    .filter(Boolean)
-  return chunks.length ? chunks : [study.meaning]
-}
-
 export default async function CaseStudyDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const study = getStudyBySlug(slug)
-  const hireExternal = isExternalUrl(HIRE_URL)
 
   if (!study) notFound()
 
@@ -144,7 +112,6 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
   const chartLead = study.results.slice(0, 3)
   const insightsTitle = study.insightsSection?.title ?? "Beyond The Headline Metrics"
   const insightsParas = study.insightsSection?.paragraphs ?? study.resultBullets
-  const tocEntries = buildTocEntries(study)
   const galleryUrls = study.gallery?.length ? study.gallery : study.image ? [study.image] : []
 
   const vars = {
@@ -182,34 +149,37 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
             </Link>
           </div>
 
-          <div className={styles.layout}>
-            <div id="case-study-scroll" className={styles.mainScroller}>
+          <div className={styles.caseStudyMain}>
+          <div className={styles.mainColumn}>
               <div className={styles.main}>
               <article itemScope itemType="https://schema.org/Article">
                 <meta itemProp="headline" content={study.title} />
                 <meta itemProp="description" content={study.subtitle} />
 
-                <p className={styles.tag}>{eyebrow}</p>
+                <header className={styles.masthead}>
+                  <p className={styles.tag}>{eyebrow}</p>
 
-                <h1 className={styles.h1}>{study.title}</h1>
+                  <h1 className={styles.h1}>{study.title}</h1>
 
-                <p className={styles.subtitle}>{study.subtitle}</p>
+                  <p className={styles.subtitle}>{study.subtitle}</p>
 
-                <div className={styles.meta}>
-                  <span>Dereje Seifu</span>
-                  <span aria-hidden="true">·</span>
-                  <span>{readMin} min read</span>
-                  {study.publishedAt ? (
-                    <>
-                      <span aria-hidden="true">·</span>
-                      <span>{study.publishedAt}</span>
-                    </>
-                  ) : null}
-                </div>
+                  <div className={styles.meta}>
+                    <span>Dereje Seifu</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{readMin} min read</span>
+                    {study.publishedAt ? (
+                      <>
+                        <span aria-hidden="true">·</span>
+                        <span>{study.publishedAt}</span>
+                      </>
+                    ) : null}
+                  </div>
+                </header>
 
-                {galleryUrls.length > 0 ? <CaseStudyImageViewer images={galleryUrls} /> : null}
+                <div className={styles.articleSheet}>
+                  {galleryUrls.length > 0 ? <CaseStudyImageViewer images={galleryUrls} /> : null}
 
-                <div className={styles.prose}>
+                  <div className={styles.prose}>
                   <section id="intro" aria-labelledby="intro-heading">
                     <h2 id="intro-heading">Intro</h2>
                     {study.overview.map(p => (
@@ -331,13 +301,6 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
                     </div>
                   </section>
 
-                  <section id="takeaway" aria-labelledby="takeaway-heading">
-                    <h2 id="takeaway-heading">What I&apos;d Tell Someone Starting Today</h2>
-                    {meaningParagraphs(study).map(p => (
-                      <p key={p}>{p}</p>
-                    ))}
-                  </section>
-
                   {study.whatsNext && study.whatsNext.length > 0 ? (
                     <section id="next" aria-labelledby="next-heading">
                       <h2 id="next-heading">What&apos;s Next</h2>
@@ -346,37 +309,17 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
                       ))}
                     </section>
                   ) : null}
-                </div>
-
-                <div className={styles.postCta}>
-                  <h2>Got A Product Hypothesis? Let&apos;s Validate It.</h2>
-                  <p>Architecture, timelines, AI systems, and launches, pragmatic scope, disciplined delivery, observable outcomes.</p>
-                  <div className={styles.postCtaActions}>
-                    {hireExternal ? (
-                      <a href={HIRE_URL} className={styles.btnPrimary} target="_blank" rel="noopener noreferrer">
-                        Hire Me
-                      </a>
-                    ) : (
-                      <Link href={HIRE_URL} className={styles.btnPrimary}>
-                        Hire Me
-                      </Link>
-                    )}
-                    <Link href="/#contact" className={styles.btnGhost}>
-                      Get in touch <ArrowUpRight style={{ marginLeft: 2 }} width={14} height={14} aria-hidden />
-                    </Link>
                   </div>
                 </div>
               </article>
             </div>
-            </div>
-
-            <CaseStudyToc entries={tocEntries} />
           </div>
-
-          <OtherCaseStudiesSection excludeSlug={study.slug} />
-
-          <SiteFooter />
         </div>
+
+        <OtherCaseStudiesSection excludeSlug={study.slug} />
+        </div>
+
+        <SiteFooter />
       </div>
     </>
   )

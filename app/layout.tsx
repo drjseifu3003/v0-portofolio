@@ -5,21 +5,23 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { JsonLd } from "@/components/json-Id"
+import { brandTheme } from "@/lib/brand-theme"
 
 const inter = Inter({ subsets: ["latin"] })
 
 /* ─── Site constants ──────────────────────────────────────────── */
 const SITE_URL  = "https://www.derejeseifu.vercel.app"
 const FULL_NAME = "Dereje Seifu"
-const TITLE     = "Dereje Seifu, Software Architect & AI Engineer"
-const DESC      = "Software Architect and Full-Stack Engineer specializing in AI Agents, RAG Systems, Voice AI, and SaaS platforms. I architect and build production-ready AI products for founders and organizations."
+const TITLE     = "Dereje Seifu, Senior Full-Stack Engineer & AI Engineer"
+const DESC      =
+  "Senior full-stack engineer specializing in AI Agents, RAG Systems, Voice AI, and SaaS platforms. I design and ship production-ready AI products for founders and organizations."
 const OG_IMAGE  = `${SITE_URL}/og_image.png`
 
 /* ─── Viewport ────────────────────────────────────────────────── */
 export const viewport: Viewport = {
   width:        "device-width",
   initialScale: 1,
-  themeColor:   "#fafaf9",
+  themeColor:   brandTheme.hex.canvas,
 }
 
 /* ─── Metadata ────────────────────────────────────────────────── */
@@ -37,7 +39,7 @@ export const metadata: Metadata = {
   },
   description: DESC,
   keywords: [
-    "Software Architect",
+    "Senior Full-Stack Engineer",
     "AI Engineer",
     "Full-Stack Engineer",
     "AI Agents",
@@ -59,7 +61,7 @@ export const metadata: Metadata = {
     "Founding Engineer",
     "freelance AI developer",
     "Upwork AI developer",
-    "remote software architect",
+    "remote senior full-stack engineer",
     "Dereje Seifu",
     "AI product development",
     "enterprise systems",
@@ -87,7 +89,7 @@ export const metadata: Metadata = {
         url:    OG_IMAGE,
         width:  1200,
         height: 630,
-        alt:    `${FULL_NAME}, Software Architect & AI Engineer portfolio`,
+        alt:    `${FULL_NAME}, Senior Full-Stack Engineer & AI Engineer portfolio`,
       },
     ],
   },
@@ -134,7 +136,7 @@ export const metadata: Metadata = {
       { url: "/favicon-32x32.png",  sizes: "32x32",  type: "image/png" },
     ],
     apple:   [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
-    other:   [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#dedad2" }],
+    other:   [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: brandTheme.hex.primary }],
   },
 
   /* ── Manifest ───────────────────────────────────────────────── */
@@ -150,7 +152,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={inter.className} style={{ margin: 0, padding: 0, background: "#fafaf9", color: "#111827" }}>
+      <body className={`${inter.className} min-h-screen bg-background text-foreground`} style={{ margin: 0, padding: 0 }}>
         <JsonLd />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}

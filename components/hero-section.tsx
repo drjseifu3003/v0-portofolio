@@ -1,15 +1,14 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Link from "next/link"
-import { ArrowRight, Play } from "lucide-react"
+import { ArrowUpRight, Play } from "lucide-react"
 import Image from "next/image"
-import { isExternalUrl } from "@/lib/site"
+import { PROFILE_UPWORK } from "@/lib/site"
 import { SpTrustPill } from "@/components/sp-trust-pill"
 
 const FULL_HEADLINE = "Turning ideas into production-ready software"
 const SUBTITLE =
-  "Software architect & AI engineer, I design and ship AI agents, RAG systems, voice products, and SaaS for founders and organizations."
+  "Senior full-stack engineer & AI engineer, I design and ship AI agents, RAG systems, voice products, and SaaS for founders and organizations."
 
 /** Same collage PNGs as case study cards (`public/images/case-study/`) */
 const HERO_CENTER_POSTER = "/images/case-study/thumb-intuitysync.png"
@@ -41,10 +40,7 @@ export function HeroSection() {
     return () => window.clearInterval(id)
   }, [])
 
-  const vslHref = process.env.NEXT_PUBLIC_VSL_PRIMARY_HREF ?? "/#contact"
-  const vslExternal = isExternalUrl(vslHref)
-
-  const mobileCtaStyle = {
+  const hireMobileStyle = {
     display: "inline-flex",
     alignItems: "center",
     gap: 8,
@@ -53,11 +49,11 @@ export function HeroSection() {
     fontSize: 15,
     fontWeight: 700,
     letterSpacing: "-0.02em",
-    color: "#5b21b6",
+    color: "#ffffff",
     textDecoration: "none",
-    background: "linear-gradient(180deg, #ede9fe 0%, #ddd6fe 100%)",
-    border: "1px solid rgba(124,58,237,0.35)",
-    boxShadow: "0 8px 24px rgba(124,58,237,0.22)",
+    background: "linear-gradient(165deg, #16c713 0%, #14a800 42%, #118f00 100%)",
+    border: "1px solid rgba(255,255,255,0.22)",
+    boxShadow: "0 8px 26px rgba(20,168,0,0.38)",
     maxWidth: 320,
     justifyContent: "center",
     boxSizing: "border-box" as const,
@@ -66,10 +62,9 @@ export function HeroSection() {
   return (
     <section
       id="about"
+      className="gradient-brand-hero border-b border-border"
       style={{
         boxSizing: "border-box",
-        background: "linear-gradient(180deg, #fafaf9 0%, #ffffff 55%)",
-        borderBottom: "1px solid #e5e7eb",
         padding: "clamp(24px, 4vw, 40px) 0 clamp(28px, 5vw, 52px)",
       }}
     >
@@ -87,7 +82,7 @@ export function HeroSection() {
           display: inline-block;
           width: 3px;
           height: 0.92em;
-          background: #1a1c1f;
+          background: hsl(var(--foreground));
           margin-right: 5px;
           vertical-align: text-bottom;
           animation: spBlink 1s step-end infinite;
@@ -310,17 +305,10 @@ export function HeroSection() {
         </div>
 
         <div className="hero-mob-only-cta" style={{ marginTop: 8, display: "flex", justifyContent: "center", paddingBottom: 2 }}>
-          {vslExternal ? (
-            <a href={vslHref} style={mobileCtaStyle} target="_blank" rel="noopener noreferrer">
-              Get started
-              <ArrowRight size={18} strokeWidth={2} color="#5b21b6" />
-            </a>
-          ) : (
-            <Link href={vslHref} style={mobileCtaStyle}>
-              Get started
-              <ArrowRight size={18} strokeWidth={2} color="#5b21b6" />
-            </Link>
-          )}
+          <a href={PROFILE_UPWORK} style={hireMobileStyle} target="_blank" rel="noopener noreferrer">
+            Hire me on Upwork
+            <ArrowUpRight size={18} strokeWidth={2.25} color="#ffffff" aria-hidden />
+          </a>
         </div>
       </div>
     </section>

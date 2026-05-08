@@ -37,7 +37,7 @@ const personSchema = {
     "CI/CD",
     "DevOps",
     "Full-Stack Development",
-    "Software Architecture",
+    "Systems design",
   ],
   alumniOf: {
     "@type": "Organization",

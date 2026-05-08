@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
-import { ChevronDown, ArrowRight } from "lucide-react"
+import { ChevronDown, ArrowUpRight } from "lucide-react"
+import { PROFILE_UPWORK } from "@/lib/site"
 
 const ITEMS = [
   {
@@ -114,8 +114,10 @@ export function FaqSection() {
           })}
         </div>
         <div style={{ marginTop: 36, textAlign: "center" }}>
-          <Link
-            href="/#contact"
+          <a
+            href={PROFILE_UPWORK}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -123,17 +125,17 @@ export function FaqSection() {
               padding: "14px 28px",
               borderRadius: 999,
               fontSize: 15,
-              fontWeight: 600,
-              color: "#5b21b6",
+              fontWeight: 700,
+              color: "#ffffff",
               textDecoration: "none",
-              background: "linear-gradient(180deg, #ede9fe 0%, #ddd6fe 100%)",
-              border: "1px solid #c4b5fd",
-              boxShadow: "0 6px 20px rgba(91,33,182,0.15)",
+              background: "linear-gradient(165deg, #16c713 0%, #14a800 42%, #118f00 100%)",
+              border: "1px solid rgba(255,255,255,0.22)",
+              boxShadow: "0 8px 24px rgba(20,168,0,0.32)",
             }}
           >
-            Get started
-            <ArrowRight size={18} strokeWidth={2} />
-          </Link>
+            Hire me on Upwork
+            <ArrowUpRight size={18} strokeWidth={2.25} aria-hidden />
+          </a>
         </div>
       </div>
     </section>

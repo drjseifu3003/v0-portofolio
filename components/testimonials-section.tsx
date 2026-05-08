@@ -69,7 +69,7 @@ function Stars({ count }: { count: number }) {
   return (
     <div style={{ display: "flex", gap: 2 }}>
       {[0, 1, 2, 3, 4].map(i => (
-        <svg key={i} width={14} height={14} viewBox="0 0 14 14" fill={i < count ? fill : "#e5e7eb"}>
+        <svg key={i} width={14} height={14} viewBox="0 0 14 14" fill={i < count ? fill : "hsl(var(--border))"}>
           <path d="M7 1l1.6 3.3L12.5 4.85l-2.75 2.68.65 3.78L7 9.6l-3.4 1.71.65-3.78L1.5 4.85l3.9-.55z" />
         </svg>
       ))}
@@ -88,8 +88,8 @@ function TestimonialCard({ content, author, rating, link, platform }: T) {
   return (
     <div
       style={{
-        background: "#fff",
-        border: "1px solid #e5e7eb",
+        background: "hsl(var(--card))",
+        border: "1px solid hsl(var(--border))",
         borderRadius: 16,
         padding: 28,
         display: "flex",
@@ -106,21 +106,21 @@ function TestimonialCard({ content, author, rating, link, platform }: T) {
               width: 44,
               height: 44,
               borderRadius: 10,
-              background: "#f3f4f6",
-              border: "1px solid #e5e7eb",
+              background: "hsl(var(--muted))",
+              border: "1px solid hsl(var(--border))",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontSize: 13,
               fontWeight: 700,
-              color: "#6b7280",
+              color: "hsl(var(--muted-foreground))",
               flexShrink: 0,
             }}
           >
             {initials}
           </div>
           <div style={{ minWidth: 0 }}>
-            <p style={{ fontSize: 15, fontWeight: 700, color: "#111827", margin: 0, lineHeight: 1.3 }}>
+            <p style={{ fontSize: 15, fontWeight: 700, color: "hsl(var(--foreground))", margin: 0, lineHeight: 1.3 }}>
               {author.name}
             </p>
             <p style={{ fontSize: 13, color: "#6b7280", margin: "4px 0 0", lineHeight: 1.4 }}>
@@ -131,11 +131,11 @@ function TestimonialCard({ content, author, rating, link, platform }: T) {
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4, flexShrink: 0 }}>
           <Stars count={rating} />
-          <span style={{ fontSize: 12, fontWeight: 700, color: "#111827" }}>5.0</span>
+          <span style={{ fontSize: 12, fontWeight: 700, color: "hsl(var(--foreground))" }}>5.0</span>
         </div>
       </div>
 
-      <p style={{ fontSize: 15, lineHeight: 1.65, color: "#4b5563", fontWeight: 400, margin: 0, flex: 1 }}>
+      <p style={{ fontSize: 15, lineHeight: 1.65, color: "hsl(var(--muted-foreground))", fontWeight: 400, margin: 0, flex: 1 }}>
         “{content}”
       </p>
 
@@ -155,7 +155,7 @@ function TestimonialCard({ content, author, rating, link, platform }: T) {
             gap: 5,
             fontSize: 12,
             fontWeight: 700,
-            color: "#7c3aed",
+            color: "hsl(var(--brand-accent))",
             textDecoration: "none",
           }}
         >
@@ -178,8 +178,8 @@ export function TestimonialsSection() {
     <section
       id="testimonials"
       style={{
-        background: "#fafaf9",
-        borderBottom: "1px solid #e5e7eb",
+        background: "hsl(var(--background))",
+        borderBottom: "1px solid hsl(var(--border))",
         padding: "clamp(40px, 6.5vw, 72px) clamp(20px, 4vw, 36px)",
       }}
     >
@@ -214,19 +214,19 @@ export function TestimonialsSection() {
         .t-nav-btn {
           width: 44px;
           height: 44px;
-          border: 1px solid #e5e7eb;
-          background: #fff;
+          border: 1px solid hsl(var(--border));
+          background: hsl(var(--card));
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          border-radius: 12;
-          color: #6b7280;
+          border-radius: 12px;
+          color: hsl(var(--muted-foreground));
           transition: border-color 0.2s, color 0.2s;
         }
         .t-nav-btn:hover {
-          border-color: #c4b5fd;
-          color: #111827;
+          border-color: hsl(var(--brand-accent) / 0.35);
+          color: hsl(var(--foreground));
         }
         .t-nav-btn:disabled {
           opacity: 0.3;
@@ -256,13 +256,13 @@ export function TestimonialsSection() {
               fontWeight: 800,
               lineHeight: 1.14,
               letterSpacing: "-0.035em",
-              color: "#111827",
+              color: "hsl(var(--foreground))",
               margin: "0 0 12px",
             }}
           >
             5.0 / 5 across Upwork &amp; LinkedIn
           </h2>
-          <p style={{ fontSize: 16, color: "#6b7280", maxWidth: 520, margin: "0 auto", lineHeight: 1.6 }}>
+          <p style={{ fontSize: 16, color: "hsl(var(--muted-foreground))", maxWidth: 520, margin: "0 auto", lineHeight: 1.6 }}>
             A few recommendations from founders, CTOs, and teams I shipped with, real projects and real accountability.
           </p>
 
@@ -309,7 +309,7 @@ export function TestimonialsSection() {
                     width: i === current ? 22 : 6,
                     height: 6,
                     borderRadius: 3,
-                    background: i === current ? "#7c3aed" : "#e5e7eb",
+                    background: i === current ? "hsl(var(--brand-accent))" : "hsl(var(--border))",
                     border: "none",
                     cursor: "pointer",
                     transition: "width 0.25s",

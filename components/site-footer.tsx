@@ -39,10 +39,10 @@ export function SiteFooter() {
   ]
 
   return (
-    <footer style={{ background: "#0d0d12", color: "#d1d5db", padding: "clamp(32px, 6vw, 52px) clamp(20px, 4vw, 36px)" }}>
+    <footer style={{ background: "hsl(var(--brand-footer))", color: "hsl(var(--brand-footer-fg))", padding: "clamp(32px, 6vw, 52px) clamp(20px, 4vw, 36px)" }}>
       <style jsx>{`
         .sp-foot-social:hover {
-          color: #f3f4f6;
+          color: hsl(var(--brand-canvas-bright));
         }
       `}</style>
       <nav aria-label="Social links" style={{ maxWidth: 1180, margin: "0 auto" }}>
@@ -83,7 +83,7 @@ const row = {
   display: "inline-flex",
   alignItems: "center",
   gap: 14,
-  color: "#d1d5db",
+  color: "hsl(var(--brand-footer-fg))",
   textDecoration: "none",
   fontSize: 15,
   transition: "color 0.15s ease",
@@ -93,11 +93,11 @@ const icon = {
   width: 40,
   height: 40,
   borderRadius: 10,
-  background: "#1a1a22",
-  border: "1px solid rgba(255,255,255,0.06)",
+  background: "hsl(var(--brand-ink) / 0.35)",
+  border: "1px solid hsl(var(--brand-footer-fg) / 0.12)",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  color: "#e5e7eb",
+  color: "hsl(var(--brand-canvas-bright))",
   flexShrink: 0,
 } as const

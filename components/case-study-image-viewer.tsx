@@ -28,7 +28,7 @@ export function CaseStudyImageViewer({ images }: { images: string[] }) {
               className={`${styles.thumbBtn} ${i === idx ? styles.thumbBtnActive : ""}`}
             >
               <span className={styles.thumbBtnInner}>
-                <Image src={src} alt="" fill sizes="80px" style={{ objectFit: "cover", objectPosition: "top center" }} />
+                <Image src={src} alt="" fill sizes="60px" style={{ objectFit: "cover", objectPosition: "top center" }} />
               </span>
             </button>
           ))}
@@ -39,7 +39,7 @@ export function CaseStudyImageViewer({ images }: { images: string[] }) {
           src={list[idx]}
           alt=""
           fill
-          sizes="(max-width: 1023px) 100vw, min(900px, 75vw)"
+          sizes="(max-width: 1023px) 92vw, min(600px, 50vw)"
           style={{ objectFit: "cover", objectPosition: "top center" }}
           priority={idx === 0}
         />

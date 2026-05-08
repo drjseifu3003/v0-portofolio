@@ -4,8 +4,8 @@
   "description": "Portfolio of Dereje Seifu, Senior Full-Stack Engineer specialising in Next.js, React, TypeScript, Node.js, and AWS.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0c0c0c",
-  "theme_color": "#0c0c0c",
+  "background_color": "#f6f3ed",
+  "theme_color": "#1d9a78",
   "lang": "en",
   "icons": [
     {

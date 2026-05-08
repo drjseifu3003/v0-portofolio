@@ -8,7 +8,7 @@ const openLiya = () => window.dispatchEvent(new CustomEvent("open-liya"))
 
 export default function AboutPage() {
   return (
-    <div style={{ background: "#fafaf9", color: "#111827", minHeight: "100vh" }}>
+    <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
       <main style={{ paddingTop: SITE_HEADER_H }}>
         <AboutIntro />
