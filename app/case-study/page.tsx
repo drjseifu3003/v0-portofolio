@@ -6,11 +6,32 @@ import { studies } from "./data"
 import { SiteHeader, SITE_HEADER_H } from "@/components/site-header"
 import { ContactSectionWithLiya } from "@/components/contact-section-with-liya"
 import { SpTrustPill } from "@/components/sp-trust-pill"
+import { absoluteUrl, getSiteUrl, SITE_FULL_NAME } from "@/lib/site-seo"
+
+const listUrl = `${getSiteUrl()}/case-study`
 
 export const metadata: Metadata = {
-  title: "Work, Derej",
+  title: "Work & case studies",
   description:
-    "Real products. Real outcomes. Full breakdowns of how I approach complex engineering problems, from architecture to deployment.",
+    "Real products and measurable outcomes: architecture, constraints, delivery, and impact—documented for stakeholders and engineers.",
+  alternates: { canonical: listUrl },
+  openGraph: {
+    url: listUrl,
+    title: `Work & case studies | ${SITE_FULL_NAME}`,
+    description:
+      "Case studies spanning full-stack apps, AI/RAG, voice automation, and SaaS—how problems were framed, built, and validated.",
+    siteName: SITE_FULL_NAME,
+    locale: "en_US",
+    type: "website",
+    images: [{ url: absoluteUrl("/og_image.png"), width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Work & case studies | ${SITE_FULL_NAME}`,
+    description:
+      "Case studies covering architecture, delivery, and measurable impact across AI, SaaS, and production web platforms.",
+    images: [absoluteUrl("/og_image.png")],
+  },
 }
 
 const TINTS = ["#e8f5e9", "#e3f2fd", "#ede7f6", "#fff4e6", "#fce4ec"]

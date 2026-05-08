@@ -6,38 +6,35 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { JsonLd } from "@/components/json-Id"
 import { brandTheme } from "@/lib/brand-theme"
+import {
+  absoluteUrl,
+  buildRootMetadataVerification,
+  getSiteUrl,
+  SITE_DEFAULT_DESCRIPTION,
+  SITE_DEFAULT_TITLE,
+  SITE_FULL_NAME,
+} from "@/lib/site-seo"
 
 const inter = Inter({ subsets: ["latin"] })
 
-/* ─── Site constants ──────────────────────────────────────────── */
-const SITE_URL  = "https://www.derejeseifu.vercel.app"
-const FULL_NAME = "Dereje Seifu"
-const TITLE     = "Dereje Seifu, Senior Full-Stack Engineer & AI Engineer"
-const DESC      =
-  "Senior full-stack engineer specializing in AI Agents, RAG Systems, Voice AI, and SaaS platforms. I design and ship production-ready AI products for founders and organizations."
-const OG_IMAGE  = `${SITE_URL}/og_image.png`
+const siteUrl = getSiteUrl()
+const OG_IMAGE = absoluteUrl("/og_image.png")
+const rootVerification = buildRootMetadataVerification()
 
-/* ─── Viewport ────────────────────────────────────────────────── */
 export const viewport: Viewport = {
-  width:        "device-width",
+  width: "device-width",
   initialScale: 1,
-  themeColor:   brandTheme.hex.canvas,
+  themeColor: brandTheme.hex.canvas,
 }
 
-/* ─── Metadata ────────────────────────────────────────────────── */
 export const metadata: Metadata = {
-  /*
-   * metadataBase tells Next.js how to resolve relative URLs
-   * (open-graph images, sitemap, canonical links, etc.)
-   */
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(siteUrl),
 
-  /* ── Core ───────────────────────────────────────────────────── */
   title: {
-    default:  TITLE,
-    template: `%s | ${FULL_NAME}`,
+    default: SITE_DEFAULT_TITLE,
+    template: `%s | ${SITE_FULL_NAME}`,
   },
-  description: DESC,
+  description: SITE_DEFAULT_DESCRIPTION,
   keywords: [
     "Senior Full-Stack Engineer",
     "AI Engineer",
@@ -67,88 +64,74 @@ export const metadata: Metadata = {
     "enterprise systems",
     "healthcare platform development",
   ],
-  authors:  [{ name: FULL_NAME, url: SITE_URL }],
-  creator:  FULL_NAME,
-  publisher: FULL_NAME,
+  authors: [{ name: SITE_FULL_NAME, url: siteUrl }],
+  creator: SITE_FULL_NAME,
+  publisher: SITE_FULL_NAME,
 
-  /* ── Canonical ──────────────────────────────────────────────── */
   alternates: {
-    canonical: SITE_URL,
+    canonical: siteUrl,
   },
 
-  /* ── Open Graph ─────────────────────────────────────────────── */
   openGraph: {
-    type:        "website",
-    url:         SITE_URL,
-    siteName:    FULL_NAME,
-    title:       TITLE,
-    description: DESC,
-    locale:      "en_US",
+    type: "website",
+    url: siteUrl,
+    siteName: SITE_FULL_NAME,
+    title: SITE_DEFAULT_TITLE,
+    description: SITE_DEFAULT_DESCRIPTION,
+    locale: "en_US",
     images: [
       {
-        url:    OG_IMAGE,
-        width:  1200,
+        url: OG_IMAGE,
+        width: 1200,
         height: 630,
-        alt:    `${FULL_NAME}, Senior Full-Stack Engineer & AI Engineer portfolio`,
+        alt: `${SITE_FULL_NAME}, Senior Full-Stack Engineer & AI Engineer portfolio`,
       },
     ],
   },
 
-  /* ── Twitter / X card ──────────────────────────────────────── */
   twitter: {
-    card:        "summary_large_image",
-    title:       TITLE,
-    description: DESC,
-    images:      [OG_IMAGE],
-    creator:     "@derejeseifu",   // ← update if you have a Twitter handle
+    card: "summary_large_image",
+    title: SITE_DEFAULT_TITLE,
+    description: SITE_DEFAULT_DESCRIPTION,
+    images: [OG_IMAGE],
+    creator: "@derejeseifu",
   },
 
-  /* ── Robots ─────────────────────────────────────────────────── */
   robots: {
-    index:               true,
-    follow:              true,
+    index: true,
+    follow: true,
     googleBot: {
-      index:               true,
-      follow:              true,
+      index: true,
+      follow: true,
       "max-video-preview": -1,
       "max-image-preview": "large",
-      "max-snippet":       -1,
+      "max-snippet": -1,
     },
   },
 
-  /* ── Verification tokens (add when you get them) ───────────── */
-  verification: {
-    google: "REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_TOKEN",
-    // yandex: "REPLACE_WITH_YANDEX_TOKEN",
-    // bing:   "REPLACE_WITH_BING_TOKEN",
-  },
+  ...(rootVerification ? { verification: rootVerification } : {}),
 
-  /* ── App metadata ───────────────────────────────────────────── */
-  applicationName: FULL_NAME,
-  category:        "technology",
-  classification:  "Portfolio",
+  applicationName: SITE_FULL_NAME,
+  category: "technology",
+  classification: "Portfolio",
 
-  /* ── Icons ──────────────────────────────────────────────────── */
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/favicon-16x16.png",  sizes: "16x16",  type: "image/png" },
-      { url: "/favicon-32x32.png",  sizes: "32x32",  type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
-    apple:   [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
-    other:   [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: brandTheme.hex.primary }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: brandTheme.hex.primary }],
   },
 
-  /* ── Manifest ───────────────────────────────────────────────── */
   manifest: "/manifest.json",
 }
 
-/* ─── Layout ──────────────────────────────────────────────────── */
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Preconnect to Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>

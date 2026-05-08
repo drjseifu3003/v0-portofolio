@@ -2,30 +2,8 @@
 
 import { useState } from "react"
 import { ChevronDown, ArrowUpRight } from "lucide-react"
+import { SITE_FAQ_ITEMS } from "@/lib/faq-content"
 import { PROFILE_UPWORK } from "@/lib/site"
-
-const ITEMS = [
-  {
-    q: "I'm not deeply technical, can we still ship?",
-    a: "Yes. You bring domain expertise and priorities; I translate that into specs, milestones, and a production system with plain-language updates throughout.",
-  },
-  {
-    q: "What kinds of projects are a fit?",
-    a: "SaaS, AI agents & RAG, voice automation (Vapi/N8N), internal tools, and high-traffic web apps. If users or revenue depend on it, we're aligned.",
-  },
-  {
-    q: "How do pricing and timelines work?",
-    a: "Scoping starts with a short call. Engagements are usually milestone-based (fixed phases) or retainer for ongoing product work, aligned to your roadmap.",
-  },
-  {
-    q: "Who owns the IP?",
-    a: "You do. Deliverables are yours upon payment unless we agree otherwise in writing for a specific component.",
-  },
-  {
-    q: "Do you integrate with existing teams?",
-    a: "Yes, I routinely plug into Slack/Linear, ship PRs alongside your engineers, and document handoff so momentum continues after my work.",
-  },
-]
 
 export function FaqSection() {
   const [open, setOpen] = useState<number | null>(0)
@@ -53,7 +31,7 @@ export function FaqSection() {
           Frequently asked questions
         </h2>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          {ITEMS.map((item, i) => {
+          {SITE_FAQ_ITEMS.map((item, i) => {
             const isOpen = open === i
             return (
               <div

@@ -1,162 +1,157 @@
 /**
- * JsonLd, injects structured data (JSON-LD) into <head>
- *
- * Place <JsonLd /> inside your root layout or page (server component).
- * Google uses this to power rich results, knowledge panels, and search features.
+ * JSON-LD for sitewide entities (Person, WebSite, ProfilePage, ProfessionalService).
+ * Home-only FAQPage is emitted from `HomeFaqJsonLd` so it matches visible FAQ content.
  */
 
-const SITE_URL  = "https://www.derejeseifu.com"
-const FULL_NAME = "Dereje Seifu"
-
-const personSchema = {
-  "@context":   "https://schema.org",
-  "@type":       "Person",
-  "@id":         `${SITE_URL}/#person`,
-  name:          FULL_NAME,
-  url:           SITE_URL,
-  jobTitle:      "Senior Full-Stack Engineer",
-  description:   "Senior Full-Stack Engineer specialising in Next.js, React, TypeScript, Node.js, and AWS. Helping startups and product teams ship reliable software.",
-  image:         `${SITE_URL}/images/profile.jpeg`,
-  email:         "Derejeseifu3030@gmail.com",
-  telephone:     "+251966016473",
-  sameAs: [
-    "https://www.linkedin.com/in/drjseifu1991/",
-    "https://www.upwork.com/freelancers/~dereje",
-    "https://t.me/derejeseifu",
-    "https://wa.me/251966016473",
-  ],
-  knowsAbout: [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Node.js",
-    "AWS",
-    "PostgreSQL",
-    "Supabase",
-    "Docker",
-    "CI/CD",
-    "DevOps",
-    "Full-Stack Development",
-    "Systems design",
-  ],
-  alumniOf: {
-    "@type": "Organization",
-    name:    "Addis Ababa University",
-  },
-  nationality: {
-    "@type": "Country",
-    name:    "Ethiopia",
-  },
-}
-
-const websiteSchema = {
-  "@context":       "https://schema.org",
-  "@type":           "WebSite",
-  "@id":             `${SITE_URL}/#website`,
-  url:               SITE_URL,
-  name:              FULL_NAME,
-  description:       "Portfolio of Dereje Seifu, Senior Full-Stack Engineer",
-  publisher: {
-    "@id": `${SITE_URL}/#person`,
-  },
-  inLanguage: "en-US",
-  copyrightYear: new Date().getFullYear(),
-}
-
-const webPageSchema = {
-  "@context":    "https://schema.org",
-  "@type":        "ProfilePage",
-  "@id":          `${SITE_URL}/#webpage`,
-  url:            SITE_URL,
-  name:           `${FULL_NAME}, Senior Full-Stack Engineer`,
-  description:    "Portfolio showcasing projects, testimonials, and engineering services by Dereje Seifu.",
-  isPartOf: {
-    "@id": `${SITE_URL}/#website`,
-  },
-  about: {
-    "@id": `${SITE_URL}/#person`,
-  },
-  dateModified: new Date().toISOString(),
-  inLanguage:   "en-US",
-  breadcrumb: {
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type":    "ListItem",
-        position:   1,
-        name:       "Home",
-        item:       SITE_URL,
-      },
-    ],
-  },
-}
-
-const professionalServiceSchema = {
-  "@context":    "https://schema.org",
-  "@type":        "ProfessionalService",
-  "@id":          `${SITE_URL}/#service`,
-  name:           `${FULL_NAME}, Freelance Software Engineering`,
-  url:            SITE_URL,
-  description:    "Freelance full-stack engineering services including web application development, SaaS products, API design, cloud infrastructure, and CI/CD implementation.",
-  provider: {
-    "@id": `${SITE_URL}/#person`,
-  },
-  serviceType:   "Software Development",
-  areaServed:    "Worldwide",
-  availableChannel: {
-    "@type":        "ServiceChannel",
-    serviceUrl:     "https://www.upwork.com/freelancers/~dereje",
-    servicePhone:   "+251966016473",
-    serviceSmsNumber: "+251966016473",
-  },
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name:    "Engineering Services",
-    itemListElement: [
-      {
-        "@type":       "Offer",
-        itemOffered: {
-          "@type":       "Service",
-          name:          "Full-Stack Web Application Development",
-          description:   "End-to-end development of web applications using Next.js, React, TypeScript, and Node.js.",
-        },
-      },
-      {
-        "@type":       "Offer",
-        itemOffered: {
-          "@type":       "Service",
-          name:          "Cloud Infrastructure & DevOps",
-          description:   "AWS infrastructure setup, CI/CD pipelines, Docker containerisation, and deployment automation.",
-        },
-      },
-      {
-        "@type":       "Offer",
-        itemOffered: {
-          "@type":       "Service",
-          name:          "SaaS Product Engineering",
-          description:   "Architecture design and implementation of scalable SaaS products with Supabase, PostgreSQL, and Stripe.",
-        },
-      },
-    ],
-  },
-}
+import { getSiteUrl, SITE_DEFAULT_DESCRIPTION, SITE_FULL_NAME, SITE_SAME_AS } from "@/lib/site-seo"
+import { PROFILE_UPWORK } from "@/lib/site"
 
 export function JsonLd() {
-  const schemas = [
-    personSchema,
-    websiteSchema,
-    webPageSchema,
-    professionalServiceSchema,
-  ]
+  const siteUrl = getSiteUrl()
+  const year = new Date().getFullYear()
+
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${siteUrl}/#person`,
+    name: SITE_FULL_NAME,
+    url: siteUrl,
+    jobTitle: "Senior Full-Stack Engineer",
+    description: SITE_DEFAULT_DESCRIPTION,
+    image: `${siteUrl}/images/profile.jpeg`,
+    email: "Derejeseifu3030@gmail.com",
+    telephone: "+251966016473",
+    sameAs: [...SITE_SAME_AS],
+    knowsAbout: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "NestJS",
+      "FastAPI",
+      "AWS",
+      "PostgreSQL",
+      "Supabase",
+      "Docker",
+      "CI/CD",
+      "DevOps",
+      "Full-Stack Development",
+      "Systems design",
+      "AI agents",
+      "Retrieval augmented generation",
+      "Voice AI",
+      "LangChain",
+      "SaaS architecture",
+    ],
+    alumniOf: {
+      "@type": "Organization",
+      name: "Addis Ababa University",
+    },
+    nationality: {
+      "@type": "Country",
+      name: "Ethiopia",
+    },
+  }
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    url: siteUrl,
+    name: `${SITE_FULL_NAME} — Portfolio`,
+    description: SITE_DEFAULT_DESCRIPTION,
+    publisher: {
+      "@id": `${siteUrl}/#person`,
+    },
+    inLanguage: "en-US",
+    copyrightYear: year,
+  }
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": `${siteUrl}/#webpage`,
+    url: siteUrl,
+    name: `${SITE_FULL_NAME}, Senior Full-Stack Engineer & AI Engineer`,
+    description: "Portfolio showcasing projects, case studies, testimonials, and engineering services.",
+    isPartOf: {
+      "@id": `${siteUrl}/#website`,
+    },
+    about: {
+      "@id": `${siteUrl}/#person`,
+    },
+    dateModified: new Date().toISOString(),
+    inLanguage: "en-US",
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteUrl,
+        },
+      ],
+    },
+  }
+
+  const professionalServiceSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${siteUrl}/#service`,
+    name: `${SITE_FULL_NAME}, Freelance Software & AI Engineering`,
+    url: siteUrl,
+    description:
+      "Freelance full-stack and AI engineering: web apps, AI agents, RAG, voice automation, APIs, cloud infrastructure, and production SaaS.",
+    provider: {
+      "@id": `${siteUrl}/#person`,
+    },
+    serviceType: "Software Development",
+    areaServed: "Worldwide",
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: PROFILE_UPWORK,
+      servicePhone: "+251966016473",
+      serviceSmsNumber: "+251966016473",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Engineering Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "AI agents, RAG & Voice",
+            description: "Design and implementation of AI agents, RAG pipelines, voice (Vapi) experiences, and workflow automation (N8N).",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Full-Stack Web Applications",
+            description: "End-to-end delivery with Next.js, React, TypeScript, Node.js/NestJS, and PostgreSQL/Supabase.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Cloud, DevOps & SaaS",
+            description: "AWS infrastructure, CI/CD, Docker, secure APIs, and scalable SaaS architecture.",
+          },
+        },
+      ],
+    },
+  }
+
+  const schemas = [personSchema, websiteSchema, webPageSchema, professionalServiceSchema]
 
   return (
     <>
       {schemas.map((schema, i) => (
-        <script
-          key={i}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema, null, 0) }}
-        />
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       ))}
     </>
   )

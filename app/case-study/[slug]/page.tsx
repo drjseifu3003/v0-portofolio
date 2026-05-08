@@ -11,10 +11,14 @@ import { SiteHeader, SITE_HEADER_H } from "@/components/site-header"
 import styles from "@/app/case-study/case-study-sp.module.css"
 import { TrafficChartSvg } from "@/app/case-study/traffic-chart-svg"
 
-const SITE_ORIGIN =
-  typeof process.env.NEXT_PUBLIC_SITE_URL === "string" && process.env.NEXT_PUBLIC_SITE_URL.length > 0
-    ? process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "")
-    : "https://www.derejeseifu.vercel.app"
+import { getSiteUrl } from "@/lib/site-seo"
+
+function ogImageForStudy(image: string | undefined, origin: string): string | undefined {
+  if (!image) return undefined
+  if (/^https?:\/\//i.test(image)) return image
+  const path = image.startsWith("/") ? image : `/${image}`
+  return `${origin}${path}`
+}
 
 function chunkMetrics<T>(arr: T[], size: number): T[][] {
   const out: T[][] = []
@@ -68,6 +72,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const study = getStudyBySlug(slug)
+  const origin = getSiteUrl()
 
   if (!study) {
     return {
@@ -75,19 +80,22 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
   }
 
-  const url = `${SITE_ORIGIN}/case-study/${slug}`
+  const url = `${origin}/case-study/${slug}`
+  const ogImage = ogImageForStudy(study.image, origin)
+  const twitterImages = ogImage ? [ogImage] : []
 
   return {
-    title: `Case Study: ${study.title}`,
+    title: study.title,
     description: study.subtitle,
     alternates: { canonical: url },
     openGraph: {
       type: "article",
       url,
-      title: `Case Study: ${study.title}`,
+      title: study.title,
       description: study.subtitle,
       siteName: "Dereje Seifu",
       locale: "en_US",
+      ...(ogImage ? { images: [{ url: ogImage, width: 1200, height: 630, alt: study.title }] } : {}),
       ...(study.publishedAt && /^\d{4}-\d{2}-\d{2}$/.test(study.publishedAt)
         ? { publishedTime: `${study.publishedAt}T12:00:00Z` }
         : {}),
@@ -96,6 +104,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: "summary_large_image",
       title: study.title,
       description: study.subtitle,
+      ...(twitterImages.length ? { images: twitterImages } : {}),
     },
   }
 }
@@ -118,7 +127,9 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
     "--site-header-h": `${SITE_HEADER_H}px`,
   } as CSSProperties
 
-  const articleUrl = `${SITE_ORIGIN}/case-study/${study.slug}`
+  const origin = getSiteUrl()
+  const articleUrl = `${origin}/case-study/${study.slug}`
+  const heroImage = ogImageForStudy(study.image, origin)
   const dateIso =
     study.publishedAt && /^\d{4}-\d{2}-\d{2}$/.test(study.publishedAt) ? `${study.publishedAt}T12:00:00Z` : undefined
 
@@ -132,6 +143,7 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
       "@type": "Organization",
       name: "Dereje Seifu",
     },
+    ...(heroImage ? { image: [heroImage] } : {}),
     ...(dateIso ? { datePublished: dateIso, dateModified: dateIso } : {}),
     mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
   }
