@@ -2,61 +2,60 @@
 
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
-import { studies, type Study } from "@/app/case-study/data"
+import { studies } from "@/app/case-study/data"
 import { CaseStudyCardPreview } from "@/components/case-study-card-preview"
 
-const HOME_SLUGS = ["ai-voice-receptionist", "roasform", "intuitysync"] as const
-
-export function ProjectsSection() {
-  const homeStudies = HOME_SLUGS.map(slug => studies.find(s => s.slug === slug)).filter((s): s is Study => Boolean(s))
+/** Bottom-of-detail strip: three related cards + CTA, matches home case grid styling */
+export function OtherCaseStudiesSection({ excludeSlug }: { excludeSlug: string }) {
+  const others = studies.filter(s => s.slug !== excludeSlug).slice(0, 3)
+  if (others.length === 0) return null
 
   return (
     <section
-      id="projects"
       style={{
-        background: "#fafaf9",
-        borderBottom: "1px solid #e5e7eb",
-        padding: "clamp(40px, 6vw, 72px) 0 clamp(48px, 7vw, 80px)",
+        background: "hsl(var(--background))",
+        borderTop: "1px solid #e5e7eb",
+        padding: "clamp(28px, 5vw, 52px) 0 clamp(48px, 7vw, 80px)",
+        marginTop: "clamp(12px, 2.5vw, 24px)",
+        marginLeft: "calc(-1 * clamp(20px, 4vw, 36px))",
+        marginRight: "calc(-1 * clamp(20px, 4vw, 36px))",
+        paddingLeft: "clamp(20px, 4vw, 36px)",
+        paddingRight: "clamp(20px, 4vw, 36px)",
       }}
+      aria-labelledby="other-case-studies-heading"
     >
-      <div
-        style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "0 clamp(16px, 4vw, 36px)",
-          boxSizing: "border-box",
-        }}
-      >
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <h2
+          id="other-case-studies-heading"
           style={{
             textAlign: "center",
-            fontSize: "clamp(28px, 3.8vw, 42px)",
+            fontSize: "clamp(26px, 3.6vw, 40px)",
             fontWeight: 700,
-            color: "#111827",
+            color: "hsl(var(--foreground))",
             letterSpacing: "-0.03em",
-            margin: "0 0 clamp(36px, 5vw, 48px)",
+            margin: "0 0 clamp(32px, 4.5vw, 44px)",
             lineHeight: 1.15,
           }}
         >
-          Case studies
+          Other case studies
         </h2>
 
-        <div className="sp-home-case-grid">
+        <div className="oc-grid">
           <style jsx>{`
-            .sp-home-case-grid {
+            .oc-grid {
               display: grid;
               grid-template-columns: 1fr;
               gap: 24px;
-              margin-bottom: 44px;
+              margin-bottom: 40px;
             }
             @media (min-width: 768px) {
-              .sp-home-case-grid {
+              .oc-grid {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
               }
             }
           `}</style>
-          {homeStudies.map(study => (
-            <CaseStudyCardPreview key={study.slug} study={study} />
+          {others.map(s => (
+            <CaseStudyCardPreview key={s.slug} study={s} />
           ))}
         </div>
 
@@ -80,7 +79,7 @@ export function ProjectsSection() {
               boxShadow: "0 8px 28px rgba(124, 58, 237, 0.2)",
             }}
           >
-            View all case studies
+            See all case studies
             <ArrowRight size={18} strokeWidth={2} />
           </Link>
         </div>

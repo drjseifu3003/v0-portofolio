@@ -16,7 +16,7 @@ export function ValueProposition() {
       icon: <BarChart3 className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
       title: "Business Impact",
       description:
-        "I don't just write code—I create solutions that drive measurable business results, from increased efficiency to new revenue streams.",
+        "I don't just write code I create solutions that drive measurable business results, from increased efficiency to new revenue streams.",
     },
     {
       icon: <Users className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
@@ -53,7 +53,7 @@ export function ValueProposition() {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             I bring a unique combination of technical expertise and business acumen to every project, ensuring you get
-            more than just code—you get solutions that drive real value.
+            more than just code you get solutions that drive real value.
           </motion.p>
         </div>
 

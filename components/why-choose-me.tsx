@@ -164,7 +164,7 @@ export function WhyChooseMe() {
 
               {/* number + icon row */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                {/* index number — low contrast, decorative */}
+                {/* index number, low contrast, decorative */}
                 <span style={{
                   fontSize: "11px",
                   fontWeight: 500,
@@ -181,7 +181,7 @@ export function WhyChooseMe() {
                   <Icon
                     size={18}
                     strokeWidth={1.5}
-                    /* #a8a49c — secondary text on #0f0f0d = 5.8:1 ✔ */
+                    /* #a8a49c, secondary text on #0f0f0d = 5.8:1 ✔ */
                     color="#a8a49c"
                   />
                 </div>

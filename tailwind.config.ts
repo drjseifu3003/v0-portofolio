@@ -53,6 +53,15 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        brand: {
+          canvas: "hsl(var(--brand-canvas))",
+          ink: "hsl(var(--brand-ink))",
+          primary: "hsl(var(--brand-primary))",
+          accent: "hsl(var(--brand-accent))",
+          footer: "hsl(var(--brand-footer))",
+          "footer-fg": "hsl(var(--brand-footer-fg))",
+          "accent-soft": "hsl(var(--brand-accent-soft))",
+        },
         // Gaming-inspired colors
         neon: {
           blue: "#00f3ff",

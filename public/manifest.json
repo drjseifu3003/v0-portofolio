@@ -1,11 +1,11 @@
 {
-  "name": "Dereje Seifu — Senior Full-Stack Engineer",
+  "name": "Dereje Seifu, Senior Full-Stack Engineer",
   "short_name": "Dereje Seifu",
-  "description": "Portfolio of Dereje Seifu, Senior Full-Stack Engineer specialising in Next.js, React, TypeScript, Node.js, and AWS.",
+  "description": "Senior full-stack engineer specializing in AI Agents, RAG, Voice AI, and SaaS. Portfolio, case studies, and contact.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0c0c0c",
-  "theme_color": "#0c0c0c",
+  "background_color": "#f6f3ed",
+  "theme_color": "#1d9a78",
   "lang": "en",
   "icons": [
     {
