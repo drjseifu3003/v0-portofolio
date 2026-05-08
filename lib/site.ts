@@ -17,4 +17,4 @@ export const PROFILE_LINKEDIN =
 export const PROFILE_UPWORK =
   typeof process.env.NEXT_PUBLIC_UPWORK_URL === "string" && process.env.NEXT_PUBLIC_UPWORK_URL.length > 0
     ? process.env.NEXT_PUBLIC_UPWORK_URL
-    : "https://www.upwork.com/freelancers/~dereje"
+    : "https://www.upwork.com/freelancers/~016aa40f9af9ae5cd8"

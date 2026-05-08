@@ -20,7 +20,7 @@ const DATA: T[] = [
     author: { name: "Jovan Stojanovic", role: "Ex-CEO of PhoneSales & Founder", company: "Roasform" },
     rating: 5,
     platform: "upwork",
-    link: "https://www.upwork.com/ab/g/pub/wom/prx/eyJwZXJzb25VaWQiOiIxNzYyODM2NzI2MTI3OTQzNjgwIiwiY29udHJhY3RSaWQiOiI0MTY3NzYxMCIsImJhbm5lclR5cGUiOiJjb250cmFjdCIsImJhbm5lclZhcmlhbnQiOiJkZWZhdWx0Iiwid29tIjoiZmx2MiIsInJlZGlyZWN0IjoiZmxfcHJvZmlsZV9wcm9tbyJ9?network=linkedin",
+    link: "https://www.upwork.com/ab/g/pub/wom/prx/eyJwZXJzb25VaWQiOiIxNzYyODM2NzI2MTI3OTQzNjgwIiwiY29udHJhY3RSaWQiOiI0MTY3NzYxMCIsImJhbm5lclR5cGUiOiJjb250cmFjdCIsImJhbm5lclZhcmlhbnQiOiJkZWZhdWx0Iiwid29tIjoiZmx2MiIsInJlZGlyZWN0IjoiZmxfcHJvZmlsZV9wcm9tbyJ9",
   },
   {
     content:
@@ -28,7 +28,7 @@ const DATA: T[] = [
     author: { name: "Neeraj Kumar", role: "Co-Founder & CTO", company: "Healium Intelliscan" },
     rating: 5,
     platform: "upwork",
-    link: "https://www.upwork.com/ab/g/pub/wom/prx/eyJwZXJzb25VaWQiOiIxNzYyODM2NzI2MTI3OTQzNjgwIiwiY29udHJhY3RSaWQiOiI0MTAzNTU3OSIsImJhbm5lclR5cGUiOiJjb250cmFjdCIsImJhbm5lclZhcmlhbnQiOiJkZWZhdWx0Iiwid29tIjoiZmx2MiIsInJlZGlyZWN0IjoiZmxfcHJvZmlsZV9wcm9tbyJ9?network=linkedin",
+    link: "https://www.upwork.com/ab/g/pub/wom/prx/eyJwZXJzb25VaWQiOiIxNzYyODM2NzI2MTI3OTQzNjgwIiwiY29udHJhY3RSaWQiOiI0MTAzNTU3OSIsImJhbm5lclR5cGUiOiJjb250cmFjdCIsImJhbm5lclZhcmlhbnQiOiJkZWZhdWx0Iiwid29tIjoiZmx2MiIsInJlZGlyZWN0IjoiZmxfcHJvZmlsZV9wcm9tbyJ9",
   },
   {
     content:
