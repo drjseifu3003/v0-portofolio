@@ -21,7 +21,7 @@ export function HomePageClient() {
         <HowWeHelpSection />
         <ProjectsSection />
         <TestimonialsSection />
-        <FaqSection />
+        {/* <FaqSection /> */}
         <ContactSection onTalkToLiya={openLiya} />
       </main>
     </div>

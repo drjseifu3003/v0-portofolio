@@ -39,7 +39,6 @@ function estimateReadMinutes(study: Study): number {
     ...study.whyItMattered,
     ...study.whatIBuilt,
     ...study.resultBullets,
-    study.testimonial,
     ...(study.whatsNext ?? []),
   ].join(" ")
   const words = blob.trim().split(/\s+/).filter(Boolean).length
@@ -169,7 +168,19 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
                 <meta itemProp="description" content={study.subtitle} />
 
                 <header className={styles.masthead}>
-                  <p className={styles.tag}>{eyebrow}</p>
+                  <div className={styles.mastheadTop}>
+                    <p className={styles.tag}>{eyebrow}</p>
+                    {study.liveSite ? (
+                      <a
+                        href={study.liveSite}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.liveSiteBtn}
+                      >
+                        Visit Live Site
+                      </a>
+                    ) : null}
+                  </div>
 
                   <h1 className={styles.h1}>{study.title}</h1>
 
@@ -197,37 +208,6 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
                     {study.overview.map(p => (
                       <p key={p}>{p}</p>
                     ))}
-                  </section>
-
-                  <section id="numbers" aria-labelledby="numbers-heading">
-                    <h2 id="numbers-heading">The Numbers</h2>
-                    <StatGridRows metricRows={metricRows} />
-                  </section>
-
-                  <section id="impact" aria-labelledby="impact-heading">
-                    <h2 id="impact-heading" className="sr-only">
-                      Impact
-                    </h2>
-                    <div className={styles.chartBlock}>
-                      <div className={styles.chartHeader}>
-                        <div>
-                          <div className={styles.chartTitle}>{study.chartTitle ?? "Engagement · delivery window"}</div>
-                        </div>
-                        <div className={styles.chartMetrics}>
-                          {chartLead.map(m => (
-                            <div key={m.label}>
-                              <div className={styles.chartMetricVal}>{m.value}</div>
-                              <div className={styles.chartMetricLabel}>{m.label}</div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      <TrafficChartSvg variant="light" />
-                      <div className={styles.chartCaption}>
-                        {study.chartCaption ??
-                          "Momentum concentrates once instrumentation, deduplication, and structured outputs are tightened, not merely when the prototype looks good."}
-                      </div>
-                    </div>
                   </section>
 
                   <section id="opportunity" aria-labelledby="opportunity-heading">
@@ -303,24 +283,6 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
                       <p key={p}>{p}</p>
                     ))}
                   </section>
-
-                  <section id="testimonial" aria-labelledby="testimonial-heading">
-                    <h2 id="testimonial-heading" className="sr-only">
-                      Proof
-                    </h2>
-                    <div className={styles.callout}>
-                      <p>&ldquo;{study.testimonial}&rdquo;</p>
-                    </div>
-                  </section>
-
-                  {study.whatsNext && study.whatsNext.length > 0 ? (
-                    <section id="next" aria-labelledby="next-heading">
-                      <h2 id="next-heading">What&apos;s Next</h2>
-                      {study.whatsNext.map(p => (
-                        <p key={p}>{p}</p>
-                      ))}
-                    </section>
-                  ) : null}
                   </div>
                 </div>
               </article>

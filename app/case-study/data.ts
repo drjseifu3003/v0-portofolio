@@ -8,6 +8,8 @@ export type Study = {
   title: string
   subtitle: string
   tag: string
+  /** Optional public URL for the live product */
+  liveSite?: string
   /** Primary / OG image, also used when `gallery` omitted */
   image?: string
   /** Extra screenshots for this study only (detail gallery); falls back to `image` */
@@ -42,6 +44,7 @@ export const studies: Study[] = [
   {
     slug: "healium-sono",
     title: "Healium Sono",
+    liveSite: "https://healiumsono.com",
     subtitle: "AI-powered remote ultrasound and teleguidance for cardiology and OB/GYN",
     tag: "Case Study 01 - Healthcare AI",
     image: "/images/case-study/thumb-healium-sono.png",
@@ -49,7 +52,7 @@ export const studies: Study[] = [
       "Client: Healium Intelliscan Corporation",
       "Industry: HealthTech / Telemedicine",
       "Location: United States",
-      "Role: Lead full-stack engineer responsible for architecture, AI service integration, real-time video, and deployment.",
+      "Role: Lead Full-stack engineer responsible for architecture, AI service integration, real-time video, and deployment.",
     ],
     problem: [
       "Specialist cardiologists and OB/GYN physicians are concentrated in urban centers, while rural clinics often have ultrasound hardware but no real-time interpretation expertise.",
@@ -106,7 +109,7 @@ export const studies: Study[] = [
     overview: [
       "Client: Healium Intelliscan Corporation",
       "Location: United States",
-      "Role: Lead engineer responsible for AI pipeline, inference API, data architecture, and deployment.",
+      "Role: Lead Full-stack engineer responsible for AI pipeline, inference API, data architecture, and deployment.",
     ],
     problem: [
       "Chronic Kidney Disease (CKD) affects millions, but many cases are diagnosed too late for effective intervention.",
@@ -152,6 +155,7 @@ export const studies: Study[] = [
   {
     slug: "roasform",
     title: "Roasform",
+    liveSite: "https://roasform.com",
     subtitle: "GHL-integrated AI form and marketing platform for high-ticket sales",
     tag: "Case Study 03 - SaaS / MarTech",
     image: "/images/case-study/thumb-roasform.png",
@@ -160,7 +164,7 @@ export const studies: Study[] = [
       "Location: United States",
       "Product type: B2B SaaS, built and launched as a standalone product.",
       "Target market: Agencies, coaches, and high-ticket sales businesses using GoHighLevel.",
-      "Role: Sole developer across product design, engineering, integrations, billing, and deployment.",
+      "Role: Lead Full-stack developer across product design, engineering, integrations, billing, and deployment.",
     ],
     problem: [
       "Standard CRM forms are static and do not qualify leads intelligently, leading to inefficient sales calls.",
@@ -333,7 +337,7 @@ export const studies: Study[] = [
       { layer: "Database", tech: "Supabase" },
       { layer: "AI Content", tech: "OpenAI" },
       { layer: "Billing", tech: "Stripe" },
-      { layer: "Cloud", tech: "AWS" },
+      { layer: "Cloud", tech: "Vercel" },
     ],
     results: [
       { value: "3 Months", label: "MVP delivery time" },
@@ -353,6 +357,7 @@ export const studies: Study[] = [
     title: "Water Utility Management System",
     subtitle: "Mission-critical enterprise SaaS for billing and meter reading across 20+ organisations",
     tag: "Case Study 06 - Enterprise SaaS",
+    liveSite: "https://wumis.et",
     image: "/images/case-study/thumb-wumis.png",
     overview: [
       "Product: Enterprise SaaS, deployed across 20+ organisations in Ethiopia.",
@@ -362,7 +367,7 @@ export const studies: Study[] = [
       "Product type: Enterprise SaaS, water utility management system.",
       "Target market: Water utility companies.",
       "Scale: 100,000+ active users.",
-      "Role: Sole frontend architect, owned the entire frontend across the product lifecycle.",
+      "Role: Frontend Engineer, owned the entire frontend across the product lifecycle.",
     ],
     problem: [
       "Water utility companies were managing billing and meter reading manually or with fragmented spreadsheet-based systems.",
@@ -428,7 +433,6 @@ export const studies: Study[] = [
     ],
     whatIBuilt: [
       "Led the frontend team from zero to product-market fit in 6 months.",
-      "Built the real-time event system using Socket.io and Kafka to handle thousands of concurrent ride events.",
       "Owned the AWS CI/CD pipeline, cutting release time by 30% and enabling daily deployments.",
       "Designed driver and customer app UIs with live GPS tracking and ride state management.",
       "Architected the frontend to scale into new cities via configuration rather than code changes.",
