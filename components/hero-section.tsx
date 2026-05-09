@@ -8,7 +8,7 @@ import { SpTrustPill } from "@/components/sp-trust-pill"
 
 const FULL_HEADLINE = "Turning ideas into production-ready software"
 const SUBTITLE =
-  "Senior full-stack engineer & AI engineer, I design and ship AI agents, RAG systems, voice products, and SaaS for founders and organizations."
+  "Senior full-stack engineer & AI engineer, I design and ship SaaS and enterprise products, voice systems, and AI solutions, including AI agents and RAG systems, for founders and organizations."
 
 /** Same collage PNGs as case study cards (`public/images/case-study/`) */
 const HERO_CENTER_POSTER = "/images/case-study/thumb-intuitysync.png"
