@@ -6,7 +6,7 @@ import Image from "next/image"
 import { PROFILE_UPWORK } from "@/lib/site"
 import { SpTrustPill } from "@/components/sp-trust-pill"
 
-const FULL_HEADLINE = "Turning ideas into production-ready software"
+const FULL_HEADLINE = "Full-stack and AI engineer building SaaS and voice products"
 const SUBTITLE =
   "Senior full-stack engineer & AI engineer, I design and ship SaaS and enterprise products, voice systems, and AI solutions, including AI agents and RAG systems, for founders and organizations."
 
@@ -256,7 +256,7 @@ export function HeroSection() {
           </div>
 
           <div className="hero-center-slot">
-            <span className="hero-sound-pill">🔊 Tap for sound</span>
+            {/* <span className="hero-sound-pill">🔊 Tap for sound</span> */}
             {HERO_VIDEO_SRC ? (
               <video
                 key={HERO_VIDEO_SRC}
@@ -285,11 +285,11 @@ export function HeroSection() {
                   style={{ objectFit: "cover", backgroundColor: "#0f0a1a" }}
                   priority
                 />
-                <div className="hero-play" aria-hidden>
+                {/* <div className="hero-play" aria-hidden>
                   <div className="hero-play-btn">
                     <Play size={28} fill="white" color="white" style={{ marginLeft: 4 }} />
                   </div>
-                </div>
+                </div> */}
               </>
             )}
           </div>
