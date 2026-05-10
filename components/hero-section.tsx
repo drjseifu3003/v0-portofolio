@@ -6,7 +6,7 @@ import Image from "next/image"
 import { PROFILE_UPWORK } from "@/lib/site"
 import { SpTrustPill } from "@/components/sp-trust-pill"
 
-const FULL_HEADLINE = "Full-stack and AI engineer building SaaS and voice products"
+const FULL_HEADLINE = "Full-stack and AI engineer building SaaS and enterprise products"
 const SUBTITLE =
   "Senior full-stack engineer & AI engineer, I design and ship SaaS and enterprise products, voice systems, and AI solutions, including AI agents and RAG systems, for founders and organizations."
 
@@ -208,13 +208,13 @@ export function HeroSection() {
         <div className="hero-text">
           <h1
             style={{
-              fontSize: "clamp(26px, 3.8vw + 0.8rem, 42px)",
-              fontWeight: 800,
+              fontSize: "clamp(24px, 3.4vw + 0.7rem, 38px)",
+              fontWeight: 700,
               lineHeight: 1.05,
               letterSpacing: "-0.03em",
               color: "#1a1c1f",
               margin: "0 auto 8px",
-              maxWidth: 920,
+              maxWidth: 860,
               display: "flex",
               flexWrap: "wrap",
               justifyContent: "center",
