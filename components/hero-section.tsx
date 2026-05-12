@@ -1,14 +1,18 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { ArrowUpRight, Play } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import Image from "next/image"
 import { PROFILE_UPWORK } from "@/lib/site"
 import { SpTrustPill } from "@/components/sp-trust-pill"
 
-const FULL_HEADLINE = "Full-stack and AI engineer building SaaS and enterprise products"
-const SUBTITLE =
-  "Senior full-stack engineer & AI engineer, I design and ship SaaS and enterprise products, voice systems, and AI solutions, including AI agents and RAG systems, for founders and organizations."
+const FULL_HEADLINE = "I build AI-powered products for founders where failure is not an option."
+const SUBTITLE = "Healthcare AI, SaaS architecture, and GHL automation. FDA-adjacent, HIPAA-aware, production-grade."
+const HERO_QUOTE =
+  "I hired a total of 6 developers, and he was the last one standing at the end of the project because he was the best."
+const HERO_QUOTE_AUTHOR = "Jovan Stojanovic"
+const HERO_QUOTE_ROLE = "Ex-CEO of PhoneSales & Founder"
+const HERO_QUOTE_COMPANY = "Roasform"
 
 /** Same collage PNGs as case study cards (`public/images/case-study/`) */
 const HERO_CENTER_POSTER = "/images/case-study/thumb-intuitysync.png"
@@ -174,6 +178,70 @@ export function HeroSection() {
           pointer-events: none;
           border: 1px solid rgba(255, 255, 255, 0.12);
         }
+        .hero-quote {
+          margin: 14px auto 0;
+          width: min(760px, 100%);
+          padding: 16px;
+          border-radius: 14px;
+          border: 1px solid #dbe1e7;
+          background: #ffffff;
+          box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+          text-align: left;
+        }
+        .hero-quote-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          flex-wrap: wrap;
+          margin-bottom: 10px;
+        }
+        .hero-upwork-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 10px;
+          border-radius: 999px;
+          background: #f0fdf4;
+          color: #166534;
+          border: 1px solid #bbf7d0;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+        }
+        .hero-quote-stars {
+          display: inline-flex;
+          align-items: center;
+          gap: 2px;
+        }
+        .hero-quote-score {
+          margin-left: 6px;
+          color: #111827;
+          font-size: 12px;
+          font-weight: 700;
+        }
+        .hero-quote-copy {
+          margin: 0;
+          color: #111827;
+          font-size: clamp(14px, 1vw + 0.62rem, 16px);
+          line-height: 1.5;
+          letter-spacing: -0.01em;
+          font-weight: 600;
+        }
+        .hero-quote-meta {
+          margin-top: 8px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          color: #4b5563;
+          font-size: 13px;
+          line-height: 1.35;
+        }
+        .hero-quote-name {
+          color: #111827;
+          font-weight: 700;
+        }
         @media (max-width: 1023px) {
           .hero-side-col {
             display: none !important;
@@ -189,6 +257,13 @@ export function HeroSection() {
             height: auto;
             min-height: 180px;
             aspect-ratio: 16 / 10;
+          }
+          .hero-quote {
+            margin-top: 12px;
+            padding: 12px 14px;
+          }
+          .hero-quote-top {
+            margin-bottom: 8px;
           }
         }
         @media (min-width: 1024px) {

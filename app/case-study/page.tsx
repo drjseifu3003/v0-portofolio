@@ -138,12 +138,36 @@ export default function CaseStudyListPage() {
                   </div>
 
                   <div style={{ padding: "clamp(20px, 3vw, 28px)", display: "flex", flexDirection: "column", flex: 1, gap: 10 }}>
-                    <p style={{ margin: 0, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9ca3af", fontWeight: 700 }}>
-                      {study.tag.split(" - ")[1] ?? study.tag}
-                    </p>
                     <h2 style={{ margin: 0, fontSize: "clamp(18px, 2vw, 22px)", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.02em", color: "hsl(var(--foreground))" }}>
                       {study.title}
                     </h2>
+                    {study.listResultLine ? (
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                        {study.listResultLine
+                          .split(".")
+                          .map(part => part.trim())
+                          .filter(Boolean)
+                          .map(chip => (
+                            <span
+                              key={chip}
+                              style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                borderRadius: 999,
+                                border: "1px solid #d1d5db",
+                                background: "#f9fafb",
+                                color: "#374151",
+                                fontSize: 12,
+                                lineHeight: 1,
+                                fontWeight: 600,
+                                padding: "7px 10px",
+                              }}
+                            >
+                              {chip}
+                            </span>
+                          ))}
+                      </div>
+                    ) : null}
                     <p style={{ margin: 0, color: "#6b7280", lineHeight: 1.65, fontSize: 14, flex: 1 }}>{study.subtitle}</p>
                     <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 6, fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "hsl(var(--brand-accent))" }}>
                       Read case study <ArrowUpRight size={14} strokeWidth={2} />

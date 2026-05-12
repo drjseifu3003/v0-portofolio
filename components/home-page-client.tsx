@@ -8,6 +8,8 @@ import { TestimonialsSection } from "@/components/testimonials-section"
 import { FaqSection } from "@/components/faq-section"
 import { ContactSection } from "@/components/contact-section"
 import { SiteHeader, SITE_HEADER_H } from "@/components/site-header"
+import { LiyaSection } from "./liya-section"
+
 
 const openLiya = () => window.dispatchEvent(new CustomEvent("open-liya"))
 
@@ -20,6 +22,7 @@ export function HomePageClient() {
         <LogoCloudSection />
         <HowWeHelpSection />
         <ProjectsSection />
+        {/* <LiyaSection/> */}
         <TestimonialsSection />
         {/* <FaqSection /> */}
         <ContactSection onTalkToLiya={openLiya} />

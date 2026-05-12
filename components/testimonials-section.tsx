@@ -64,6 +64,8 @@ const DATA: T[] = [
   },
 ]
 
+const HERO_TESTIMONIAL_AUTHOR = "Jovan Stojanovic"
+
 function Stars({ count }: { count: number }) {
   const fill = "#f59e0b"
   return (
@@ -171,8 +173,14 @@ export function TestimonialsSection() {
   const [current, setCurrent] = useState(0)
   const trackRef = useRef<HTMLDivElement>(null)
 
+  const testimonials = (() => {
+    const heroIndex = DATA.findIndex(t => t.author.name === HERO_TESTIMONIAL_AUTHOR)
+    if (heroIndex < 0) return DATA
+    return [DATA[heroIndex], ...DATA.filter((_, i) => i !== heroIndex)]
+  })()
+
   const prev = () => setCurrent(c => Math.max(0, c - 1))
-  const next = () => setCurrent(c => Math.min(DATA.length - 1, c + 1))
+  const next = () => setCurrent(c => Math.min(testimonials.length - 1, c + 1))
 
   return (
     <section
@@ -270,7 +278,7 @@ export function TestimonialsSection() {
         </div>
 
         <div className="t-grid">
-          {DATA.map((t, i) => (
+          {testimonials.map((t, i) => (
             <TestimonialCard key={i} {...t} />
           ))}
         </div>
@@ -281,11 +289,11 @@ export function TestimonialsSection() {
             className="t-track"
             onScroll={e => {
               const el = e.currentTarget
-              const idx = Math.round(el.scrollLeft / (el.scrollWidth / DATA.length))
-              setCurrent(Math.min(DATA.length - 1, Math.max(0, idx)))
+              const idx = Math.round(el.scrollLeft / (el.scrollWidth / testimonials.length))
+              setCurrent(Math.min(testimonials.length - 1, Math.max(0, idx)))
             }}
           >
-            {DATA.map((t, i) => (
+            {testimonials.map((t, i) => (
               <div key={i} className="t-slide">
                 <TestimonialCard {...t} />
               </div>
@@ -294,7 +302,7 @@ export function TestimonialsSection() {
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 24 }}>
             <div style={{ display: "flex", gap: 8 }}>
-              {DATA.map((_, i) => (
+              {testimonials.map((_, i) => (
                 <button
                   key={i}
                   type="button"
@@ -302,7 +310,7 @@ export function TestimonialsSection() {
                     setCurrent(i)
                     const el = trackRef.current
                     if (!el) return
-                    const slideW = el.scrollWidth / DATA.length
+                    const slideW = el.scrollWidth / testimonials.length
                     el.scrollTo({ left: slideW * i, behavior: "smooth" })
                   }}
                   style={{
@@ -326,7 +334,7 @@ export function TestimonialsSection() {
                   prev()
                   const el = trackRef.current
                   if (!el) return
-                  const slideW = el.scrollWidth / DATA.length
+                  const slideW = el.scrollWidth / testimonials.length
                   el.scrollTo({ left: slideW * Math.max(0, current - 1), behavior: "smooth" })
                 }}
                 disabled={current === 0}
@@ -341,10 +349,10 @@ export function TestimonialsSection() {
                   next()
                   const el = trackRef.current
                   if (!el) return
-                  const slideW = el.scrollWidth / DATA.length
-                  el.scrollTo({ left: slideW * Math.min(DATA.length - 1, current + 1), behavior: "smooth" })
+                  const slideW = el.scrollWidth / testimonials.length
+                  el.scrollTo({ left: slideW * Math.min(testimonials.length - 1, current + 1), behavior: "smooth" })
                 }}
-                disabled={current === DATA.length - 1}
+                disabled={current === testimonials.length - 1}
                 aria-label="Next testimonial"
               >
                 <ChevronRight size={18} strokeWidth={2} />

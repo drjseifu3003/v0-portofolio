@@ -7,6 +7,8 @@ export type Study = {
   slug: string
   title: string
   subtitle: string
+  /** Short founder-scan line shown under title on list cards */
+  listResultLine?: string
   tag: string
   /** Optional public URL for the live product */
   liveSite?: string
@@ -44,6 +46,7 @@ export const studies: Study[] = [
   {
     slug: "healium-sono",
     title: "Healium Sono",
+    listResultLine: "Real-time AI ultrasound teleguidance . HIPAA-compliant . FDA-adjecent",
     liveSite: "https://healiumsono.com",
     subtitle: "AI-powered remote ultrasound and teleguidance for cardiology and OB/GYN",
     tag: "Case Study 01 - Healthcare AI",
@@ -103,6 +106,7 @@ export const studies: Study[] = [
   {
     slug: "healium-ckd",
     title: "Healium CKD",
+    listResultLine: "AI kidney disease detection . Multi-tenant medical data . AWS Lambda inference pipeline",
     subtitle: "CKD detection through AI-powered kidney ultrasound analysis",
     tag: "Case Study 02 - Healthcare AI",
     image: "/images/case-study/thumb-healium-ckd.png",
@@ -155,6 +159,7 @@ export const studies: Study[] = [
   {
     slug: "roasform",
     title: "Roasform",
+    listResultLine: "GHL-integrated AI qualification . Stripe billing . Live product with paying customers",
     liveSite: "https://roasform.com",
     subtitle: "GHL-integrated AI form and marketing platform for high-ticket sales",
     tag: "Case Study 03 - SaaS / MarTech",
@@ -210,6 +215,7 @@ export const studies: Study[] = [
   {
     slug: "ai-voice-receptionist",
     title: "AI Voice Receptionist",
+    listResultLine: "End-to-end call automation . AI qualification . CRM logging . Zero human intervention",
     subtitle: "End-to-end AI automation for inbound business calls, qualification, and CRM logging",
     tag: "Case Study 04 - AI Automation",
     image: "/images/case-study/thumb-ai-voice-receptionist.png",
@@ -303,6 +309,7 @@ export const studies: Study[] = [
   {
     slug: "intuitysync",
     title: "IntuitySync AI",
+    listResultLine: "AI social media automation . Multi-channel posting . Analytics across all platforms",
     subtitle: "AI-powered social media automation, posting, and analytics across all channels",
     tag: "Case Study 05 - SaaS / AI Content",
     image: "/images/case-study/thumb-intuitysync.png",
@@ -355,6 +362,7 @@ export const studies: Study[] = [
   {
     slug: "wumis",
     title: "Water Utility Management System",
+    listResultLine: "Enterprise utility SaaS . 100K+ active users . Deployed across 20+ organizations . 70% faster deployments",
     subtitle: "Mission-critical enterprise SaaS for billing and meter reading across 20+ organisations",
     tag: "Case Study 06 - Enterprise SaaS",
     liveSite: "https://wumis.et",
@@ -409,6 +417,7 @@ export const studies: Study[] = [
   {
     slug: "huluplus",
     title: "Hulu Plus",
+    listResultLine: "Real-time ride and delivery platform . Live GPS tracking . AWS CI/CD . Scaled across 3 cities",
     subtitle: "Real-time ride-sharing and delivery platform with live GPS and automated dispatch",
     tag: "Case Study 07 - Transportation Tech",
     image: "/images/case-study/thumb-huluplus.png",

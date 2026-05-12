@@ -4,8 +4,17 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import type { Study } from "@/app/case-study/data"
+import { Badge } from "@/components/ui/badge"
 
 export function CaseStudyCardPreview({ study }: { study: Study }) {
+  const resultLine = study.listResultLine?.trim()
+  const chips = resultLine
+    ? resultLine
+        .split(/\s*[.·]\s*/)
+        .map(item => item.trim())
+        .filter(Boolean)
+    : []
+
   return (
     <Link
       href={`/case-study/${study.slug}`}
@@ -79,22 +88,62 @@ export function CaseStudyCardPreview({ study }: { study: Study }) {
             </h3>
             <ArrowUpRight strokeWidth={2} width={20} height={20} color="#9ca3af" style={{ flexShrink: 0 }} aria-hidden />
           </div>
-          <p
-            style={{
-              margin: 0,
-              fontSize: 14,
-              lineHeight: 1.55,
-              color: "#6b7280",
-              textAlign: "left",
-              fontWeight: 400,
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
-            }}
-          >
-            {study.subtitle}
-          </p>
+          {chips.length > 0 ? (
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {chips.map(chip => (
+                <Badge
+                  key={chip}
+                  variant="outline"
+                  style={{
+                    borderColor: "#d1d5db",
+                    color: "#374151",
+                    background: "#f9fafb",
+                    fontSize: 12,
+                    fontWeight: 600,
+                    lineHeight: 1.1,
+                    padding: "6px 10px",
+                  }}
+                >
+                  {chip}
+                </Badge>
+              ))}
+            </div>
+          ) : (
+            <p
+              style={{
+                margin: 0,
+                fontSize: 14,
+                lineHeight: 1.55,
+                color: "#374151",
+                textAlign: "left",
+                fontWeight: 600,
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }}
+            >
+              {study.subtitle}
+            </p>
+          )}
+          {resultLine ? (
+            <p
+              style={{
+                margin: "8px 0 0",
+                fontSize: 13,
+                lineHeight: 1.5,
+                color: "#6b7280",
+                textAlign: "left",
+                fontWeight: 400,
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }}
+            >
+              {study.subtitle}
+            </p>
+          ) : null}
         </div>
       </article>
 
