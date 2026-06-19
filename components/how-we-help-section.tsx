@@ -6,21 +6,21 @@ import { PROFILE_UPWORK } from "@/lib/site"
 const STEPS = [
   {
     n: 1,
-    title: "Strategy & architecture",
+    title: "Strategy & Architecture",
     body:
-      "I help you sharpen the problem, trim scope to what actually ships, and design the stack, AI agents, RAG, voice, data, integrations, and hosting, into a roadmap you can fund and execute.",
+      "I translate complex business requirements into clear blueprints. I map out multi-tenant database schemas, deep API integrations, and structured backend pipelines to ensure you build on a stable foundation.",
   },
   {
     n: 2,
-    title: "Build",
+    title: "Full-Stack Build",
     body:
-      "I implement production-grade software end to end: Next.js UIs, Node or Python backends, AI and voice pipelines, auth, Stripe, CRM hooks, webhooks, and observability, not demos that collapse under real traffic.",
+      "I implement production-grade software end-to-end. From Next.js frontends to Node or Python backend engines, I deploy optimized code handling secure data isolation, webhooks, and asynchronous workflows.",
   },
   {
     n: 3,
-    title: "Scale & iterate",
+    title: "Scale & Automate",
     body:
-      "Once you are live, I keep you moving, performance tuning, automation (including N8N), reliability fixes, security-minded hardening, and new features, so growth does not force a risky rewrite.",
+      "Once live, I keep your product running smoothly. I focus on system hardening, performance optimization, and backend workflow automation, ensuring your infrastructure remains reliable as traffic scales.",
   },
 ] as const
 

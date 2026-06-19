@@ -5,92 +5,93 @@ import { CheckCircle2, Sparkles } from "lucide-react"
 /** Stack groups ordered by importance for client evaluation (highest first). */
 const STACK_GROUPS: { title: string; subtitle?: string; items: string[] }[] = [
   {
-    title: "Software architecture & system design",
-    subtitle: "How the product is structured before build and how it survives growth",
+    title: "Software Architecture & System Design",
+    subtitle: "How the product is structured and built to handle data scaling",
     items: [
-      "Software architecture",
-      "System design",
-      "SaaS architecture",
-      "RAG system design",
-      "Database schema design",
-      "Scale & capacity planning",
+      "Software Architecture",
+      "System Design",
+      "SaaS Architecture",
+      "Database Schema Design",
+      "Multi-tenant Architecture",
+      "Capacity Planning",
     ],
   },
   {
-    title: "JavaScript & TypeScript stacks",
-    subtitle: "Core web and API delivery",
+    title: "JavaScript & TypeScript Stacks",
+    subtitle: "Core web application and transactional API delivery",
     items: ["TypeScript", "Next.js", "React", "Node.js", "NestJS", "Express", "MERN", "PERN"],
   },
   {
-    title: "AI integration & retrieval",
-    subtitle: "Shipping AI features in production, not slide decks",
-    items: ["AI integration", "RAG", "LangChain", "Vector databases", "MLOps"],
+    title: "AI Integration & Retrieval",
+    subtitle: "Shipping production-ready pipeline integrations",
+    items: ["AI Integration", "Structured AI Pipelines", "LangChain", "Vector Databases"],
   },
   {
-    title: "Python & APIs",
-    subtitle: "Fast services and ML-adjacent backends",
+    title: "Python & Core APIs",
+    subtitle: "High-performance services and background processing backends",
     items: ["Python", "FastAPI"],
   },
   {
-    title: "Cloud, DevOps & data",
-    subtitle: "Where it runs and how it is operated",
-    items: ["AWS (Lambda, serverless)", "Supabase", "DevOps"],
+    title: "Cloud, DevOps & Data Platforms",
+    subtitle: "Where application infrastructure runs and persists data securely",
+    items: ["AWS (Lambda, Serverless)", "Supabase", "PostgreSQL", "Database Isolation"],
   },
   {
-    title: "Performance (backend)",
-    subtitle: "Throughput and stability under real traffic",
+    title: "Backend Performance & Scaling",
+    subtitle: "Optimizing throughput and stability under live web traffic",
     items: [
-      "API latency & throughput",
-      "Query & index tuning",
-      "Caching layers (Redis, HTTP)",
-      "Async jobs & queues",
-      "Rate limits & graceful scaling",
+      "API Latency Optimization",
+      "Query & Index Tuning",
+      "Caching Layers (Redis)",
+      "Async Jobs & Event Queues",
+      "Rate Limiting & Webhook Security",
     ],
   },
   {
-    title: "Performance (frontend)",
-    subtitle: "Perceived speed and layout stability",
+    title: "Frontend Performance & Optimization",
+    subtitle: "Ensuring responsive layout stability and perceived speed",
     items: [
       "Core Web Vitals",
-      "LCP & CLS tuning",
-      "Code splitting & lazy loading",
-      "Image & asset optimization",
-      "Caching & CDN-friendly builds",
+      "LCP & CLS Tuning",
+      "Code Splitting & Lazy Loading",
+      "Asset & Image Optimization",
+      "CDN-friendly Builds",
     ],
   },
   {
-    title: "SEO & search visibility",
-    subtitle: "Classic search, structured data, and visibility in AI-assisted search and overviews",
-    items: ["SEO", "Technical SEO", "AI SEO", "Metadata & Open Graph", "Structured data (JSON-LD)", "Sitemaps & indexing"],
+    title: "SEO & Search Visibility",
+    subtitle: "Technical structure, clean indexing, and crawler discoverability",
+    items: ["Technical SEO", "Metadata & Open Graph", "Structured Data (JSON-LD)", "Sitemaps & Indexing"],
   },
   {
-    title: "Voice & telephony",
-    subtitle: "Realtime and telephony-backed products",
+    title: "Voice & Telephony",
+    subtitle: "Real-time telephony and voice-backed automation pipelines",
     items: ["Vapi", "Retell", "Twilio"],
   },
   {
-    title: "Workflow automation",
-    items: ["N8N"],
+    title: "Workflow Automation & CRM Hooks",
+    subtitle: "Automating background operations and marketing synchronization",
+    items: ["N8N", "GoHighLevel (GHL) Automation", "Webhook Integrations"],
   },
   {
-    title: "Tools & integrations",
-    subtitle: "Connecting the product to how your team already works",
-    items: ["Slack", "WhatsApp", "Telegram", "Notion", "Airtable", "GoHighLevel (GHL)"],
+    title: "Tools & API Integrations",
+    subtitle: "Connecting core product features to operational platforms",
+    items: ["Slack APIs", "WhatsApp Business API", "Telegram Bots", "Notion API", "Airtable"],
   },
 ]
 
 const TRUST_PILLARS: { headline: string; body: string }[] = [
   {
-    headline: "Production-first delivery",
-    body: "Real users and real uptime. Strong typing, sane boundaries, deployments you can trust on day one, not a demo folder that crumbles.",
+    headline: "Production-First Delivery",
+    body: "Focusing on live uptime. I write clean, strongly-typed code with strict separation of concerns, delivering production infrastructure you can trust from day one.",
   },
   {
-    headline: "One senior owner for the messy middle",
-    body: "I stay across frontend, backends, integrations, AI, and cloud so you aren’t corralling overlapping vendors before launch.",
+    headline: "End-to-End Ownership",
+    body: "I completely manage the full tech stack including frontends, application logic, database migrations, and webhooks removing technical gaps before deployment.",
   },
   {
-    headline: "Straightforward cadence",
-    body: "You get pragmatic scope, written decisions when it matters, and demos you can show stakeholders without spin.",
+    headline: "Pragmatic Architecture",
+    body: "No over-engineering or vanity features. I map development directly to core software deliverables, providing written architectural definitions and working builds.",
   },
 ]
 
@@ -174,9 +175,14 @@ export function AboutIntro() {
               fontWeight: 400,
             }}
           >
-            I’m Dereje Seifu, a senior full-stack engineer with 4+ years shipping production software for founders, startups, and lean product
+            {/* I’m Dereje Seifu, a senior full-stack engineer with 4+ years shipping production software for founders, startups, and lean product
             teams. I’m remote by default, timezone-flexible, and used to owning end-to-end delivery: product UI, APIs, AI features, automations, and
-            the cloud pieces that keep them running.
+            the cloud pieces that keep them running. */}
+
+            I’m Dereje Seifu, a senior full-stack engineer and software architect specializing in building production web applications, secure backends, 
+            and multi-tenant SaaS products. I own end-to-end delivery and translating business specifications directly into clean, scalable system architecture and 
+            production-grade code.
+          
           </p>
           <p
             style={{
@@ -187,9 +193,9 @@ export function AboutIntro() {
               fontWeight: 400,
             }}
           >
-            If you’re on this page, you’re already evaluating whether I can move your roadmap without drama. The short answer: I build for outcomes you
-            can measure: ship velocity, fewer integration surprises, and systems that don’t need a rewrite when traffic or scope grows. Below is the
-            stack I use in live products, so you know exactly what you’re buying before we talk.
+            I focus entirely on measurable software outcomes: fast development velocity, bulletproof API integrations, and 
+            clean codebases that survive business scaling. Below is the technical stack I implement and operate in production, 
+            outlining exactly what I deliver.
           </p>
         </div>
 
@@ -242,8 +248,10 @@ export function AboutIntro() {
             Tools I’ve shipped in production
           </h2>
           <p style={{ margin: "0 auto", maxWidth: 640, fontSize: 15, lineHeight: 1.65, color: "hsl(var(--muted-foreground))", fontWeight: 400 }}>
-            Grouped for clarity, ordered roughly by how central each area is to engagements. Every tag reflects work shipped or operated for clients, not
-            resume decoration.
+            {/* Grouped for clarity, ordered roughly by how central each area is to engagements. Every tag reflects work shipped or operated for clients, not
+            resume decoration. */}
+            Grouped systematically by core architecture and engine types. Every tag reflects actual code deployed and operating under live production 
+            conditions.
           </p>
         </div>
 
@@ -312,8 +320,9 @@ export function AboutIntro() {
             marginRight: "auto",
           }}
         >
-          Don’t see a niche tool listed? I’ve stitched plenty of bespoke APIs and internal systems together. If it has docs or webhooks, we can plan
-          it.
+        Need to integrate a proprietary system or specific internal endpoint? 
+        If the platform exposed an API, handles webhooks, or has documentation, 
+        I can engineer the integration.
         </p>
       </div>
     </section>

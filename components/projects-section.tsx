@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react"
 import { studies, type Study } from "@/app/case-study/data"
 import { CaseStudyCardPreview } from "@/components/case-study-card-preview"
 
-const HOME_SLUGS = ["ai-voice-receptionist", "roasform", "intuitysync"] as const
+const HOME_SLUGS = ["healium-ckd", "roasform", "intuitysync"] as const
 
 export function ProjectsSection() {
   const homeStudies = HOME_SLUGS.map(slug => studies.find(s => s.slug === slug)).filter((s): s is Study => Boolean(s))

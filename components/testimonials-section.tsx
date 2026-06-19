@@ -32,6 +32,14 @@ const DATA: T[] = [
   },
   {
     content:
+      "Dereje is a highly skilled and reliable developer. He consistently delivered high-quality work, met deadlines, and communicated effectively throughout the project. I would highly recommend him for any development work.",
+    author: { name: "Tray Branch", role: "Co-Founder & CEO", company: "IntuitySync AI" },
+    rating: 5,
+    platform: "upwork",
+    link: "https://www.upwork.com/ab/g/pub/wom/prx/eyJwZXJzb25VaWQiOiIxNzYyODM2NzI2MTI3OTQzNjgwIiwiY29udHJhY3RSaWQiOiI0MTAzNTU3OSIsImJhbm5lclR5cGUiOiJjb250cmFjdCIsImJhbm5lclZhcmlhbnQiOiJkZWZhdWx0Iiwid29tIjoiZmx2MiIsInJlZGlyZWN0IjoiZmxfcHJvZmlsZV9wcm9tbyJ9",
+  },
+  {
+    content:
       "Dereje is a dedicated and skilled developer who designed and developed both mobile and web applications from the ground up. His work always stood out for being efficient, well-structured, and user-friendly.",
     author: { name: "Tibebu", role: "ICT Director", company: "AAAE" },
     rating: 5,
@@ -54,14 +62,14 @@ const DATA: T[] = [
     platform: "linkedin",
     link: "https://www.linkedin.com/in/drjseifu1991/details/recommendations/?detailScreenTabIndex=0",
   },
-  {
-    content:
-      "Dereje goes above and beyond to ensure projects are completed to the highest standards. He's hardworking, dedicated, and always willing to learn new skills and technologies. His ability to work independently and deliver high-quality work is a testament to his excellence.",
-    author: { name: "Dawit Michael", role: "Senior Software Engineer" },
-    rating: 5,
-    platform: "linkedin",
-    link: "https://www.linkedin.com/in/drjseifu1991/details/recommendations/?detailScreenTabIndex=0",
-  },
+  // {
+  //   content:
+  //     "Dereje goes above and beyond to ensure projects are completed to the highest standards. He's hardworking, dedicated, and always willing to learn new skills and technologies. His ability to work independently and deliver high-quality work is a testament to his excellence.",
+  //   author: { name: "Dawit Michael", role: "Senior Software Engineer" },
+  //   rating: 5,
+  //   platform: "linkedin",
+  //   link: "https://www.linkedin.com/in/drjseifu1991/details/recommendations/?detailScreenTabIndex=0",
+  // },
 ]
 
 const HERO_TESTIMONIAL_AUTHOR = "Jovan Stojanovic"

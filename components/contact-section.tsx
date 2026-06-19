@@ -263,8 +263,6 @@ export function ContactSection({ onTalkToLiya }: ContactSectionProps) {
           </p>
         </div>
       </section>
-
-      <SiteFooter />
     </>
   )
 }

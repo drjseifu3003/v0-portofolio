@@ -6,8 +6,8 @@ import Image from "next/image"
 import { PROFILE_UPWORK } from "@/lib/site"
 import { SpTrustPill } from "@/components/sp-trust-pill"
 
-const FULL_HEADLINE = "I build AI-powered products for founders where failure is not an option."
-const SUBTITLE = "Healthcare AI, SaaS architecture, and GHL automation. FDA-adjacent, HIPAA-aware, production-grade."
+const FULL_HEADLINE = "Fullstack Engineer & Technical Lead | Software Architect"
+const SUBTITLE = "Structured AI pipelines, scalable backends, and responsive frontends. Production-ready, full-stack."
 const HERO_QUOTE =
   "I hired a total of 6 developers, and he was the last one standing at the end of the project because he was the best."
 const HERO_QUOTE_AUTHOR = "Jovan Stojanovic"
@@ -19,7 +19,7 @@ const HERO_CENTER_POSTER = "/images/case-study/thumb-intuitysync.png"
 const HERO_SIDE_L_TOP = "/images/case-study/thumb-roasform.png"
 const HERO_SIDE_L_BOTTOM = "/images/case-study/thumb-healium-sono.png"
 const HERO_SIDE_R_TOP = "/images/case-study/thumb-healium-ckd.png"
-const HERO_SIDE_R_BOTTOM = "/images/case-study/thumb-ai-voice-receptionist.png"
+const HERO_SIDE_R_BOTTOM = "/images/case-study/thumb-wumis.png"
 
 /** Optional: set NEXT_PUBLIC_HERO_VIDEO_URL */
 const HERO_VIDEO_SRC =

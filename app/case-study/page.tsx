@@ -7,19 +7,20 @@ import { SiteHeader, SITE_HEADER_H } from "@/components/site-header"
 import { ContactSectionWithLiya } from "@/components/contact-section-with-liya"
 import { SpTrustPill } from "@/components/sp-trust-pill"
 import { absoluteUrl, getSiteUrl, SITE_FULL_NAME } from "@/lib/site-seo"
+import { SiteFooter } from "@/components/site-footer"
 
 const listUrl = `${getSiteUrl()}/case-study`
 
 export const metadata: Metadata = {
-  title: "Work & case studies",
+  title: "Production Case Studies",
   description:
-    "Real products and measurable outcomes: architecture, constraints, delivery, and impact—documented for stakeholders and engineers.",
+    "Full-stack architecture, clean API integrations, and secure database schemas built to handle live traffic.",
   alternates: { canonical: listUrl },
   openGraph: {
     url: listUrl,
-    title: `Work & case studies | ${SITE_FULL_NAME}`,
+    title: `Production Case Studies | ${SITE_FULL_NAME}`,
     description:
-      "Case studies spanning full-stack apps, AI/RAG, voice automation, and SaaS—how problems were framed, built, and validated.",
+      "Case studies covering scalable backends, clean frontends, and multi-tenant systems built from the ground up.",
     siteName: SITE_FULL_NAME,
     locale: "en_US",
     type: "website",
@@ -27,9 +28,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Work & case studies | ${SITE_FULL_NAME}`,
+    title: `Production Case Studies | ${SITE_FULL_NAME}`,
     description:
-      "Case studies covering architecture, delivery, and measurable impact across AI, SaaS, and production web platforms.",
+      "Architecture, implementation details, and structural design across scalable web applications.",
     images: [absoluteUrl("/og_image.png")],
   },
 }
@@ -56,17 +57,17 @@ export default function CaseStudyListPage() {
             <h1
               style={{
                 margin: "0 0 16px",
-                fontSize: "clamp(32px, 4.5vw, 52px)",
+                fontSize: "clamp(28px, 4.5vw, 44px)",
                 fontWeight: 800,
                 lineHeight: 1.06,
                 letterSpacing: "-0.035em",
                 color: "hsl(var(--foreground))",
               }}
             >
-              Case studies built for clarity
+              Full-stack applications built for production
             </h1>
             <p style={{ margin: "0 auto", color: "hsl(var(--muted-foreground))", lineHeight: 1.65, fontSize: 16, maxWidth: 560 }}>
-              Architecture, constraints, ships, and impact, documented the way stakeholders and engineers both can use.
+              Translating complex requirements into stable code. Exploring backend systems, database architecture, and performance-tuned frontends.
             </p>
             <div style={{ marginTop: 14, display: "flex", justifyContent: "center", width: "100%" }}>
               <SpTrustPill variant="hero" />
@@ -178,8 +179,8 @@ export default function CaseStudyListPage() {
             ))}
           </div>
         </div>
-
-        <ContactSectionWithLiya />
+            
+        <SiteFooter />  
       </main>
     </div>
   )
