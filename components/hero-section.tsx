@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { ArrowUpRight } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { PROFILE_UPWORK } from "@/lib/site"
 import { SpTrustPill } from "@/components/sp-trust-pill"
 
@@ -323,10 +324,14 @@ export function HeroSection() {
         <div className="hero-gallery">
           <div className="hero-side-col hero-side-col-l" aria-hidden>
             <div className="hero-side-img">
-              <Image src={HERO_SIDE_L_TOP} alt="" fill sizes="(max-width: 1023px) 0, 24vw" style={{ objectFit: "cover" }} />
+              <Link href="/case-study/poultry-rag" style={{ position: "absolute", inset: 0, display: "block" }}>
+                <Image src={HERO_SIDE_L_TOP} alt="" fill sizes="(max-width: 1023px) 0, 24vw" style={{ objectFit: "cover" }} />
+              </Link>
             </div>
             <div className="hero-side-img">
-              <Image src={HERO_SIDE_L_BOTTOM} alt="" fill sizes="(max-width: 1023px) 0, 24vw" style={{ objectFit: "cover", opacity: 0.95 }} />
+              <Link href="/case-study/roasform" style={{ position: "absolute", inset: 0, display: "block" }}>
+                <Image src={HERO_SIDE_L_BOTTOM} alt="" fill sizes="(max-width: 1023px) 0, 24vw" style={{ objectFit: "cover", opacity: 0.95 }} />
+              </Link>
             </div>
           </div>
 
@@ -351,7 +356,7 @@ export function HeroSection() {
                 <source src={HERO_VIDEO_SRC} />
               </video>
             ) : (
-              <>
+              <Link href="/case-study/intuitysync" style={{ position: "absolute", inset: 0, display: "block" }}>
                 <Image
                   src={HERO_CENTER_POSTER}
                   alt=""
@@ -360,21 +365,20 @@ export function HeroSection() {
                   style={{ objectFit: "cover", backgroundColor: "#0f0a1a" }}
                   priority
                 />
-                {/* <div className="hero-play" aria-hidden>
-                  <div className="hero-play-btn">
-                    <Play size={28} fill="white" color="white" style={{ marginLeft: 4 }} />
-                  </div>
-                </div> */}
-              </>
+              </Link>
             )}
           </div>
 
           <div className="hero-side-col hero-side-col-r" aria-hidden>
             <div className="hero-side-img">
-              <Image src={HERO_SIDE_R_TOP} alt="" fill sizes="(max-width: 1023px) 0, 24vw" style={{ objectFit: "cover" }} />
+              <Link href="/case-study/healium-ckd" style={{ position: "absolute", inset: 0, display: "block" }}>
+                <Image src={HERO_SIDE_R_TOP} alt="" fill sizes="(max-width: 1023px) 0, 24vw" style={{ objectFit: "cover" }} />
+              </Link>
             </div>
             <div className="hero-side-img">
-              <Image src={HERO_SIDE_R_BOTTOM} alt="" fill sizes="(max-width: 1023px) 0, 24vw" style={{ objectFit: "cover", opacity: 0.95 }} />
+              <Link href="/case-study/wumis" style={{ position: "absolute", inset: 0, display: "block" }}>
+                <Image src={HERO_SIDE_R_BOTTOM} alt="" fill sizes="(max-width: 1023px) 0, 24vw" style={{ objectFit: "cover", opacity: 0.95 }} />
+              </Link>
             </div>
           </div>
         </div>
