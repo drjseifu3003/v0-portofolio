@@ -544,13 +544,13 @@ export const studies: Study[] = [
       "Unvetted medical guidelines are a severe legal and health risk; procedures must remain completely unchanged from official manuals.",
     ],
     whyItMattered: [
-      "First aid is highly time-sensitive—delays or incorrect procedures (like wrong depth in CPR or inducing vomiting for the wrong poison) lead directly to fatalities.",
+      "First aid is highly time-sensitive; delays or incorrect procedures (like wrong depth in CPR or inducing vomiting for the wrong poison) lead directly to fatalities.",
       "A single hallucinated or misclassified scenario can bypass emergency services escalation when dispatch is vital.",
       "To build trust with healthcare advisors, every piece of advice must be traceable to a certified medical professional with strict compliance auditing.",
     ],
     whatIBuilt: [
       "Architected a LangGraph workspace partitioning context retrieval, visual symptom parsing, safety thresholding, and state persistence.",
-      "Designed a deterministic response formatter that enforces the 'immediate-action-first' ordering contract in code, bypassing LLM output order.",
+      "Designed a deterministic response formatter that enforces the immediate-action-first ordering contract in code, bypassing LLM output order.",
       "Built a multimodal vision symptom extractor to describe injuries (burns, rashes, bleeding) and search scenarios using textual descriptions rather than direct visual diagnosis.",
       "Implemented a rule-based safety layer that reads retrieved scenario metadata and checks text for danger indicators, triggering overrides independent of the LLM.",
       "Created a Qdrant-backed historical correction system that matches user symptoms against past diagnostic errors to prevent regression.",
@@ -579,7 +579,7 @@ export const studies: Study[] = [
   {
     slug: "poultry-rag",
     title: "Poultry RAG",
-    listResultLine: "Gemini Vision . Notifiable Disease Escalation . Qdrant Vector Search . SQLite",
+    listResultLine: "Gemini Vision . Notifiable Disease Escalation . Qdrant Vector Search . Postgres",
     subtitle: "A veterinary decision-support and triage system with multimodal disease matching and automatic quarantine alerts",
     tag: "Case Study 10 - Agriculture AI & Biosecurity",
     image: "/images/case-study/thumb-poultry-rag.png",
@@ -611,7 +611,7 @@ export const studies: Study[] = [
     stack: [
       { layer: "Retrieval & Vector Search", tech: "Qdrant Client" },
       { layer: "AI & Multimodal Vision", tech: "Gemini 1.5 Pro" },
-      { layer: "Database", tech: "SQLite (SQLAlchemy)" },
+      { layer: "Database", tech: "Postgres (SQLAlchemy)" },
       { layer: "Orchestration", tech: "LangChain (Python)" },
       { layer: "Interface", tech: "Telegram Bot API" },
       { layer: "Testing & DevOps", tech: "Docker & Pytest" },
