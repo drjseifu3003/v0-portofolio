@@ -16,8 +16,8 @@ const HERO_QUOTE_COMPANY = "Roasform"
 
 /** Same collage PNGs as case study cards (`public/images/case-study/`) */
 const HERO_CENTER_POSTER = "/images/case-study/thumb-intuitysync.png"
-const HERO_SIDE_L_TOP = "/images/case-study/thumb-roasform.png"
-const HERO_SIDE_L_BOTTOM = "/images/case-study/thumb-healium-sono.png"
+const HERO_SIDE_L_TOP = "/images/case-study/thumb-poultry-rag.png"
+const HERO_SIDE_L_BOTTOM = "/images/case-study/thumb-roasform.png"
 const HERO_SIDE_R_TOP = "/images/case-study/thumb-healium-ckd.png"
 const HERO_SIDE_R_BOTTOM = "/images/case-study/thumb-wumis.png"
 
