@@ -315,30 +315,6 @@ export function HeroSection() {
             {SUBTITLE}
           </p>
 
-          <p
-            style={{
-              fontSize: "13px",
-              color: "#4b5563",
-              lineHeight: 1.45,
-              maxWidth: 620,
-              margin: "4px auto 4px",
-              fontWeight: 500,
-            }}
-          >
-            📍 Addis Ababa, Ethiopia (GMT+3) &middot; 🟢 Available for New Projects
-          </p>
-
-          <p
-            style={{
-              fontSize: "12px",
-              color: "#6b7280",
-              margin: "0 auto 10px",
-              fontWeight: 400,
-            }}
-          >
-            Primary Focus: Healthcare AI &amp; Clinical SaaS &middot; Also architecting high-concurrency multi-agent &amp; RAG platforms for B2B SaaS
-          </p>
-
           <div style={{ marginTop: 14, display: "flex", justifyContent: "center", width: "100%" }}>
             <SpTrustPill variant="hero" />
           </div>

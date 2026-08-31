@@ -45,6 +45,24 @@ export function SiteFooter() {
           color: hsl(var(--brand-canvas-bright));
         }
       `}</style>
+      <div style={{ maxWidth: 1180, margin: "0 auto 24px", textAlign: "center" }}>
+        <span
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            padding: "6px 18px",
+            borderRadius: 999,
+            background: "hsl(var(--brand-ink) / 0.4)",
+            border: "1px solid hsl(var(--brand-footer-fg) / 0.15)",
+            fontSize: 13,
+            fontWeight: 500,
+            color: "hsl(var(--brand-canvas-bright))",
+          }}
+        >
+          📍 Addis Ababa, Ethiopia (GMT+3) &middot; 🟢 Available for New Projects
+        </span>
+      </div>
       <nav aria-label="Social links" style={{ maxWidth: 1180, margin: "0 auto" }}>
         <ul
           style={{

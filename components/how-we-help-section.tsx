@@ -84,12 +84,24 @@ export function HowWeHelpSection() {
             fontSize: "clamp(15px, 1.6vw, 18px)",
             color: "#6b7280",
             maxWidth: 680,
-            margin: "0 auto 48px",
+            margin: "0 auto 12px",
             lineHeight: 1.55,
             fontWeight: 400,
           }}
         >
           I work with HealthTech founders and clinical engineering teams in three steps: shaping the architecture, shipping production AI and SaaS, then scaling without compliance or security risks.
+        </p>
+        <p
+          style={{
+            fontSize: "13px",
+            color: "#4b5563",
+            maxWidth: 680,
+            margin: "0 auto 44px",
+            lineHeight: 1.5,
+            fontWeight: 500,
+          }}
+        >
+          Primary Focus: Healthcare AI &amp; Clinical SaaS &middot; Also architecting high-concurrency multi-agent &amp; RAG platforms for B2B SaaS
         </p>
 
         <div className="sp-help-grid">
