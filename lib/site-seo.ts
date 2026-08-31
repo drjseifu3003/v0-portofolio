@@ -12,10 +12,10 @@ export function getSiteUrl(): string {
 export const SITE_FULL_NAME = "Dereje Seifu"
 
 export const SITE_DEFAULT_TITLE =
-  "Dereje Seifu, Senior Full-Stack Engineer & AI Engineer"
+  "Dereje Seifu — Healthcare AI Systems Architect & Software Architect"
 
 export const SITE_DEFAULT_DESCRIPTION =
-  "Senior full-stack engineer specializing in AI Agents, RAG Systems, Voice AI, and SaaS platforms. I design and ship production-ready AI products for founders and organizations."
+  "Healthcare AI Systems Architect specializing in HIPAA-conscious AI Agents, RAG Pipelines, EHR/FHIR Integrations, and Enterprise Medical SaaS platforms. I design and ship production-ready clinical and enterprise AI products."
 
 /** Absolute URL for a path on this site (path must start with `/`). */
 export function absoluteUrl(path: string): string {

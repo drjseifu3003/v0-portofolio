@@ -6,21 +6,21 @@ import { PROFILE_UPWORK } from "@/lib/site"
 const STEPS = [
   {
     n: 1,
-    title: "Strategy & Architecture",
+    title: "Healthcare AI Strategy & Architecture",
     body:
-      "I translate complex business requirements into clear blueprints. I map out multi-tenant database schemas, deep API integrations, and structured backend pipelines to ensure you build on a stable foundation.",
+      "I translate complex clinical requirements into clear blueprints. I map out HIPAA-conscious system architectures, multi-tenant database isolation, EHR/FHIR API integrations, and structured backend pipelines.",
   },
   {
     n: 2,
-    title: "Full-Stack Build",
+    title: "Production Clinical AI Build",
     body:
-      "I implement production-grade software end-to-end. From Next.js frontends to Node or Python backend engines, I deploy optimized code handling secure data isolation, webhooks, and asynchronous workflows.",
+      "I implement production-grade Healthcare AI end-to-end. From Next.js frontends to Python RAG engines and AI agents, I deploy code handling safety-critical workflows, real-time teleguidance, and vector search.",
   },
   {
     n: 3,
-    title: "Scale & Automate",
+    title: "Scale, Compliance & Automation",
     body:
-      "Once live, I keep your product running smoothly. I focus on system hardening, performance optimization, and backend workflow automation, ensuring your infrastructure remains reliable as traffic scales.",
+      "Once live, I keep your healthcare platform running smoothly. I focus on system hardening, zero-downtime AWS infrastructure, immutable audit logging, and automated clinical intake workflows as traffic scales.",
   },
 ] as const
 
@@ -89,7 +89,7 @@ export function HowWeHelpSection() {
             fontWeight: 400,
           }}
         >
-          I work with founders and teams in three steps, shaping the idea, shipping production AI and SaaS, then growing without fragile rewrites.
+          I work with HealthTech founders and clinical engineering teams in three steps: shaping the architecture, shipping production AI and SaaS, then scaling without compliance or security risks.
         </p>
 
         <div className="sp-help-grid">

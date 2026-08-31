@@ -179,8 +179,8 @@ export function AboutIntro() {
             teams. I’m remote by default, timezone-flexible, and used to owning end-to-end delivery: product UI, APIs, AI features, automations, and
             the cloud pieces that keep them running. */}
 
-            I’m Dereje Seifu, a senior full-stack engineer and software architect specializing in building production web applications, secure backends, 
-            and multi-tenant SaaS products. I own end-to-end delivery and translating business specifications directly into clean, scalable system architecture and 
+            I’m Dereje Seifu, a Healthcare AI Systems Architect and Software Architect specializing in building production clinical applications, HIPAA-conscious backends, 
+            and multi-tenant medical SaaS products. I own end-to-end delivery: translating complex medical and business specifications directly into clean, scalable system architecture and 
             production-grade code.
           
           </p>

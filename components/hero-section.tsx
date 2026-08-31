@@ -7,8 +7,8 @@ import Link from "next/link"
 import { PROFILE_UPWORK } from "@/lib/site"
 import { SpTrustPill } from "@/components/sp-trust-pill"
 
-const FULL_HEADLINE = "Fullstack Engineer & Technical Lead | Software Architect"
-const SUBTITLE = "Structured AI pipelines, scalable backends, and responsive frontends. Production-ready, full-stack."
+const FULL_HEADLINE = "Healthcare AI Systems Architect | Software Architect"
+const SUBTITLE = "Production-ready Healthcare AI pipelines, HIPAA-compliant backends, and multi-tenant medical SaaS architectures."
 const HERO_QUOTE =
   "I hired a total of 6 developers, and he was the last one standing at the end of the project because he was the best."
 const HERO_QUOTE_AUTHOR = "Jovan Stojanovic"
@@ -16,9 +16,9 @@ const HERO_QUOTE_ROLE = "Ex-CEO of PhoneSales & Founder"
 const HERO_QUOTE_COMPANY = "Roasform"
 
 /** Same collage PNGs as case study cards (`public/images/case-study/`) */
-const HERO_CENTER_POSTER = "/images/case-study/thumb-intuitysync.png"
-const HERO_SIDE_L_TOP = "/images/case-study/thumb-poultry-rag.png"
-const HERO_SIDE_L_BOTTOM = "/images/case-study/thumb-roasform.png"
+const HERO_CENTER_POSTER = "/images/case-study/thumb-healium-sono.png"
+const HERO_SIDE_L_TOP = "/images/case-study/thumb-first-aid-rag-ai.png"
+const HERO_SIDE_L_BOTTOM = "/images/case-study/thumb-hipaastack.png"
 const HERO_SIDE_R_TOP = "/images/case-study/thumb-healium-ckd.png"
 const HERO_SIDE_R_BOTTOM = "/images/case-study/thumb-wumis.png"
 
@@ -324,12 +324,12 @@ export function HeroSection() {
         <div className="hero-gallery">
           <div className="hero-side-col hero-side-col-l" aria-hidden>
             <div className="hero-side-img">
-              <Link href="/case-study/poultry-rag" style={{ position: "absolute", inset: 0, display: "block" }}>
+              <Link href="/case-study/first-aid-rag-ai" style={{ position: "absolute", inset: 0, display: "block" }}>
                 <Image src={HERO_SIDE_L_TOP} alt="" fill sizes="(max-width: 1023px) 0, 24vw" style={{ objectFit: "cover" }} />
               </Link>
             </div>
             <div className="hero-side-img">
-              <Link href="/case-study/roasform" style={{ position: "absolute", inset: 0, display: "block" }}>
+              <Link href="/case-study/hipaa-stack" style={{ position: "absolute", inset: 0, display: "block" }}>
                 <Image src={HERO_SIDE_L_BOTTOM} alt="" fill sizes="(max-width: 1023px) 0, 24vw" style={{ objectFit: "cover", opacity: 0.95 }} />
               </Link>
             </div>
@@ -356,7 +356,7 @@ export function HeroSection() {
                 <source src={HERO_VIDEO_SRC} />
               </video>
             ) : (
-              <Link href="/case-study/intuitysync" style={{ position: "absolute", inset: 0, display: "block" }}>
+              <Link href="/case-study/healium-sono" style={{ position: "absolute", inset: 0, display: "block" }}>
                 <Image
                   src={HERO_CENTER_POSTER}
                   alt=""
