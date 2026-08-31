@@ -193,7 +193,7 @@ export function HowWeHelpSection() {
               margin: 0,
             }}
           >
-            Engagement Models: Scoped fixed-phase builds &amp; ongoing technical partner retainers ($2k+/mo)
+            Engagement Models: Scoped fixed-phase builds &amp; ongoing technical partner retainers
           </p>
 
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12 }}>
