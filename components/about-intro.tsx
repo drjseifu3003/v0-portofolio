@@ -179,9 +179,9 @@ export function AboutIntro() {
             teams. I’m remote by default, timezone-flexible, and used to owning end-to-end delivery: product UI, APIs, AI features, automations, and
             the cloud pieces that keep them running. */}
 
-            I’m Dereje Seifu, a Healthcare AI Systems Architect and Software Architect specializing in building production clinical applications, HIPAA-conscious backends, 
-            and multi-tenant medical SaaS products. I own end-to-end delivery: translating complex medical and business specifications directly into clean, scalable system architecture and 
-            production-grade code.
+            I’m Dereje Seifu, a Healthcare AI Systems Architect and Software Architect based in Addis Ababa, Ethiopia (GMT+3). 
+            My specialization in Healthcare AI developed through lead technical roles on FDA-cleared AI ultrasound platforms (Healium), where system reliability, 
+            zero-downtime teleguidance streaming, and HIPAA compliance were strict safety requirements rather than optional features.
           
           </p>
           <p
@@ -193,9 +193,8 @@ export function AboutIntro() {
               fontWeight: 400,
             }}
           >
-            I focus entirely on measurable software outcomes: fast development velocity, bulletproof API integrations, and 
-            clean codebases that survive business scaling. Below is the technical stack I implement and operate in production, 
-            outlining exactly what I deliver.
+            I bridge the gap between cutting-edge LLM multi-agent/RAG workflows and deterministic clinical reliability. 
+            Whether architecting multi-tenant database isolation, HIPAA compliance envelopes, or low-latency inference pipelines, I take full end-to-end engineering ownership.
           </p>
         </div>
 

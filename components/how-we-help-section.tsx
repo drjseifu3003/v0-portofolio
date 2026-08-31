@@ -1,7 +1,7 @@
 "use client"
 
 import { ArrowUpRight } from "lucide-react"
-import { PROFILE_UPWORK } from "@/lib/site"
+import { PROFILE_UPWORK, CALENDLY_URL } from "@/lib/site"
 
 const STEPS = [
   {
@@ -167,10 +167,42 @@ export function HowWeHelpSection() {
           ))}
         </div>
 
-        <div style={{ marginTop: 48 }}>
-          <a href={PROFILE_UPWORK} style={ctaStyle} target="_blank" rel="noopener noreferrer">
-            {ctaInner}
-          </a>
+        <div style={{ marginTop: 40, display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
+          <p
+            style={{
+              fontSize: 14,
+              fontWeight: 600,
+              color: "#374151",
+              background: "#ffffff",
+              border: "1px solid #e5e7eb",
+              borderRadius: 999,
+              padding: "8px 20px",
+              boxShadow: "0 2px 10px rgba(15,23,42,0.04)",
+              margin: 0,
+            }}
+          >
+            Engagement Models: Scoped fixed-phase builds &amp; ongoing technical partner retainers ($2k+/mo)
+          </p>
+
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12 }}>
+            <a
+              href={CALENDLY_URL}
+              style={{
+                ...ctaStyle,
+                background: "linear-gradient(145deg, #7c3aed 0%, #6d28d9 100%)",
+                boxShadow: "0 8px 28px rgba(124, 58, 237, 0.32)",
+              }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Schedule Strategy Call
+              <ArrowUpRight size={18} strokeWidth={2.25} color="#ffffff" aria-hidden />
+            </a>
+
+            <a href={PROFILE_UPWORK} style={ctaStyle} target="_blank" rel="noopener noreferrer">
+              {ctaInner}
+            </a>
+          </div>
         </div>
       </div>
     </section>

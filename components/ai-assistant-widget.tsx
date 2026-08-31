@@ -64,9 +64,9 @@ function FloatingButton({ onClick }: { onClick: () => void }) {
       `}</style>
       <div className="fab-wrap">
         <div className="fab-hint">
-          <span>Voice</span> · Ask Liya
+          <span>Voice AI Demo</span> · Ask Liya
         </div>
-        <button className="fab" onClick={onClick} aria-label="Open voice assistant Liya">
+        <button className="fab" onClick={onClick} aria-label="Open AI Voice Assistant Liya — Ask about my work" title="Ask Liya — My AI Assistant (Live Voice & Chat Demo)">
           <div className="fab-ring" />
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <path d="M12 2a3 3 0 0 1 3 3v4a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/>

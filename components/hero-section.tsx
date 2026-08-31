@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { ArrowUpRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { PROFILE_UPWORK } from "@/lib/site"
+import { PROFILE_UPWORK, CALENDLY_URL } from "@/lib/site"
 import { SpTrustPill } from "@/components/sp-trust-pill"
 
 const FULL_HEADLINE = "Healthcare AI Systems Architect | Software Architect"
@@ -315,8 +315,78 @@ export function HeroSection() {
             {SUBTITLE}
           </p>
 
+          <p
+            style={{
+              fontSize: "13px",
+              color: "#4b5563",
+              lineHeight: 1.45,
+              maxWidth: 620,
+              margin: "4px auto 4px",
+              fontWeight: 500,
+            }}
+          >
+            📍 Addis Ababa, Ethiopia (GMT+3) &middot; 🟢 Available for New Projects
+          </p>
+
+          <p
+            style={{
+              fontSize: "12px",
+              color: "#6b7280",
+              margin: "0 auto 10px",
+              fontWeight: 400,
+            }}
+          >
+            Primary Focus: Healthcare AI &amp; Clinical SaaS &middot; Also architecting high-concurrency multi-agent &amp; RAG platforms for B2B SaaS
+          </p>
+
           <div style={{ marginTop: 14, display: "flex", justifyContent: "center", width: "100%" }}>
             <SpTrustPill variant="hero" />
+          </div>
+
+          <div style={{ marginTop: 16, display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, width: "100%" }}>
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "11px 22px",
+                borderRadius: 999,
+                fontSize: 14,
+                fontWeight: 700,
+                color: "#ffffff",
+                textDecoration: "none",
+                background: "linear-gradient(145deg, #7c3aed 0%, #6d28d9 100%)",
+                boxShadow: "0 6px 20px rgba(124, 58, 237, 0.35)",
+              }}
+            >
+              Schedule Strategy Call
+              <ArrowUpRight size={16} strokeWidth={2.25} color="#ffffff" aria-hidden />
+            </a>
+
+            <a
+              href={PROFILE_UPWORK}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "11px 22px",
+                borderRadius: 999,
+                fontSize: 14,
+                fontWeight: 700,
+                color: "hsl(var(--primary-foreground))",
+                textDecoration: "none",
+                background: "linear-gradient(165deg, hsl(158 58% 40%) 0%, hsl(var(--brand-primary)) 48%, hsl(158 62% 32%) 100%)",
+                boxShadow: "0 6px 20px rgba(20, 168, 0, 0.35)",
+              }}
+            >
+              Hire me on Upwork
+              <ArrowUpRight size={16} strokeWidth={2.25} color="#ffffff" aria-hidden />
+            </a>
           </div>
 
         </div>

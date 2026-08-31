@@ -6,7 +6,7 @@ export function getSiteUrl(): string {
   if (typeof raw === "string" && raw.trim().length > 0) {
     return raw.replace(/\/+$/, "")
   }
-  return "https://www.derejeseifu.com"
+  return "https://derejeseifu.vercel.app"
 }
 
 export const SITE_FULL_NAME = "Dereje Seifu"

@@ -291,7 +291,7 @@ export function TestimonialsSection() {
           ))}
         </div>
 
-        <div className="t-carousel">
+        <div className="t-carousel" aria-hidden="true">
           <div
             ref={trackRef}
             className="t-track"
