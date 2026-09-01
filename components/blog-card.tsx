@@ -16,13 +16,13 @@ export interface BlogCardProps {
 }
 
 export function BlogCard({ title, excerpt, slug, pubDate, readingTime, category, coverImage, link }: BlogCardProps) {
-  const targetUrl = link || `/blog/${slug}`
-  const isExternal = /^https?:\/\//i.test(targetUrl)
+  const targetUrl = link || (slug.startsWith("http") ? slug : `https://builtforprod.substack.com/p/${slug}`)
 
   return (
-    <Link
+    <a
       href={targetUrl}
-      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      target="_blank"
+      rel="noopener noreferrer"
       style={{ textDecoration: "none", color: "inherit", display: "block", height: "100%" }}
     >
       <article
@@ -113,6 +113,6 @@ export function BlogCard({ title, excerpt, slug, pubDate, readingTime, category,
           </div>
         </div>
       </article>
-    </Link>
+    </a>
   )
 }

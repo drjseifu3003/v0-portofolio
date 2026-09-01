@@ -134,8 +134,10 @@ export default async function BlogPage() {
                 Featured Briefing
               </div>
 
-              <Link
-                href={`/blog/${featuredPost.slug}`}
+              <a
+                href={featuredPost.link || `https://builtforprod.substack.com/p/${featuredPost.slug}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{ textDecoration: "none", color: "inherit", display: "block" }}
               >
                 <article
@@ -206,13 +208,13 @@ export default async function BlogPage() {
                           color: "#7c3aed",
                         }}
                       >
-                        Read Featured Briefing
+                        Read on Substack
                         <ArrowUpRight size={18} strokeWidth={2.25} />
                       </span>
                     </div>
                   </div>
                 </article>
-              </Link>
+              </a>
             </div>
           </section>
         )}
