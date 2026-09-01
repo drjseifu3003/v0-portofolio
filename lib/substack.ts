@@ -20,7 +20,7 @@ export const FALLBACK_POSTS: SubstackPost[] = [
     excerpt:
       "When building a digital health platform or multi-tenant SaaS company, data security is not just an engineering checklist item; it is a core business asset.",
     link: "https://builtforprod.substack.com/p/the-silent-data-leak-in-healthtech",
-    pubDate: "July 21, 2026",
+    pubDate: "Jul 21, 2026",
     readingTime: "6 min read",
     category: "HIPAA Security",
     coverImage:
@@ -32,7 +32,7 @@ export const FALLBACK_POSTS: SubstackPost[] = [
     excerpt:
       "How digital health startups waste months on infrastructure, the hidden security gotchas of default AWS services, and how to automate compliance using hardened Terraform blueprints.",
     link: "https://builtforprod.substack.com/p/the-hipaa-compliance-bottleneck-why",
-    pubDate: "June 26, 2026",
+    pubDate: "Jun 26, 2026",
     readingTime: "5 min read",
     category: "AWS Infrastructure",
     coverImage:
@@ -68,6 +68,10 @@ export async function getSubstackPosts(): Promise<SubstackPost[]> {
   try {
     const res = await fetch(SUBSTACK_RSS_URL, {
       next: { revalidate: 3600 },
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        Accept: "application/rss+xml, application/xml, text/xml, */*",
+      },
     })
     if (!res.ok) return FALLBACK_POSTS
     const xml = await res.text()
@@ -83,7 +87,10 @@ export async function getSubstackPosts(): Promise<SubstackPost[]> {
       const linkMatch = itemContent.match(/<link>([\s\S]*?)<\/link>/)
       const descMatch = itemContent.match(/<description><!\[CDATA\[([\s\S]*?)\]\]><\/description>/) || itemContent.match(/<description>([\s\S]*?)<\/description>/)
       const dateMatch = itemContent.match(/<pubDate>([\s\S]*?)<\/pubDate>/)
-      const imgMatch = itemContent.match(/url="(https:\/\/substackcdn\.com\/image\/fetch\/[^"]+)"/) || itemContent.match(/<img[^>]+src="(https:\/\/substackcdn\.com\/image\/fetch\/[^"]+)"/)
+      const imgMatch =
+        itemContent.match(/<enclosure[^>]+url="([^"]+)"/) ||
+        itemContent.match(/url="([^"]+substackcdn\.com\/image\/fetch\/[^"]+)"/) ||
+        itemContent.match(/<img[^>]+src="([^"]+substackcdn\.com\/image\/fetch\/[^"]+)"/)
 
       const link = linkMatch ? linkMatch[1].trim() : ""
       const slug = link ? link.replace(/.*\/p\//, "").replace(/\/$/, "") : ""
@@ -112,7 +119,12 @@ export async function getSubstackPosts(): Promise<SubstackPost[]> {
           link,
           pubDate: formattedDate || "Recent",
           readingTime: "5 min read",
-          category: slug.includes("healthtech") || slug.includes("hipaa") ? "HIPAA Security" : slug.includes("serverless") || slug.includes("ai") ? "Healthcare AI" : "AWS Infrastructure",
+          category:
+            slug.includes("healthtech") || slug.includes("hipaa")
+              ? "HIPAA Security"
+              : slug.includes("serverless") || slug.includes("ai")
+              ? "Healthcare AI"
+              : "AWS Infrastructure",
           coverImage: imgMatch ? imgMatch[1] : undefined,
         })
       }
@@ -124,6 +136,8 @@ export async function getSubstackPosts(): Promise<SubstackPost[]> {
   }
 }
 
-export function getPostBySlug(slug: string): SubstackPost | undefined {
-  return FALLBACK_POSTS.find(p => p.slug === slug)
+export async function getPostBySlug(slug: string): Promise<SubstackPost | undefined> {
+  const posts = await getSubstackPosts()
+  const found = posts.find(p => p.slug === slug)
+  return found || FALLBACK_POSTS.find(p => p.slug === slug)
 }

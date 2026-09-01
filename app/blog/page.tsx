@@ -2,10 +2,12 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowUpRight, BookOpen, Calendar, Clock, Sparkles } from "lucide-react"
-import { FALLBACK_POSTS, SUBSTACK_URL } from "@/lib/substack"
+import { getSubstackPosts, SUBSTACK_URL } from "@/lib/substack"
 import { BlogCard } from "@/components/blog-card"
 import { SiteHeader, SITE_HEADER_H } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+
+export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: "Articles & Technical Insights | Dereje Seifu",
@@ -13,9 +15,10 @@ export const metadata: Metadata = {
     "Production engineering notes, Healthcare AI architecture, HIPAA compliance blueprints, and cloud optimization insights by Dereje Seifu.",
 }
 
-export default function BlogPage() {
-  const featuredPost = FALLBACK_POSTS[0]
-  const otherPosts = FALLBACK_POSTS.slice(1)
+export default async function BlogPage() {
+  const posts = await getSubstackPosts()
+  const featuredPost = posts[0]
+  const otherPosts = posts.slice(1)
 
   return (
     <div className="min-h-screen bg-background text-foreground">

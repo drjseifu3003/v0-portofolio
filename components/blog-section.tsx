@@ -1,12 +1,24 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { ArrowRight, BookOpen } from "lucide-react"
-import { FALLBACK_POSTS, SUBSTACK_URL } from "@/lib/substack"
+import { FALLBACK_POSTS, SUBSTACK_URL, type SubstackPost } from "@/lib/substack"
 import { BlogCard } from "./blog-card"
 
 export function BlogSection() {
-  const posts = FALLBACK_POSTS.slice(0, 3)
+  const [posts, setPosts] = useState<SubstackPost[]>(FALLBACK_POSTS.slice(0, 3))
+
+  useEffect(() => {
+    fetch("/api/substack")
+      .then(res => res.json())
+      .then(data => {
+        if (data?.posts?.length > 0) {
+          setPosts(data.posts.slice(0, 3))
+        }
+      })
+      .catch(() => {})
+  }, [])
 
   return (
     <section
