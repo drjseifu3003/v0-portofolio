@@ -130,6 +130,9 @@ export function SiteHeader() {
             <Link href="/case-study" style={{ fontSize: 15, fontWeight: 600, color: "hsl(var(--muted-foreground))", textDecoration: "none" }}>
               My work
             </Link>
+            <Link href="/blog" style={{ fontSize: 15, fontWeight: 600, color: "hsl(var(--muted-foreground))", textDecoration: "none" }}>
+              Articles
+            </Link>
             <Link href="/about" style={{ fontSize: 15, fontWeight: 600, color: "hsl(var(--muted-foreground))", textDecoration: "none" }}>
               About me
             </Link>
@@ -371,6 +374,23 @@ export function SiteHeader() {
               }}
             >
               My work
+            </Link>
+            <Link
+              href="/blog"
+              onClick={() => setMob(false)}
+              style={{
+                fontSize: 22,
+                lineHeight: "28px",
+                fontWeight: 600,
+                letterSpacing: "-1px",
+                color: "hsl(var(--foreground))",
+                height: 36,
+                display: "flex",
+                alignItems: "center",
+                textDecoration: "none",
+              }}
+            >
+              Articles
             </Link>
             <Link
               href="/about"

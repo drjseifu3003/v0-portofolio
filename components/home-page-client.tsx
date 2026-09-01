@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/hero-section"
 import { LogoCloudSection } from "@/components/logo-cloud-section"
 import { HowWeHelpSection } from "@/components/how-we-help-section"
 import { ProjectsSection } from "@/components/projects-section"
+import { BlogSection } from "@/components/blog-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { FaqSection } from "@/components/faq-section"
 import { ContactSection } from "@/components/contact-section"
@@ -23,7 +24,7 @@ export function HomePageClient() {
         <LogoCloudSection />
         <HowWeHelpSection />
         <ProjectsSection />
-        {/* <LiyaSection/> */}
+        <BlogSection />
         <TestimonialsSection />
         {/* <FaqSection /> */}
         {/* <ContactSection onTalkToLiya={openLiya} /> */}

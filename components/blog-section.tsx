@@ -1,103 +1,127 @@
 "use client"
 
-import { BlogCard } from "./blog-card"
-import { Button } from "@/components/ui/button"
-import { ChevronRight } from "lucide-react"
 import Link from "next/link"
-import { FadeIn, StaggerContainer, StaggerItem } from "./animations"
-
-// Sample blog posts data
-const blogPosts = [
-  {
-    title: "Building Scalable SaaS Applications with Next.js",
-    excerpt:
-      "Learn how to architect and build scalable SaaS applications using Next.js, focusing on performance, maintainability, and user experience.",
-    slug: "building-scalable-saas-with-nextjs",
-    date: "Apr 15, 2023",
-    readingTime: "8 min",
-    category: "Development",
-    coverImage: "/placeholder.svg?height=192&width=384",
-  },
-  {
-    title: "Optimizing Database Performance in High-Traffic Applications",
-    excerpt:
-      "Explore techniques for optimizing database performance in applications that handle millions of requests, from indexing to query optimization.",
-    slug: "optimizing-database-performance",
-    date: "Mar 22, 2023",
-    readingTime: "12 min",
-    category: "DevOps",
-    coverImage: "/placeholder.svg?height=192&width=384",
-  },
-  {
-    title: "Implementing CI/CD Pipelines for Modern Web Applications",
-    excerpt:
-      "A comprehensive guide to setting up continuous integration and deployment pipelines for web applications using GitHub Actions and AWS.",
-    slug: "implementing-cicd-pipelines",
-    date: "Feb 10, 2023",
-    readingTime: "10 min",
-    category: "DevOps",
-    coverImage: "/placeholder.svg?height=192&width=384",
-  },
-  {
-    title: "Mastering TypeScript: Advanced Patterns and Best Practices",
-    excerpt:
-      "Dive deep into advanced TypeScript patterns, including generics, utility types, and architectural patterns for large-scale applications.",
-    slug: "mastering-typescript-advanced-patterns",
-    date: "Jan 5, 2023",
-    readingTime: "15 min",
-    category: "Development",
-    coverImage: "/placeholder.svg?height=192&width=384",
-  },
-  {
-    title: "Building Responsive and Accessible UI Components",
-    excerpt:
-      "Learn how to create UI components that are both responsive across devices and accessible to all users, following WCAG guidelines.",
-    slug: "building-responsive-accessible-ui",
-    date: "Dec 12, 2022",
-    readingTime: "7 min",
-    category: "UI/UX",
-    coverImage: "/placeholder.svg?height=192&width=384",
-  },
-  {
-    title: "Microservices vs. Monoliths: Choosing the Right Architecture",
-    excerpt:
-      "An in-depth comparison of microservices and monolithic architectures, with guidelines on when to choose each approach.",
-    slug: "microservices-vs-monoliths",
-    date: "Nov 28, 2022",
-    readingTime: "11 min",
-    category: "Architecture",
-    coverImage: "/placeholder.svg?height=192&width=384",
-  },
-]
+import { ArrowRight, BookOpen } from "lucide-react"
+import { FALLBACK_POSTS, SUBSTACK_URL } from "@/lib/substack"
+import { BlogCard } from "./blog-card"
 
 export function BlogSection() {
+  const posts = FALLBACK_POSTS.slice(0, 3)
+
   return (
-    <section id="blog" className="py-16 scroll-mt-20">
-      <div className="container">
-        <FadeIn>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Architecture & Growth Briefings</h2>
-            <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-              Field notes on scaling products, reducing risk, and shipping faster without sacrificing quality.
-            </p>
+    <section
+      id="blog"
+      style={{
+        background: "#ffffff",
+        borderBottom: "1px solid #e5e7eb",
+        padding: "clamp(40px, 6.5vw, 72px) 0 clamp(48px, 7vw, 80px)",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          padding: "0 clamp(16px, 4vw, 36px)",
+          boxSizing: "border-box",
+        }}
+      >
+        <div style={{ textAlign: "center", marginBottom: "clamp(32px, 5vw, 44px)" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700, color: "#7c3aed", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+            <BookOpen size={15} />
+            Substack Insights
           </div>
-        </FadeIn>
+          <h2
+            style={{
+              fontSize: "clamp(28px, 4vw, 42px)",
+              fontWeight: 700,
+              color: "#111827",
+              margin: "0 0 12px",
+              letterSpacing: "-0.03em",
+              lineHeight: 1.15,
+            }}
+          >
+            Articles &amp; Architecture Notes
+          </h2>
+          <p
+            style={{
+              fontSize: "clamp(15px, 1.6vw, 18px)",
+              color: "#6b7280",
+              maxWidth: 620,
+              margin: "0 auto",
+              lineHeight: 1.55,
+              fontWeight: 400,
+            }}
+          >
+            Real engineering decisions from production Healthcare AI platforms, cloud security envelopes, and multi-tenant SaaS systems.
+          </p>
+        </div>
 
-        <StaggerContainer className="blog-grid">
-          {blogPosts.slice(0, 6).map((post, index) => (
-            <StaggerItem key={index}>
-              <BlogCard {...post} />
-            </StaggerItem>
+        <div className="sp-home-blog-grid">
+          <style jsx>{`
+            .sp-home-blog-grid {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: 24px;
+              margin-bottom: 44px;
+            }
+            @media (min-width: 768px) {
+              .sp-home-blog-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+              }
+            }
+          `}</style>
+          {posts.map(post => (
+            <BlogCard key={post.slug} {...post} />
           ))}
-        </StaggerContainer>
+        </div>
 
-        <div className="mt-12 text-center">
-          <Link href="/blog">
-            <Button className="gaming-button group">
-              Read Strategic Insights
-              <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 14 }}>
+          <Link
+            href="/blog"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              padding: "14px 32px",
+              borderRadius: 999,
+              fontSize: 15,
+              fontWeight: 700,
+              letterSpacing: "-0.02em",
+              color: "#ffffff",
+              textDecoration: "none",
+              background: "linear-gradient(145deg, #7c3aed 0%, #6d28d9 100%)",
+              boxShadow: "0 6px 20px rgba(124, 58, 237, 0.3)",
+            }}
+          >
+            View all articles
+            <ArrowRight size={18} strokeWidth={2} />
           </Link>
+
+          <a
+            href={SUBSTACK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              padding: "14px 32px",
+              borderRadius: 999,
+              fontSize: 15,
+              fontWeight: 700,
+              letterSpacing: "-0.02em",
+              color: "#374151",
+              textDecoration: "none",
+              background: "#ffffff",
+              border: "1px solid #d1d5db",
+              boxShadow: "0 2px 10px rgba(15, 23, 42, 0.04)",
+            }}
+          >
+            Subscribe on Substack
+            <ArrowRight size={18} strokeWidth={2} />
+          </a>
         </div>
       </div>
     </section>
