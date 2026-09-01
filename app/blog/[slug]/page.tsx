@@ -182,16 +182,81 @@ export default async function BlogPostPage({ params }: PageProps) {
               </ul>
             </div>
 
-            {/* Article Intro / Overview */}
-            <div style={{ fontSize: 18, lineHeight: 1.8, color: "#374151", fontWeight: 400, margin: "0 0 32px" }}>
-              <p style={{ margin: "0 0 24px", fontSize: 19, lineHeight: 1.7, color: "#1f2937", fontWeight: 500 }}>
-                {post.excerpt}
-              </p>
-              
-              <p style={{ margin: "0 0 24px" }}>
-                When architecting healthcare AI and multi-tenant SaaS platforms, the engineering choices made during early stages directly dictate long-term compliance, security liability, and operating efficiency.
-              </p>
-            </div>
+            {/* Full Article Content */}
+            {post.contentHtml ? (
+              <div className="sp-article-content">
+                <style dangerouslySetInnerHTML={{ __html: `
+                  .sp-article-content {
+                    font-size: 18px;
+                    line-height: 1.8;
+                    color: #374151;
+                  }
+                  .sp-article-content p {
+                    margin-bottom: 24px;
+                  }
+                  .sp-article-content h2,
+                  .sp-article-content h3,
+                  .sp-article-content h4 {
+                    color: #111827;
+                    font-weight: 800;
+                    letter-spacing: -0.025em;
+                    margin-top: 40px;
+                    margin-bottom: 16px;
+                    line-height: 1.25;
+                  }
+                  .sp-article-content h2 {
+                    font-size: 26px;
+                  }
+                  .sp-article-content h3 {
+                    font-size: 21px;
+                  }
+                  .sp-article-content ul,
+                  .sp-article-content ol {
+                    margin-bottom: 24px;
+                    padding-left: 24px;
+                  }
+                  .sp-article-content li {
+                    margin-bottom: 10px;
+                  }
+                  .sp-article-content img {
+                    max-width: 100%;
+                    height: auto;
+                    border-radius: 14px;
+                    margin: 24px 0;
+                    border: 1px solid #e5e7eb;
+                  }
+                  .sp-article-content figure {
+                    margin: 28px 0;
+                  }
+                  .sp-article-content blockquote {
+                    border-left: 4px solid #7c3aed;
+                    padding-left: 20px;
+                    margin: 28px 0;
+                    font-style: italic;
+                    color: #4b5563;
+                  }
+                  .sp-article-content a {
+                    color: #7c3aed;
+                    text-decoration: underline;
+                  }
+                  .sp-article-content .subscription-widget-wrap-editor,
+                  .sp-article-content .subscription-widget,
+                  .sp-article-content .image-link-expand {
+                    display: none !important;
+                  }
+                ` }} />
+                <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+              </div>
+            ) : (
+              <div style={{ fontSize: 18, lineHeight: 1.8, color: "#374151", fontWeight: 400, margin: "0 0 32px" }}>
+                <p style={{ margin: "0 0 24px", fontSize: 19, lineHeight: 1.7, color: "#1f2937", fontWeight: 500 }}>
+                  {post.excerpt}
+                </p>
+                <p style={{ margin: "0 0 24px" }}>
+                  When architecting healthcare AI and multi-tenant SaaS platforms, the engineering choices made during early stages directly dictate long-term compliance, security liability, and operating efficiency.
+                </p>
+              </div>
+            )}
 
             {/* In-Line Substack Subscription Card */}
             <div

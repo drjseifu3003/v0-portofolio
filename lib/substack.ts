@@ -92,6 +92,11 @@ export async function getSubstackPosts(): Promise<SubstackPost[]> {
         itemContent.match(/url="([^"]+substackcdn\.com\/image\/fetch\/[^"]+)"/) ||
         itemContent.match(/<img[^>]+src="([^"]+substackcdn\.com\/image\/fetch\/[^"]+)"/)
 
+      const contentMatch =
+        itemContent.match(/<content:encoded><!\[CDATA\[([\s\S]*?)\]\]><\/content:encoded>/) ||
+        itemContent.match(/<content:encoded>([\s\S]*?)<\/content:encoded>/)
+      const contentHtml = contentMatch ? contentMatch[1].trim() : ""
+
       const link = linkMatch ? linkMatch[1].trim() : ""
       const slug = link ? link.replace(/.*\/p\//, "").replace(/\/$/, "") : ""
 
@@ -126,6 +131,7 @@ export async function getSubstackPosts(): Promise<SubstackPost[]> {
               ? "Healthcare AI"
               : "AWS Infrastructure",
           coverImage: imgMatch ? imgMatch[1] : undefined,
+          contentHtml: contentHtml || undefined,
         })
       }
     }
